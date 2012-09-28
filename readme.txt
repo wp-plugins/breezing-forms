@@ -1,7 +1,7 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, form, captcha, contact, contact form, email, feedback, plugin, poll, Post, widget, survey
+Tags: forms, form, captcha, contact, contact form, email, feedback, plugin, poll, Post, widget, mobile
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable tag: 1.0
@@ -23,9 +23,9 @@ No trial-ware, no light: The current version is a fully working GPL2 WordPress p
 
 * Complete set of regular form creation features
 * Mobile Support (Premium Upgrade): Create your form once and display for Desktop and Mobiles
-* Business/CRM: SalesforceÂ® integration  (Premium Upgrade)
-* Sharing: DropboxÂ® integration  (Premium Upgrade)
-* Newsletters: MailChimpÂ® integration
+* Business/CRM: Salesforce¨ integration  (Premium Upgrade)
+* Sharing: Dropbox¨ integration  (Premium Upgrade)
+* Newsletters: MailChimp¨ integration
 * Conditional fields
 * Multi file uploads with progress bars
 * Summary Items
