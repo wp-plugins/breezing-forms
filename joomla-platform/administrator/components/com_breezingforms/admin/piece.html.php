@@ -17,7 +17,7 @@ class HTML_facileFormsPiece
 		global $ff_mossite, $ff_admsite, $ff_config;
 		$action = $row->id ? BFText::_('COM_BREEZINGFORMS_PIECES_EDITPIECE') : BFText::_('COM_BREEZINGFORMS_PIECES_ADDPIECE');
 ?>
-		<script type="text/javascript" src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/admin/areautils.js"></script>
+		<script type="text/javascript" src="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/admin/areautils.js"></script>
 		<script type="text/javascript">
 		<!--
 		function checkIdentifier(value)
@@ -287,9 +287,9 @@ class HTML_facileFormsPiece
 					<td nowrap valign="top" align="right"><?php echo $row->id; ?></td>
 					<td nowrap valign="top" align="center"><?php
 					if ($row->published == "1") {
-						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','unpublish')"><img src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png" alt="+" border="0" /></a><?php
+						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','unpublish')"><img src="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png" alt="+" border="0" /></a><?php
 					} else {
-						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','publish')"><img src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png" alt="-" border="0" /></a><?php
+						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','publish')"><img src="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png" alt="-" border="0" /></a><?php
 					} // if
 					?></td>
 					<td valign="top" align="left"><?php echo htmlspecialchars($desc, ENT_QUOTES); ?></td>

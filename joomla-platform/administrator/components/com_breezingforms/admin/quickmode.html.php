@@ -13,8 +13,8 @@ class QuickModeHtml{
 	public static function showApplication($formId = 0, $formName, $formTitle, $formDesc, $formEmailntf, $formEmailadr, $dataObjectString, $elementScripts, $themes){
 		JHTML::_('behavior.keepalive');
 		JHTML::_('behavior.modal');
-		$iconBase = '../wp-content/plugins/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
-                $iconBaseWp = BF_PLUGINS_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
+		$iconBase = '../wp-content/plugins/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
+                $iconBaseWp = BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
 ?>              
         <script type="text/javascript">
         window.addEvent('domready', function() {
@@ -44,26 +44,26 @@ class QuickModeHtml{
 	-->
 	</style>
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/quickmode.all.css" />
-        <link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/jtree/tree_component.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/quickmode.all.css" />
+        <link rel="stylesheet" type="text/css" href="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/jtree/tree_component.css" />
         
-        <script type="text/javascript" src="<?php echo WP_PLUGIN_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/jtree/' ;?>_lib.js"></script>	
-	<script type="text/javascript" src="<?php echo WP_PLUGIN_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/jtree/' ;?>tree_component.js"></script>
+        <script type="text/javascript" src="<?php echo WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/jtree/' ;?>_lib.js"></script>	
+	<script type="text/javascript" src="<?php echo WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/jtree/' ;?>tree_component.js"></script>
 	<script
 	type="text/javascript"
-	src="<?php echo WP_PLUGIN_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/' ;?>jq-ui.min.js"></script>
+	src="<?php echo WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/' ;?>jq-ui.min.js"></script>
 	<script
 	type="text/javascript"
-	src="<?php echo WP_PLUGIN_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/plugins/' ;?>base64.js"></script>
+	src="<?php echo WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/plugins/' ;?>base64.js"></script>
 	<script
 	type="text/javascript"
-	src="<?php echo WP_PLUGIN_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/plugins/' ;?>json.js"></script>
+	src="<?php echo WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/plugins/' ;?>json.js"></script>
 	<script
 	type="text/javascript"
-	src="<?php echo WP_PLUGIN_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/plugins/' ;?>md5.js"></script>
+	src="<?php echo WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/plugins/' ;?>md5.js"></script>
         <script
 	type="text/javascript"
-	src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/center.js"></script>
+	src="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/center.js"></script>
         
 	
         <script type="text/javascript">

@@ -266,7 +266,7 @@ class HTML_facileFormsConf
 		if ($downloadfile != '') {
 ?>
 		<script type="text/javascript">onload=function(){document.dldform.submit();}</script>
-		<form action="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/admin/download.php" method="post" name="dldform">
+		<form action="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/admin/download.php" method="post" name="dldform">
 		<input type="hidden" name="filename" value="<?php echo $downloadfile; ?>" />
 		</form>
 <?php

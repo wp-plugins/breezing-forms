@@ -105,9 +105,9 @@ class BFQuickMode{
 		foreach ($head['styleSheets'] as $strSrc => $strAttr)
 		{
                         if(JURI::root(true) != ''){
-                            $strSrc = str_replace(JURI::root(true), BF_PLUGINS_URL . '/breezing-forms/joomla-platform/', $strSrc);
+                            $strSrc = str_replace(JURI::root(true), BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/', $strSrc);
                         }else{
-                            $strSrc = BF_PLUGINS_URL . '/breezing-forms/joomla-platform/' . $strSrc;
+                            $strSrc = BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/' . $strSrc;
                         }
 			$buffer .= $tab . '<link rel="stylesheet" href="' . $strSrc . '" type="' . $strAttr['mime'] . '"';
 			if (!is_null($strAttr['media']))
@@ -146,9 +146,9 @@ class BFQuickMode{
 		foreach ($head['scripts'] as $strSrc => $strAttr)
 		{
                         if(JURI::root(true) != ''){
-                            $strSrc = str_replace(JURI::root(true), BF_PLUGINS_URL . '/breezing-forms/joomla-platform/', $strSrc);
+                            $strSrc = str_replace(JURI::root(true), BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/', $strSrc);
                         }else{
-                            $strSrc = BF_PLUGINS_URL . '/breezing-forms/joomla-platform/' . $strSrc;
+                            $strSrc = BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/' . $strSrc;
                         }
                         $buffer .= $tab . '<script src="' . $strSrc . '"';
 			if (isset($strAttr['mime']) && !is_null($strAttr['mime']))
@@ -208,13 +208,13 @@ display:none;
                 
                 //JFactory::getDocument()->addScript(JURI::root(true) . '/components/com_breezingforms/libraries/jquery/jq.min.js');
                 
-                $this->addStyleSheet( BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/tooltip.css' );
-                $this->addScript(BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/tooltip.js');
+                $this->addStyleSheet( BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/tooltip.css' );
+                $this->addScript(BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/tooltip.js');
 
                 if($this->useBalloonErrors){
-                    $this->addStyleSheet( BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/validationEngine.jquery.css' );
-                    $this->addScript(BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/jquery.validationEngine-en.js');
-                    $this->addScript(BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/jquery.validationEngine.js');
+                    $this->addStyleSheet( BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/validationEngine.jquery.css' );
+                    $this->addScript(BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/jquery.validationEngine-en.js');
+                    $this->addScript(BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/jquery.validationEngine.js');
                 }
 
 		$toggleCode = '';
@@ -889,22 +889,22 @@ display:none;
 			});
 		');
 		// loading system css
-		$this->addStyleSheet( BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/themes/quickmode/system.css' );
+		$this->addStyleSheet( BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.css' );
 		
                 if(method_exists($obj = JFactory::getDocument(), 'addCustomTag')){
                 
                     $stylelink = '<!--[if IE 7]>' ."\n";
-                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie7.css" />' ."\n";
+                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie7.css" />' ."\n";
                     $stylelink .= '<![endif]-->' ."\n";
                     $this->addCustomTag($stylelink);
 
                     $stylelink = '<!--[if IE 6]>' ."\n";
-                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/breezing-forms/joomla-platformc/omponents/com_breezingforms/themes/quickmode/system.ie6.css" />' ."\n";
+                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platformc/omponents/com_breezingforms/themes/quickmode/system.ie6.css" />' ."\n";
                     $stylelink .= '<![endif]-->' ."\n";
                     $this->addCustomTag($stylelink);
 
                     $stylelink = '<!--[if IE]>' ."\n";
-                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie.css" />' ."\n";
+                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie.css" />' ."\n";
                     $stylelink .= '<![endif]-->' ."\n";
                     $this->addCustomTag($stylelink);
                 }
@@ -1390,7 +1390,7 @@ display:none;
 									'width'          : ".(isset($mdata['flashUploaderWidth']) && is_numeric($mdata['flashUploaderWidth']) && $mdata['flashUploaderWidth'] > 0 ? intval($mdata['flashUploaderWidth']) : '64').",
 									'height'         : ".(isset($mdata['flashUploaderHeight']) && is_numeric($mdata['flashUploaderHeight']) && $mdata['flashUploaderHeight'] > 0 ? intval($mdata['flashUploaderHeight']) : '64').",
 									". ( isset($mdata['flashUploaderTransparent']) && $mdata['flashUploaderTransparent'] ? "'wmode'          : 'transparent'," : '' ) ."
-									'uploader'       : '".BF_PLUGINS_URL . "/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/uploadify.swf',
+									'uploader'       : '".BF_PLUGINS_URL . "/".BF_FOLDER."/joomla-platform/components/com_breezingforms/libraries/jquery/uploadify.swf',
 									'script'         : '".JURI::root()."wp-admin/admin-ajax.php?action=breezingformsajax',
 									'cancelImg'      : '".$this->cancelImagePath."',
 									'queueID'        : 'bfFileQueue',
@@ -1529,11 +1529,11 @@ display:none;
 
                                                 if(JFactory::getApplication()->isSite())
                                                  {
-                                                    $captcha_url = BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php';
+                                                    $captcha_url = BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php';
                                                  }
                                                  else
                                                  {
-                                                    $captcha_url = BF_PLUGINS_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/captcha/securimage_show.php';
+                                                    $captcha_url = BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/images/captcha/securimage_show.php';
                                                  }
                                             
 						echo '<span class="bfCaptcha">'."\n";
@@ -1542,7 +1542,7 @@ display:none;
                                                 
                                                 echo '<br/>';
 						echo '<input autocomplete="off" class="ff_elem" type="text" name="bfCaptchaEntry" id="bfCaptchaEntry" />'."\n";
-						echo '<a href="#" class="ff_elem" onclick="document.getElementById(\'bfCaptchaEntry\').value=\'\';document.getElementById(\'bfCaptchaEntry\').focus();document.getElementById(\'ff_capimgValue\').src = \''.$captcha_url.'?bfMathRandom=\' + Math.random(); return false"><img alt="captcha" src="'.BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/images/captcha/refresh-captcha.png" border="0" /></a>'."\n";
+						echo '<a href="#" class="ff_elem" onclick="document.getElementById(\'bfCaptchaEntry\').value=\'\';document.getElementById(\'bfCaptchaEntry\').focus();document.getElementById(\'ff_capimgValue\').src = \''.$captcha_url.'?bfMathRandom=\' + Math.random(); return false"><img alt="captcha" src="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/images/captcha/refresh-captcha.png" border="0" /></a>'."\n";
 						echo '</span>'."\n";
 						
 						break;
@@ -1724,9 +1724,9 @@ display:none;
 			$tickets[$this->flashUploadTicket] = array(); // stores file info for later processing
 			JFactory::getSession()->set('bfFlashUploadTickets', $tickets);
 			echo '<input type="hidden" name="bfFlashUploadTicket" value="'.$this->flashUploadTicket.'"/>'."\n";
-			$this->addScript(BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/swfobject.js');
-			$this->addScript(BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/jquery.uploadify.v2.1.0.min.js');
-			$this->addScript(BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/libraries/jquery/center.js');
+			$this->addScript(BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/swfobject.js');
+			$this->addScript(BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/jquery.uploadify.v2.1.0.min.js');
+			$this->addScript(BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/center.js');
 			$this->addScriptDeclaration('
 			var bfFlashUploadInterval = null;
 			var bfFlashUploadTooLarge = {};

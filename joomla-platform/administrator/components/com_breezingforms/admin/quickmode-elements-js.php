@@ -7,7 +7,7 @@
 * @license Released under the terms of the GNU General Public License
 **/
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
-$iconBase = '../wp-content/plugins/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
+$iconBase = '../wp-content/plugins/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
 ?>
 this.createTextfield = function(id){
 		return {

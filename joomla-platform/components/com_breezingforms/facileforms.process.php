@@ -1585,7 +1585,7 @@ class HTML_facileFormsProcessor {
         if ($curr > 0)
             $code .= "    } // if" . nl();
         $code .= 'if(error != "" && document.getElementById(\'ff_capimgValue\')){
-                 document.getElementById(\'ff_capimgValue\').src = \'' . BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php?bfMathRandom=\' + Math.random();
+                 document.getElementById(\'ff_capimgValue\').src = \'' . BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php?bfMathRandom=\' + Math.random();
 		 document.getElementById(\'bfCaptchaEntry\').value = "";
 	    }';
         $code .= "    return error;" . nl() .
@@ -2088,7 +2088,7 @@ class HTML_facileFormsProcessor {
         ($ff_config->compress ? $this->compressJavascript($code) : $code) .
         '//-->' . nl() .
         '</script>' . nl() .
-        '<script type="text/javascript" src="' . BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/facileforms.js"></script>' . nl();
+        '<script type="text/javascript" src="' . BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/facileforms.js"></script>' . nl();
     }
 
 // header
@@ -2309,7 +2309,7 @@ class HTML_facileFormsProcessor {
         $this->queryCols = array();
         $this->queryRows = array();
         if ($this->runmode == _FF_RUNMODE_PREVIEW) {
-            echo '<script type="text/javascript" src="' . BF_PLUGINS_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/wz_dragdrop/wz_dragdrop.js"></script>';
+            echo '<script type="text/javascript" src="' . BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/wz_dragdrop/wz_dragdrop.js"></script>';
         }
         if (trim($this->formrow->template_code_processed) == 'QuickMode')
             echo '<table width="100%" style="display:none" border="0" id="bfReCaptchaWrap"><tr><td><div id="bfReCaptchaDiv"></div></td></tr></table>';
@@ -2440,7 +2440,7 @@ class HTML_facileFormsProcessor {
                                                                                    }
 									           bfShowErrors("' . addslashes(BFText::_('COM_BREEZINGFORMS_CAPTCHA_MISSING_WRONG')) . '");
 									        }
-											document.getElementById(\'ff_capimgValue\').src = \'' . BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php?bfMathRandom=\' + Math.random();
+											document.getElementById(\'ff_capimgValue\').src = \'' . BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php?bfMathRandom=\' + Math.random();
 											document.getElementById(\'bfCaptchaEntry\').value = "";
 											if(ff_currentpage != ' . $row->page . ')ff_switchpage(' . $row->page . ');
 											document.getElementById(\'bfCaptchaEntry\').focus();
@@ -3446,11 +3446,11 @@ class HTML_facileFormsProcessor {
                     case 'Captcha':
                         if(JFactory::getApplication()->isSite())
                          {
-                            $captcha_url = BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php';
+                            $captcha_url = BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/images/captcha/securimage_show.php';
                          }
                          else
                          {
-                            $captcha_url = BF_PLUGINS_URL . '/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/captcha/securimage_show.php';
+                            $captcha_url = BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/images/captcha/securimage_show.php';
                          }
                         echo indentc(1) . '<div id="ff_div' . $row->id . '" style="' . $attribs . '"' . $class1 . '>' . nlc();
                         $attribs = '';
@@ -3462,7 +3462,7 @@ class HTML_facileFormsProcessor {
                         echo '<br/>';
                         echo '<input type="text" style="' . $attribs . '" name="bfCaptchaEntry" id="bfCaptchaEntry" />';
                         //echo '<br/>';
-                        echo '<a href="#" onclick="document.getElementById(\'bfCaptchaEntry\').value=\'\';document.getElementById(\'bfCaptchaEntry\').focus();document.getElementById(\'ff_capimgValue\').src = \'' . $captcha_url . '?bfCaptcha=true&bfMathRandom=\' + Math.random(); return false"><img src="' . BF_PLUGINS_URL . '/breezing-forms/joomla-platform/components/com_breezingforms/images/captcha/refresh-captcha.png" border="0" /></a>';
+                        echo '<a href="#" onclick="document.getElementById(\'bfCaptchaEntry\').value=\'\';document.getElementById(\'bfCaptchaEntry\').focus();document.getElementById(\'ff_capimgValue\').src = \'' . $captcha_url . '?bfCaptcha=true&bfMathRandom=\' + Math.random(); return false"><img src="' . BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/images/captcha/refresh-captcha.png" border="0" /></a>';
                         echo indentc(1) . '</div>' . nl();
                         break;
                     case 'Query List':

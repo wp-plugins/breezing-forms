@@ -447,7 +447,7 @@ $db = JFactory::getDBO();
 if( !isset($_REQUEST['action']) && ( !isset($_REQUEST['task']) || !isset($_REQUEST['act']) || ( $_REQUEST['task'] != 'editform' && $_REQUEST['act'] != 'editpage' ) ) ){
     if( !isset($_REQUEST['act']) || ( isset($_REQUEST['act']) && $_REQUEST['act'] != 'quickmode_editor' ) ) {
     echo '<div style="float:left; margin-top: 10px; margin-right: 30px;">
-        <img src="'.WP_PLUGIN_URL.'/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/easymode/i/logo-breezingforms.png"/>
+        <img src="'.WP_PLUGIN_URL.'/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/easymode/i/logo-breezingforms.png"/>
     </div>
     <div style="float: right; margin-top: 20px; margin-right: 0px;">
         <h2 style="float: left;" class="wrap"><a style="background-color: red !important; color: white !important;" class="add-new-h2 thickbox" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Get Premium Upgrades &amp; Professional Support</a></h2>
