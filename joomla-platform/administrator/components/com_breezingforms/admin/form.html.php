@@ -15,7 +15,7 @@ $version = new JVersion();
 
 if(version_compare($version->getShortVersion(), '1.6', '>=')){
 
-echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL.'/breezingforms/joomla-platform/administrator/components/com_breezingforms/admin/bluestork.fix.css" type="text/css" />';
+echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL.'/breezing-forms/joomla-platform/administrator/components/com_breezingforms/admin/bluestork.fix.css" type="text/css" />';
 
 }
 
@@ -47,7 +47,7 @@ class HTML_facileFormsForm
                         margin-left: 0px !important;
                     }
                 </style>
-		<script type="text/javascript" src="<?php echo WP_PLUGIN_URL;?>/breezingforms/joomla-platform/administrator/components/com_breezingforms/admin/areautils.js"></script>
+		<script type="text/javascript" src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/admin/areautils.js"></script>
 		<script type="text/javascript">
 		<!--
                 window.addEvent('domready', function(){ $$('dl.tabs').each(function(tabs){ new JTabs(tabs, {}); }); });
@@ -1350,19 +1350,19 @@ if($row->template_code == ''){
 					<td nowrap valign="top" align="left"><?php echo $row->id; ?></td>
 					<td nowrap valign="top" align="left"><?php
 					if ($row->published == "1") {
-						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','unpublish')"><img src="<?php echo WP_PLUGIN_URL;?>/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png" alt="+" border="0" /></a><?php
+						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','unpublish')"><img src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png" alt="+" border="0" /></a><?php
 					} else {
-						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','publish')"><img src="<?php echo WP_PLUGIN_URL;?>/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png" alt="-" border="0" /></a><?php
+						?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','publish')"><img src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png" alt="-" border="0" /></a><?php
 					} // if
 					?></td>
 					<td nowrap valign="top" align="left"><?php
 						if ($i > 0) {
-							?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','orderup')"><img src="<?php echo WP_PLUGIN_URL;?>/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/uparrow.png" alt="^" border="0" /></a><?php
+							?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','orderup')"><img src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/uparrow.png" alt="^" border="0" /></a><?php
 						} // if
 					?></td>
 					<td nowrap valign="top" align="left"><?php
 						if ($i < count($rows)-1) {
-							?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','orderdown')"><img src="<?php echo WP_PLUGIN_URL;?>/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/downarrow.png" alt="v" border="0" /></a><?php
+							?><a href="#" onClick="return listItemTask('cb<?php echo $i; ?>','orderdown')"><img src="<?php echo WP_PLUGIN_URL;?>/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/downarrow.png" alt="v" border="0" /></a><?php
 						} // if
 					?></td>
 					<td valign="top" align="left"><?php echo htmlspecialchars($desc, ENT_QUOTES); ?></td>

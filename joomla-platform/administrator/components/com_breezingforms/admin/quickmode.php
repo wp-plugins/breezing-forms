@@ -13,7 +13,7 @@ require_once($ff_admpath.'/admin/quickmode.html.php');
 require_once($ff_admpath.'/admin/quickmode.class.php');
 require_once($ff_admpath.'/libraries/Zend/Json/Decoder.php');
 require_once($ff_admpath.'/libraries/Zend/Json/Encoder.php');
-$iconBase = '../wp-content/plugins/breezingforms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
+$iconBase = '../wp-content/plugins/breezing-forms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/quickmode/i/';
 
 $quickMode = new QuickMode();
 

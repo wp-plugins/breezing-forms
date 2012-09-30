@@ -943,9 +943,9 @@ div.button2-left button {
     for ($i=0; $i < $cnt; $i++)
     {
         $row = $rows[$i];
-        if ($row->viewed) $view_src = BF_PLUGINS_URL . "/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png"; else $view_src = BF_PLUGINS_URL . "/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png";
-	if ($row->exported) $exp_src = BF_PLUGINS_URL . "/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png"; else $exp_src = BF_PLUGINS_URL . "/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png";
-	if ($row->archived) $arch_src = BF_PLUGINS_URL . "/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png"; else $arch_src = BF_PLUGINS_URL . "/breezingforms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png";
+        if ($row->viewed) $view_src = BF_PLUGINS_URL . "/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png"; else $view_src = BF_PLUGINS_URL . "/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png";
+	if ($row->exported) $exp_src = BF_PLUGINS_URL . "/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png"; else $exp_src = BF_PLUGINS_URL . "/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png";
+	if ($row->archived) $arch_src = BF_PLUGINS_URL . "/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_g.png"; else $arch_src = BF_PLUGINS_URL . "/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/icons/publish_x.png";
         ?>
         <tr class="<?php echo "row$k"; ?>">
             <td nowrap align="center"><input type="checkbox" id="cb<?php echo $i; ?>" name="ids[]" value="<?php echo $row->id; ?>" onclick="isChecked(this.checked);" /></td>
