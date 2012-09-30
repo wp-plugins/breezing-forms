@@ -450,7 +450,7 @@ if( !isset($_REQUEST['action']) && ( !isset($_REQUEST['task']) || !isset($_REQUE
         <img src="'.WP_PLUGIN_URL.'/breezingforms/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/easymode/i/logo-breezingforms.png"/>
     </div>
     <div style="float: right; margin-top: 20px; margin-right: 0px;">
-        <h2 style="float: left;" class="wrap"><a style="background-color: red !important; color: white !important;" class="add-new-h2 thickbox" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Premium Upgrades &amp; Support</a></h2>
+        <h2 style="float: left;" class="wrap"><a style="background-color: red !important; color: white !important;" class="add-new-h2 thickbox" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Get Premium Upgrades &amp; Professional Support</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2 thickbox" href="admin.php?page=breezingforms&act=recordmanagement">'.BFText::_('COM_BREEZINGFORMS_WP_RECORDS').'</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2 thickbox" href="admin.php?page=breezingforms&act=manageforms">'.BFText::_('COM_BREEZINGFORMS_WP_FORMS').'</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2 thickbox" href="admin.php?page=breezingforms&act=managescripts">'.BFText::_('COM_BREEZINGFORMS_WP_SCRIPTS').'</a></h2>

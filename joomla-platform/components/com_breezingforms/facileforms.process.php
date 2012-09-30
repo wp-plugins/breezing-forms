@@ -28,6 +28,7 @@ define('_FF_STATUS_SENDMAIL_FAILED', 5);
 define('_FF_STATUS_ATTACHMENT_FAILED', 6);
 define('_FF_STATUS_CAPTCHA_FAILED', 7);
 define('_FF_STATUS_FILE_EXTENSION_NOT_ALLOWED', 8);
+define('_FF_STATUS_SALESFORCE_SOAP_ERROR', 9);
 
 define('_FF_DATA_ID', 0);
 define('_FF_DATA_NAME', 1);
@@ -2223,7 +2224,73 @@ class HTML_facileFormsProcessor {
         global $ff_mospath, $ff_mossite, $database, $my;
         global $ff_config, $ff_version, $ff_comsite, $ff_otherparams;
         
-       
+        $is_mobile_type = '';
+        
+        if( trim($this->formrow->template_code_processed) == 'QuickMode' ){
+        
+            if( isset($_GET['non_mobile']) && JRequest::getBool('non_mobile', 0) ){
+                JFactory::getSession()->clear('com_breezingforms.mobile');
+            } else if( isset($_GET['mobile']) && JRequest::getBool('mobile', 0) ){
+                JFactory::getSession()->set('com_breezingforms.mobile', true);
+            } else {
+                JFactory::getSession()->clear('com_breezingforms.mobile');
+            }
+
+            require_once(JPATH_SITE.'/administrator/components/com_breezingforms/libraries/Zend/Json/Decoder.php');
+            require_once(JPATH_SITE.'/administrator/components/com_breezingforms/libraries/Zend/Json/Encoder.php');
+            require_once(JPATH_SITE.'/administrator/components/com_breezingforms/libraries/crosstec/functions/helpers.php');
+
+            $dataObject = Zend_Json::decode( base64_decode($this->formrow->template_code) );
+            $rootMdata = $dataObject['properties'];
+            $is_device = false;
+            $useragent = $_SERVER['HTTP_USER_AGENT'];
+            if(JRequest::getVar('ff_applic','') != 'mod_facileforms' && JRequest::getInt('ff_frame', 0) != 1 && bf_is_mobile())
+            {
+                    $is_device = true;
+                    $this->isMobile = isset($rootMdata['mobileEnabled']) && isset($rootMdata['forceMobile']) && $rootMdata['mobileEnabled'] && $rootMdata['forceMobile'] ? true : ( isset($rootMdata['mobileEnabled']) && isset($rootMdata['forceMobile']) && $rootMdata['mobileEnabled'] && JFactory::getSession()->get('com_breezingforms.mobile', false) ? true : false );
+            
+                    if(JRequest::getVar('forceReturn', '') != ''){
+                       JFactory::getApplication()->redirect(base64_decode(JRequest::getVar('forceReturn', '')));
+                    }
+                    
+                    if(isset($rootMdata['mobileEnabled']) && isset($rootMdata['forceMobile']) && $rootMdata['mobileEnabled'] && $rootMdata['forceMobile'] && !JFactory::getSession()->get('com_breezingforms.mobile', false)){
+                       echo JFactory::getApplication()->redirect(JURI::root().'wp-admin/admin-ajax.php?action=breezingformsajax&mobile=1&ff_name='.JRequest::getVar('ff_name')); 
+                    }
+            }else
+                $this->isMobile = false;
+
+            
+            if( $is_device && isset($rootMdata['mobileEnabled']) && isset($rootMdata['forceMobile']) && $rootMdata['mobileEnabled'] && !$rootMdata['forceMobile'] ){
+                $is_mobile_type = 'choose';
+            }
+            
+            if(!$this->isMobile || ( $this->isMobile && JRequest::getVar('ff_task','') == 'submit') ){
+
+                // nothing
+
+            } else {
+
+                // transforming recaptcha into captcha due to compatibility on mobiles
+                if($this->isMobile){
+                    for ($i = 0; $i < $this->rowcount; $i++) {
+                        $row = $this->rows[$i];
+                        if( $row->type == "ReCaptcha" ){
+                            $this->rows[$i]->type = 'Captcha';
+                            break;
+                        }
+                    }
+                    
+                    ob_end_clean();
+                    ob_start();
+                    require_once(JPATH_SITE . '/administrator/components/com_breezingforms/libraries/crosstec/classes/BFQuickModeMobile.php');
+                    $quickMode = new BFQuickModeMobile($this);
+                    if( isset($rootMdata['mobileEnabled']) && isset($rootMdata['forceMobile']) && $rootMdata['mobileEnabled'] && $rootMdata['forceMobile'] ){
+                        $quickMode->forceMobileUrl = isset( $rootMdata['forceMobileUrl'] ) ? $rootMdata['forceMobileUrl'] : 'index.php';
+                    }
+                }
+            }
+        }
+        
         // CONTENTBUILDER BEGIN
         $cbResult = $this->cbCheckPermissions();
         $cbForm = $cbResult['form'];
@@ -3646,6 +3713,13 @@ class HTML_facileFormsProcessor {
                 $quickMode = new BFQuickMode($this);
             }
             
+            if( $is_mobile_type == 'choose' ) {
+                $return_url = JURI::getInstance()->toString();
+                $return_url = (strstr($return_url,'?non_mobile=1') !== false ? str_replace('?non_mobile=1','',$return_url) : str_replace('&non_mobile=1','',$return_url));
+                $return_url = $return_url.(strstr($return_url,'?') !== false ? '&' : '?') . 'mobile=1';
+                echo '<div style="display: block; text-align: center;"><button class="ff_elem" onclick="location.href=\''.JURI::root().'wp-admin/admin-ajax.php?action=breezingformsajax&mobile=1&ff_name='.JRequest::getVar('ff_name').'&return='.base64_encode(JURI::getInstance()->toString()).'\';"><span>'.JText::_('COM_BREEZINGFORMS_MOBILE_VERSION').'</span></button></div><div></div>';
+            }
+            
             $quickMode->render();
             
         } else { // case if forms done with the easy mode
@@ -3832,6 +3906,25 @@ class HTML_facileFormsProcessor {
         } // if
         restore_error_handler();
         
+        if (trim($this->formrow->template_code_processed) == 'QuickMode' && $this->isMobile) {
+            $contents = ob_get_contents();
+            ob_end_clean();
+            
+            echo '<!DOCTYPE html> 
+<html> 
+<head> 
+<title>'.JFactory::getDocument()->getTitle().'</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">';
+            echo $quickMode->fetchHead(JFactory::getDocument()->getHeadData());
+            echo $quickMode->headers();
+            echo '</head>'."\n";
+            echo '<body>'."\n";
+            echo $contents;
+            echo '
+</body>'."\n".'</html>';
+            exit;
+        }
     }
 
 // view
@@ -5212,6 +5305,73 @@ class HTML_facileFormsProcessor {
 
         $this->mailbackRecipients = $recipients;
     }
+    
+    function sendSalesforceNotification() {
+        
+        if($this->formrow->salesforce_enabled != 1){
+            return;
+        }
+        
+        define("BF_SOAP_CLIENT_BASEDIR", JPATH_SITE . DS . 'administrator' . DS . 'components' . DS . 'com_breezingforms' . DS . 'libraries' . DS . 'salesforce');
+        
+        if(!class_exists('SforcePartnerClient')){
+            require_once (BF_SOAP_CLIENT_BASEDIR . '/SforcePartnerClient.php');
+        }
+        if(!class_exists('SforceHeaderOptions')){
+            require_once (BF_SOAP_CLIENT_BASEDIR . '/SforceHeaderOptions.php');
+        }
+
+        try {
+            
+            $mySforceConnection = new SforcePartnerClient();
+            $trunc = new AllowFieldTruncationHeader(true);
+            $mySforceConnection->setAllowFieldTruncationHeader($trunc);
+            $mySoapClient = $mySforceConnection->createConnection(BF_SOAP_CLIENT_BASEDIR . '/partner.wsdl.xml');
+            $mylogin = $mySforceConnection->login($this->formrow->salesforce_username, $this->formrow->salesforce_password.$this->formrow->salesforce_token);
+            $sobjects = $mySforceConnection->describeSObject($this->formrow->salesforce_type)->fields;
+            
+            $fields = array();
+            $this->formrow->salesforce_fields = explode(',', $this->formrow->salesforce_fields);
+            
+            foreach($this->formrow->salesforce_fields As $sfields){
+                foreach($this->sfdata As $savedata){
+                    $sfield = explode('::',$sfields);
+                    if( $sfield[0] == $savedata[1] ){
+                        foreach($sobjects As $sobject){
+                            // forcing some primitives
+                            if($sobject->name == $sfield[1]){
+                              switch($sobject->type){
+                                  case 'boolean':
+                                      $savedata[4] = ( $savedata[4] ? 1 : 0 );
+                                      break;
+                                  case 'int':
+                                      $savedata[4] = intval($savedata[4]);
+                                      break;
+                                  case 'double':
+                                      $savedata[4] = doubleval($savedata[4]);
+                                      break;
+                              }
+                              break;  
+                            }
+                        }
+                        $fields[$sfield[1]] = '<![CDATA['.$savedata[4].']]>'; // bug in SF Toolkit appeareantly requires CDATA
+                        break;
+                    }
+                }
+            }
+
+            $sObject = new SObject();
+            $sObject->fields = $fields;
+            $sObject->type = $this->formrow->salesforce_type;
+
+            $createResponse = $mySforceConnection->create(array($sObject));
+            
+        } catch (Exception $e) {
+            echo 'Salesforce Exception: ' . $e->getMessage();
+            session_write_close();
+            exit;
+        }
+    }
 
     function sendMailChimpNotification() {
         $mainframe = JFactory::getApplication();
@@ -5529,8 +5689,26 @@ class HTML_facileFormsProcessor {
                                 $paths = array();
                             if ($row->logging == 1) {
                                 // db and attachment
+
+                                // DROPBOX SUPPORT
+                                if( $this->formrow->dropbox_email && $this->formrow->dropbox_password ){
+                                    if(!class_exists('DropboxUploader')){
+                                        require_once(JPATH_SITE . DS . 'administrator' . DS . 'components' . DS . 'com_breezingforms' . DS . 'libraries' . DS . 'dropbox' . DS . 'dropbox.php');
+                                    }
+
+                                    try{
+                                        $dropbox = new DropboxUploader($this->formrow->dropbox_email, $this->formrow->dropbox_password); 
+                                    }catch(Exception $e){}
+                                }
                                 
                                 foreach($serverPaths As $serverPath){
+                                    
+                                    // DROPBOX
+                                    if( $this->formrow->dropbox_email && $this->formrow->dropbox_password ){
+                                        try{
+                                            $dropbox->upload($serverPath, '/'.($this->formrow->dropbox_folder != '' ? $this->formrow->dropbox_folder : $this->formrow->name)); 
+                                        } catch(Exception $e){}
+                                    }
                                     
                                     // CONTENTBUILDER: to keep the relative path with prefix
                                     $savedata_path = $serverPath;
@@ -5744,6 +5922,25 @@ class HTML_facileFormsProcessor {
             $dataObject = Zend_Json::decode( base64_decode($this->formrow->template_code) );
             $rootMdata = $dataObject['properties'];
             
+            if(JRequest::getVar('ff_applic','') != 'mod_facileforms' && JRequest::getInt('ff_frame', 0) != 1 && bf_is_mobile())
+            {
+                    $is_device = true;
+                    $this->isMobile = isset($rootMdata['mobileEnabled']) && isset($rootMdata['forceMobile']) && $rootMdata['mobileEnabled'] && $rootMdata['forceMobile'] ? true : ( isset($rootMdata['mobileEnabled']) && isset($rootMdata['forceMobile']) && $rootMdata['mobileEnabled'] && JFactory::getSession()->get('com_breezingforms.mobile', false) ? true : false );
+            }else
+                $this->isMobile = false;
+            
+            
+            // transforming recaptcha into captcha due to compatibility on mobiles
+            if($this->isMobile && trim($this->formrow->template_code_processed) == 'QuickMode'){
+                for ($i = 0; $i < $this->rowcount; $i++) {
+                    $row = $this->rows[$i];
+                    if( $row->type == "ReCaptcha" ){
+                        $this->rows[$i]->type = 'Captcha';
+                        break;
+                    }
+                }
+            }
+            
             for ($i = 0; $i < $this->rowcount; $i++) {
                 $row = $this->rows[$i];
                 if ($row->type == "Captcha") {
@@ -5836,6 +6033,7 @@ class HTML_facileFormsProcessor {
                                 $this->sendMailbackNotification();
                             }
                             $this->sendMailChimpNotification();
+                            $this->sendSalesforceNotification();
                             $tickets = JFactory::getSession()->get('bfFlashUploadTickets', array());
                             mt_srand();
                             if (isset($tickets[JRequest::getVar('bfFlashUploadTicket', mt_rand(0, mt_getrandmax()))])) {

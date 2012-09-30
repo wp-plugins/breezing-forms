@@ -23,9 +23,9 @@ No trial-ware, no light: The current version is a fully working GPL2 WordPress p
 
 * Complete set of regular form creation features
 * Mobile Support (Premium Upgrade): Create your form once and display for Desktop and Mobiles
-* Business/CRM: Salesforce¨ integration  (Premium Upgrade)
-* Sharing: Dropbox¨ integration  (Premium Upgrade)
-* Newsletters: MailChimp¨ integration
+* Business/CRM: SalesforceÂ® integration  (Premium Upgrade)
+* Sharing: DropboxÂ® integration  (Premium Upgrade)
+* Newsletters: MailChimpÂ® integration
 * Conditional fields
 * Multi file uploads with progress bars
 * Summary Items
