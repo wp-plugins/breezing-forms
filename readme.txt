@@ -118,5 +118,9 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/index.html "BreezingForms Forums")
 
 == Changelog ==
+= 1.0.1 =
+* Fixed a critical bug that caused BF not to run on windows servers
+* Fixed CSS in tables according to new wp version 4.4.2
+
 = 1.0 =
 * Initial Revision
