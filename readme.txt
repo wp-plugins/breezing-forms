@@ -4,7 +4,7 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, form, mobile, captcha, contact, contact form, email, feedback, iphone, android, Post, widget
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 BreezingForms, an enterprise featured and professional form builder for Wordpress.
 
