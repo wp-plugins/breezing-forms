@@ -1745,6 +1745,9 @@ class QuickModeHtml{
                                         mdata.disableJQuery = JQuery('#bfElementAdvancedDisableJQuery').attr('checked');
                                         mdata.joomlaHint = JQuery('#bfElementAdvancedJoomlaHint').attr('checked');
                                         
+                                        mdata.mobileEnabled = JQuery('#bfElementAdvancedMobileEnabled').attr('checked');
+                                        mdata.forceMobile = JQuery('#bfElementAdvancedForceMobile').attr('checked');
+                                        mdata.forceMobileUrl = JQuery('#bfElementAdvancedForceMobileUrl').val();
                                         
                                         mdata.useDefaultErrors = JQuery('#bfElementAdvancedUseDefaultErrors').attr('checked');
                                         mdata.useBalloonErrors = JQuery('#bfElementAdvancedUseBalloonErrors').attr('checked');
@@ -1780,6 +1783,9 @@ class QuickModeHtml{
                                                 JQuery('#bfElementAdvancedDisableJQuery').attr('checked', mdata.disableJQuery);
                                                 JQuery('#bfElementAdvancedJoomlaHint').attr('checked', mdata.joomlaHint);
                                                 
+                                                JQuery('#bfElementAdvancedMobileEnabled').attr('checked', mdata.mobileEnabled);
+                                                JQuery('#bfElementAdvancedForceMobile').attr('checked', mdata.forceMobile);
+                                                JQuery('#bfElementAdvancedForceMobileUrl').val(mdata.forceMobileUrl);
                                                 
                                                 JQuery('#bfElementAdvancedUseDefaultErrors').attr('checked', mdata.useDefaultErrors);
                                                 JQuery('#bfElementAdvancedUseBalloonErrors').attr('checked', mdata.useBalloonErrors);
@@ -3042,6 +3048,7 @@ div#element-box div.m {
 				            		<input type="checkbox" value="" id="bfElementTypeSofortueberweisungMailback"/>
 			            			<br/>
 			            			<br/>
+                                                        <br/>
 			            			<label class="bfPropertyLabel" for="bfElementTypeSofortueberweisungHint"><?php echo BFText::_('COM_BREEZINGFORMS_ELEMENT_HINT'); ?></label>
 			            			<textarea id="bfElementTypeSofortueberweisungHint"></textarea>
 		            			</div>
@@ -3239,6 +3246,18 @@ div#element-box div.m {
 			            		</select>
 			            		<br/>
 			            		<br/>
+                                                <label class="bfPropertyLabel" for="bfElementAdvancedMobileEnabled"><?php echo BFText::_('COM_BREEZINGFORMS_MOBILE_ENABLED'); ?></label>
+			            		<input type="checkbox" value="" id="bfElementAdvancedMobileEnabled"/>
+                                                <br/>
+			            		<br/>
+                                                <label class="bfPropertyLabel" for="bfElementAdvancedForceMobile"><?php echo BFText::_('COM_BREEZINGFORMS_FORCE_MOBILE'); ?></label>
+			            		<input type="checkbox" value="" id="bfElementAdvancedForceMobile"/>
+                                                <br/>
+			            		<br/>
+                                                <label class="bfPropertyLabel" for="bfElementAdvancedForceMobileUrl"><?php echo BFText::_('COM_BREEZINGFORMS_FORCE_MOBILE_URL'); ?></label>
+			            		<input type="text" value="" id="bfElementAdvancedForceMobileUrl"/>
+			            		<br/>
+		            			<br/>
                                                 <!--<label class="bfPropertyLabel" for="bfElementAdvancedJoomlaHint"><?php echo BFText::_('COM_BREEZINGFORMS_JOOMLA_HINT'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedJoomlaHint"/>
                                                 <br/>

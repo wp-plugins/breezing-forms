@@ -836,7 +836,7 @@ this.createSofortueberweisung = function(id){
 						thankYouPage: '',
 						language_id: 'DE',
 						currency_id: 'EUR',
-						image: '<?php echo JURI::root()?>components/com_breezingforms/images/200x65px.png',
+						image: '<?php echo BF_PLUGINS_URL . '/' . BF_FOLDER . '/joomla-platform/'; ?>components/com_breezingforms/images/200x65px.png',
 						mailback : false,
 						
 						validationCondition : 0,

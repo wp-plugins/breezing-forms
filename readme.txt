@@ -4,52 +4,72 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, form, mobile, captcha, contact, contact form, email, feedback, iphone, android, Post, widget
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.0.3
+Stable tag: 1.0.4
+License: GPL 2
 
-BreezingForms, an enterprise featured and professional form builder for Wordpress.
+Breezing Forms, a professional and enterprise featured form builder for WordPress.
 
 == Description ==
 
-[Demo Forms](http://crosstec.de/en/wordpress-forms-demos.html) |
+[Demo Forms & Videos](http://crosstec.de/en/wordpress-forms-demos.html) |
 [Website](http://crosstec.de/en/wordpress-forms-download.html) | 
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/index.html) 
 
-BreezingForms, an enterprise featured and professional form builder for WordPress. From simple forms up to complex form applications -- almost everything is possible! If you are a professional, serving multiple customers who frequently require forms or form based applications, then BreezingForms is the tool of your choice.
+With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) you can create desktop and mobile forms on-the-fly.
+
+Includes features like true mobile support, Salesforce, Dropbox, Mailchimp, multipages, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
+
+From simple forms up to complex form applications -- almost everything is possible! If you are a professional, serving multiple customers who frequently require forms or form based applications, then [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is the tool of your choice.
 
 It doesn't stop at simple contact forms but you can create complex multipage forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the Joomla!® version. So if you serve customers on the both platforms, you simply export your existing forms and install on the target sites.
 
-BreezingForms has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With BreezingForms, you are holding a quality and value extension in your hands that you don't want to miss again. 
+[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html), you are holding a quality and value extension in your hands that you don't want to miss again. 
+
+So if you need to collect data like contact forms, feedback forms, surveys, calculations, complex forms or any form that is supposed to do more than just collecting data, then [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is the right tool for you.
 
 ***No trial-ware, no light:*** The current version is a fully working GPL2 WordPress plugin. Members at [Crosstec](http://crosstec.de/) will have premium access to the latest versions + professional support.
 
-
-
 = Features =
 
-* Complete set of regular form creation features
-* Mobile Support (Premium Upgrade): Create your form once and display for Desktop and Mobiles
+* True Mobile Support (Premium Upgrade): Create your form once and display for Desktop and Mobiles
 * Business/CRM: Salesforce® integration  (Premium Upgrade)
 * Sharing: Dropbox® integration  (Premium Upgrade)
-* Newsletters: MailChimp® integration
-* Conditional fields
-* Multi file uploads with progress bars
-* Summary Items
-* Maximum length counters for textareas
-* Captcha: Native and reCaptcha
-* Email templates (shortcode & php based)
-* PDF, CSV, XML attachments in reply-to emails
-* PayPal payments (including pay-to-download-file)
+* MailChimp Newsletter integration
 * Multipage forms
 * Responsive form layouts
-* Form themes
 * Widget Support
 * Shortcode helper for posts and pages
-* Record Export: PDF, CSV and XML
+* Powerful Conditional Fields without need for Javascript
+* Ajax file uploads with progress bars
+* PDF, CSV & XML export (in records and as attachments)
+* Many themes included
+* Maxlength for textareas including "chars left" display
+* Summary item: Create summary pages quickly (including calculations if you want)
+* Integrator - Use your forms to integrate with other extensions
+* User Editable Forms
+* 18 and counting form items (from simple input to captcha items)
+* Multipage forms 
+* PayPal and Direct Payment (Sofortüberweisung)
+* "Pay to download file" feature
+* Nativa Captcha and reCaptcha
+* Calendar item
+* Many pre-defined validations and actions
+* Custom scripting
+* Unlimited reply-to fields
+* Reply-to files: attach files from your server to reply-to addresses
+* Reply-to for select lists
+* Reply-to addresses as sender addresses
+* Filter data in reply-to emails
+* Custom mail subjects
+* File attachments from upload fields for admin and user mails
+* Multiple recipients for the admin notification mails (themeable)
+* User data is shown in the email notifications
+* Database storage of all submitted data
+* Documentation/tutorial videos
 * Package system: Create your forms once and export them to other sites
 * Scripts and CSS only printed when there is a form on the page (not in the entire site as this often happens with plugins)
 * Developer friendly: Extend your forms within BreezingForms by using its PHP & Javascript API -- no hacking required.
-
 
 == Installation ==
 
@@ -59,20 +79,28 @@ Minimum requirements:
  PHP 5.x    
  MySQL 4.x+  
 
-Standard installation method:
+Installation from within backend:
 
-1. Upload the `breezingforms` folder to the `/wp-content/plugins/` directory
+1. In plugin manager, click "Add New"
+2. Search for "breezingforms"
+3. Click "install"
+4. Activate the plugin once it is installed
+5. Click on "BreezingForms" from the left menu and follow the instructions to complete the installation
+
+FTP upload installation method:
+
+1. Upload the `breezing-forms` folder to the `/wp-content/plugins/` directory using your FTP client
 2. Activate the plugin through the 'Plugins' menu
 3. Go to the BreezingForms menu, finish the installation and create a new custom form or install the sample form package that ships with BreezingForms
 4. Use shortcode [breezingforms name="FORM NAME"] in pages and posts. Use the editor helper to create shortcodes with more options.
 5. Or add a new Widget and select the forms to display
 
-Upload installation method (make sure uploads up to 5MB are allowed for your hosting):
+Zip upload installation method (make sure uploads up to 5MB are allowed for your hosting):
 
 1. Login to your WordPress site administrator panel and head over the 'Plugins' menu  
 2. Click 'Add New'  
 3. Choose the 'Upload' option
-4. Click **Choose file** (**Browse**) and select the BreezingForms zip file.   
+4. Click **Choose file** (**Browse**) and select the breezing-forms.*.zip file.   
 5. Click **Install Now** button.    
 6. Once it is complete, activate the plugin.   
 7. Go to the BreezingForms menu, finish the installation and create a new custom form or install the sample form package that ships with BreezingForms
@@ -119,12 +147,18 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 
 == Changelog ==
 
+= 1.0.4 =
+* Added direct payment (sofortüberweisung)
+
+= 1.0.3 =
+* Base path now dynamic, you may name the plugin folder as you like
+
 = 1.0.2 =
 * Fixed all references from plugins/breezingforms to plugins/breezing-forms. Sorry for that.
 
 = 1.0.1 =
 * Fixed a critical bug that caused BF not to run on windows servers
-* Fixed CSS in tables according to new wp version 4.4.2
+* Fixed CSS in tables according to new wp version 3.4.2
 
 = 1.0 =
 * Initial Revision
