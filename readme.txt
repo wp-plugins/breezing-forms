@@ -4,7 +4,7 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, form, mobile, captcha, contact, contact form, email, feedback, iphone, android, Post, widget
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.0.4
+Stable tag: 1.1.1
 License: GPL 2
 
 Breezing Forms, a professional and enterprise featured form builder for WordPress.
@@ -70,6 +70,8 @@ So if you need to collect data like contact forms, feedback forms, surveys, calc
 * Package system: Create your forms once and export them to other sites
 * Scripts and CSS only printed when there is a form on the page (not in the entire site as this often happens with plugins)
 * Developer friendly: Extend your forms within BreezingForms by using its PHP & Javascript API -- no hacking required.
+
+[vimeo https://vimeo.com/50726688]
 
 == Installation ==
 
@@ -146,6 +148,9 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/index.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.1.1 =
+* Fixed an issue with the navigation opening in popups rather than in a new page
 
 = 1.0.4 =
 * Added direct payment (sofortüberweisung)
