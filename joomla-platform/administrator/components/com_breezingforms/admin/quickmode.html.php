@@ -3246,6 +3246,7 @@ div#element-box div.m {
 			            		</select>
 			            		<br/>
 			            		<br/>
+                                                <!--
                                                 <label class="bfPropertyLabel" for="bfElementAdvancedMobileEnabled"><?php echo BFText::_('COM_BREEZINGFORMS_MOBILE_ENABLED'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedMobileEnabled"/>
                                                 <br/>
@@ -3258,7 +3259,7 @@ div#element-box div.m {
 			            		<input type="text" value="" id="bfElementAdvancedForceMobileUrl"/>
 			            		<br/>
 		            			<br/>
-                                                <!--<label class="bfPropertyLabel" for="bfElementAdvancedJoomlaHint"><?php echo BFText::_('COM_BREEZINGFORMS_JOOMLA_HINT'); ?></label>
+                                                <label class="bfPropertyLabel" for="bfElementAdvancedJoomlaHint"><?php echo BFText::_('COM_BREEZINGFORMS_JOOMLA_HINT'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedJoomlaHint"/>
                                                 <br/>
 			            		<br/>
@@ -3268,6 +3269,9 @@ div#element-box div.m {
 			            		<br/>-->
                                                 <input type="hidden" value="0" id="bfElementAdvancedDisableJQuery"/>
                                                 <input type="hidden" value="0" id="bfElementAdvancedJoomlaHint"/>
+                                                <input type="hidden" value="0" id="bfElementAdvancedMobileEnabled"/>
+                                                <input type="hidden" value="0" id="bfElementAdvancedForceMobile"/>
+                                                <input type="hidden" value="../index.php" id="bfElementAdvancedForceMobileUrl"/>
                                                 
 			            		<label class="bfPropertyLabel" for="bfElementAdvancedUseErrorAlerts"><?php echo BFText::_('COM_BREEZINGFORMS_USE_ERROR_ALERTS'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedUseErrorAlerts"/>
