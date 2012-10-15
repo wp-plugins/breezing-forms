@@ -1,24 +1,29 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, posts, shortcode, sidebar, contact, contact form, admin, feedback, page, plugin, Post, widget
+Tags: forms, posts, shortcode, sidebar, email, contact form, admin, feedback, page, plugin, Post, widget
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.1.3
+Stable tag: 1.1.4
 License: GPL 2
 
-Breezing Forms, a professional and enterprise featured form builder for WordPress.
+Breezing Forms, a free professional and enterprise featured form builder for WordPress.
 
 == Description ==
 
-[Demo Forms & Videos](http://crosstec.de/en/wordpress-forms-demos.html) |
+[Demos](http://crosstec.de/en/wordpress-forms-demos.html) |
 [Website](http://crosstec.de/en/wordpress-forms-download.html) | 
+[Ready-2-Go Forms](http://crosstec.de/en/markets/breezingforms-form-apps.html) | 
+[Forms Themes](http://crosstec.de/en/markets/breezingforms-themes.html) | 
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
-[Support Forum](http://crosstec.de/en/forums/index.html) 
+[Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
 [vimeo https://vimeo.com/50726688]
 
-With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) you can create desktop and mobile forms on-the-fly.
+BreezingForms video tutorial:
+[vimeo https://vimeo.com/51411276]
+
+With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) you can create simple and advanced desktop and mobile forms on-the-fly.
 
 Includes features like true mobile support, Salesforce, Dropbox, Mailchimp, multipages, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
 
@@ -28,17 +33,17 @@ It doesn't stop at simple contact forms but you can create complex multipage for
 
 [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html), you are holding a quality and value extension in your hands that you don't want to miss again. 
 
-So if you need to collect data like contact forms, feedback forms, surveys, calculations, complex forms or any form that is supposed to do more than just collecting data, then Breezing Forms is the right tool for you.
+If you need to collect data like contact forms, feedback forms, surveys, payment forms, calculations, complex forms or any form that is supposed to do more than just collecting data in a basic way, then Breezing Forms is the right tool for you.
 
-***No trial-ware, no light:*** The current version is a fully working GPL2 WordPress plugin. Members at [Crosstec](http://crosstec.de/) will have premium access to the latest versions + professional support.
+***No trial-ware, no light, not "crippled":*** BreezingForms a fully working GPL2 WordPress plugin. Members at [Crosstec](http://crosstec.de/) will have premium access to the latest versions + professional support.
 
-*** If you want to add your forms to posts and pages, then please see the Breezing Forms icon on top of the text editor. It will open a shortcode helper to add the form to your post or page! ***
+***If you want to add your forms to posts and pages, then please see the Breezing Forms icon on top of the text editor. It will open a shortcode helper to add the form to your post or page!***
 
 = Features =
 
-* True Mobile Support (Premium Upgrade): Create your form once and display for Desktop and Mobiles
-* Business/CRM: Salesforce® integration  (Premium Upgrade)
-* Sharing: Dropbox® integration  (Premium Upgrade)
+* True Mobile Support ***(Premium Upgrade)***: Create your form once and display for Desktop and Mobiles
+* Business/CRM: Salesforce® integration ***(Premium Upgrade)***
+* Sharing: Dropbox® integration ***(Premium Upgrade)***
 * MailChimp Newsletter integration
 * Multipage forms
 * Responsive form layouts
@@ -147,10 +152,13 @@ A. All themes go into the folder /wp-content/breezingforms/themes/. After that, 
 
 A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One template is for record exports, the other for attachments.
 
-
-[Ask more questions in our forums](http://crosstec.de/en/forums/index.html "BreezingForms Forums")
+[Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.1.4 =
+* Fixed a bug in manage records that appears after record deletion
+* Added a tutorial video to the listing page
 
 = 1.1.1 =
 * Fixed an issue with the navigation opening in popups rather than in a new page

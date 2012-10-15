@@ -598,7 +598,6 @@ var bf_submitbutton = function(pressbutton)
                                 var form = document.adminForm;
                                 form.exportt.value = 0;
 				switch (pressbutton) {
-					case 'remove':
 					case 'exportCsv':
 					case 'exportXls':
 					case 'exportPdf':
