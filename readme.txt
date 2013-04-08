@@ -23,7 +23,7 @@ Breezing Forms, a free professional and enterprise featured form builder for Wor
 BreezingForms video tutorial:
 [vimeo https://vimeo.com/51411276]
 
-***If you have any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>
+***If you have any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>***
 
 With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) you can create simple and advanced desktop and mobile forms on-the-fly.
 
