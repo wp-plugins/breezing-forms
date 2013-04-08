@@ -2468,7 +2468,7 @@ class QuickModeHtml{
 						this.setContent(handler,modalUrl);
 			   	};
 			         
-			    SqueezeBox.loadModal("<?php echo get_site_url();?>/index.php?plugin=breezingforms&preview=true&format=html&tmpl=component&option=com_breezingforms&ff_form=<?php echo $formId ?>&ff_page=1","iframe",820,400);
+			    SqueezeBox.loadModal("<?php echo BF_SITE_URL?>/index.php?plugin=breezingforms&preview=true&format=html&tmpl=component&option=com_breezingforms&ff_form=<?php echo $formId ?>&ff_page=1","iframe",820,400);
 				break; 
 			case 'preview_site':
 				SqueezeBox.initialize({});               

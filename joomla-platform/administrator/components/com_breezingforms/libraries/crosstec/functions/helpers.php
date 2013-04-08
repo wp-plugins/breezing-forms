@@ -150,12 +150,12 @@ function bf_createMail( $from='', $fromname='', $subject, $body ) {
 	$mail =& JFactory::getMailer();
         
         $mail->From 	= $from ? $from : $mail->From;
-        $mail->Sender 	= $from ? $from : $mail->From;
+        //$mail->Sender 	= $from ? $from : $mail->From;
         $mail->FromName = $fromname ? $fromname : $mail->FromName;
 	$mail->Subject 	= $subject;
 	$mail->Body 	= $body;
-        //$mail->AddrAppend('Reply-To', $mail->From);
-        //$mail->AddReplyTo($mail->From, $mail->FromName);
+        
+        //$mail->AddReplyTo($from ? $from : $mail->From, $fromname ? $fromname : $mail->FromName);
 
 	return $mail;
 }

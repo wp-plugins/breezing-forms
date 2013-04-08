@@ -3722,6 +3722,9 @@ class HTML_facileFormsProcessor {
             
             $quickMode->render();
             
+            echo $this->quickmode->fetchFoot(JFactory::getDocument()->getHeadData());
+            $this->quickmode->renderScriptsAndCss();
+            
         } else { // case if forms done with the easy mode
             // always load calendar
             JHTML::_('behavior.calendar');

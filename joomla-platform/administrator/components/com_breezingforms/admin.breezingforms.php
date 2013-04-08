@@ -449,8 +449,32 @@ if( !isset($_REQUEST['action']) && ( !isset($_REQUEST['task']) || !isset($_REQUE
     echo '<div style="float:left; margin-top: 10px; margin-right: 30px;">
         <img src="'.WP_PLUGIN_URL.'/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/easymode/i/logo-breezingforms.png"/>
     </div>
-    <div style="float: right; margin-top: 20px; margin-right: 0px;">
-        <h2 style="float: left;" class="wrap"><a style="background-color: red !important; color: white !important;" class="add-new-h2" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Get BreezingForms with True Mobile Support, Salesforce + Dropbox integration and professional support</a></h2>
+    <style>
+        input[type=submit] {
+            display: inline-block;
+            text-decoration: none;
+            font-size: 12px;
+            line-height: 23px;
+            height: 24px;
+            margin: 0;
+            padding: 0 10px 1px;
+            cursor: pointer;
+            border-width: 1px;
+            border-style: solid;
+            -webkit-border-radius: 3px;
+            -webkit-appearance: none;
+            border-radius: 3px;
+            white-space: nowrap;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-color: #bbb !important;
+            color: #464646 !important;
+            background-color: #fff !important;
+        }
+    </style>
+    <div style="float: right; margin-top: 20px; margin-bottom: 20px; margin-right: 0px;">
+        <h2 style="float: left;" class="wrap"><a style="background-color: red !important; color: white !important;" class="add-new-h2" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Get BreezingForms Pro here! (mobile forms, Salesforce, Dropbox and professional support)</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=recordmanagement">'.BFText::_('COM_BREEZINGFORMS_WP_RECORDS').'</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=manageforms">'.BFText::_('COM_BREEZINGFORMS_WP_FORMS').'</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=managescripts">'.BFText::_('COM_BREEZINGFORMS_WP_SCRIPTS').'</a></h2>

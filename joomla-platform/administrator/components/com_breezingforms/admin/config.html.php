@@ -117,12 +117,7 @@ class HTML_facileFormsConf
 				<td></td>
 			</tr>
                         -->
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_DEFAULTEMAIL'); ?></td>
-				<td nowrap colspan="3"><input name="emailadr" value="<?php echo $ff_config->emailadr; ?>"/></td>
-				<td><input type="hidden" name="images" value="<?php echo $ff_config->images; ?>"/></td>
-			</tr>
+			
                         <!--
 			<tr>
 				<td></td>
@@ -136,6 +131,13 @@ class HTML_facileFormsConf
 				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_FFUPLOADS'); ?></td>
 				<td nowrap colspan="3"><input size="70" maxlength="255" name="uploads" value="<?php echo $ff_config->uploads; ?>"/></td>
 				<td></td>
+			</tr>
+                        
+                        <tr>
+				<td></td>
+				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_DEFAULTEMAIL'); ?></td>
+				<td nowrap colspan="3"><input size="70" name="emailadr" value="<?php echo $ff_config->emailadr; ?>"/></td>
+				<td><input type="hidden" name="images" value="<?php echo $ff_config->images; ?>"/></td>
 			</tr>
                         
                         <tr>

@@ -28,6 +28,7 @@ License: GPL2
 
 define('BF_PLUGINS_URL', plugins_url());
 define('BF_FOLDER', basename(dirname(__FILE__)));
+define('BF_SITE_URL', get_option('siteurl'));
 
 // frontend requires jquery, just to make sure
 add_action('init', 'breezingforms_init');
@@ -64,6 +65,8 @@ function breezingforms_preview_init(){
     </body>
     </html>
     <?php
+        wp_cache_init();
+        require_wp_db();
         exit;
     }
 }
@@ -275,6 +278,9 @@ function breezingforms_admin(){
 
     // Return the response.
     echo $app;
+    
+    wp_cache_init();
+    require_wp_db();
 }
 
 // FRONTEND SCRIPTS
@@ -284,7 +290,7 @@ function breezingforms_admin(){
 $bf_processor = null;
 $add_my_script = false;
 
-add_action('wp_footer', 'breezingforms_print_scripts');
+add_action('bfwp_footer', 'breezingforms_print_scripts');
  
 function breezingforms_print_scripts() {
 	global $add_my_script, $bf_processor;
@@ -294,8 +300,8 @@ function breezingforms_print_scripts() {
         }
         
         if($bf_processor != null){
-            echo $bf_processor->quickmode->fetchFoot(JFactory::getDocument()->getHeadData());
-            $bf_processor->quickmode->renderScriptsAndCss();
+            //echo $bf_processor->quickmode->fetchFoot(JFactory::getDocument()->getHeadData());
+            //$bf_processor->quickmode->renderScriptsAndCss();
         }
     
 }
@@ -344,7 +350,12 @@ function breezingforms_site($atts = array()){
         $c = ob_get_contents();
         ob_end_clean();
         
+        wp_cache_init();
+        require_wp_db();
+        
         return $c;
+        
+        
     }
     
     if(!defined('_JEXEC')){
@@ -413,7 +424,8 @@ function breezingforms_site($atts = array()){
     //if(!JFactory::getSession()->get('com_breezingforms.mobile', false)){
         $c = ob_get_contents();
         ob_end_clean();
-        
+        wp_cache_init();
+        require_wp_db();
         return $c;
     //}
         

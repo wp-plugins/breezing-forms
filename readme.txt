@@ -3,8 +3,8 @@ Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, posts, shortcode, sidebar, email, contact form, admin, feedback, page, plugin, Post, widget
 Requires at least: 3.0
-Tested up to: 3.4.2
-Stable tag: 1.1.4
+Tested up to: 3.5.1
+Stable tag: 1.1.5
 License: GPL 2
 
 Breezing Forms, a free professional and enterprise featured form builder for WordPress.
@@ -155,6 +155,12 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.1.5 =
+* Fixed caching problems (Fatal Error)
+* Fixed non-working shortcode helper in WP 3.5.1
+* Fixed backend action button styles in WP 3.5.1
+* Fixed reply-to address problems on shared hosts that prevent manipulating the sender address
 
 = 1.1.4 =
 * Fixed a bug in manage records that appears after record deletion
