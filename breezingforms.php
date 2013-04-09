@@ -3,7 +3,7 @@
 Plugin Name: Breezing Forms
 Plugin URI: http://crosstec.de/en/wordpress-forms-download.html
 Description: A professional forms plugin for wordpress.
-Version: 1.1.8
+Version: 1.1.9
 Author: Crosstec GmbH & Co. KG
 Author URI: http://crosstec.de
 License: GPL2
@@ -67,6 +67,8 @@ function breezingforms_preview_init(){
     <?php
         wp_cache_init();
         require_wp_db();
+        global $wp_the_query, $wp_query;
+        $wp_the_query = $wp_query = new WP_Query();
         exit;
     }
 }
@@ -281,6 +283,8 @@ function breezingforms_admin(){
     
     wp_cache_init();
     require_wp_db();
+    global $wp_the_query, $wp_query;
+    $wp_the_query = $wp_query = new WP_Query();
 }
 
 // FRONTEND SCRIPTS
@@ -352,7 +356,8 @@ function breezingforms_site($atts = array()){
         
         wp_cache_init();
         require_wp_db();
-        
+        global $wp_the_query, $wp_query;
+        $wp_the_query = $wp_query = new WP_Query();
         return $c;
         
         
@@ -426,6 +431,8 @@ function breezingforms_site($atts = array()){
         ob_end_clean();
         wp_cache_init();
         require_wp_db();
+        global $wp_the_query, $wp_query;
+        $wp_the_query = $wp_query = new WP_Query();
         return $c;
     //}
         
