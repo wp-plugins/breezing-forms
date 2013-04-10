@@ -1470,7 +1470,7 @@ display:none;
 					case 'bfSummarize':
 						
 						echo '<span class="ff_elem bfSummarize" id="ff_elem'.$mdata['dbId'].'"></span>'."\n";
-						echo '<script type="text/javascript"><!--'."\n".'bfRegisterSummarize("ff_elem'.$mdata['dbId'].'", "'.$mdata['connectWith'].'", "'.$mdata['connectType'].'", "'.addslashes($mdata['emptyMessage']).'", '.($mdata['hideIfEmpty'] ? 'true' : 'false').')'."\n".'//--></script>';
+						echo '<script type="text/javascript"><!--'."\n".'jQuery(document).ready(function(){bfRegisterSummarize("ff_elem'.$mdata['dbId'].'", "'.$mdata['connectWith'].'", "'.$mdata['connectType'].'", "'.addslashes($mdata['emptyMessage']).'", '.($mdata['hideIfEmpty'] ? 'true' : 'false').')'."\n".'});//--></script>';
 						if(trim($mdata['fieldCalc']) != ''){
 							echo '<script type="text/javascript">
                                                         <!--
