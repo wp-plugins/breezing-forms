@@ -72,6 +72,58 @@ class bfRecordManagement
 			</tr>
                 </table>
                 <table width="100%" border="0">
+                    <tr>
+				<td></td>
+				<td colspan="2">
+						<table class="widefat">
+                                                    <thead><th colspan="7"><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_SUBMVALUES'); ?></th></thead>
+                                                    <tbody>
+							<tr>
+								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_RECORDID'); ?></strong></td>
+								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_ELEMENTID'); ?></strong></td>
+								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_TITLE'); ?></strong></td>
+								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_NAME'); ?></strong></td>
+								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_TYPE'); ?></strong></td>
+								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_VALUE'); ?></strong></td>
+								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_EDIT'); ?></strong></td>
+							</tr>
+<?php
+			for($i=0; $i < count( $subs ); $i++) {
+				$sub = $subs[$i];
+?>
+							<tr>
+								<td nowrap valign="top"><?php echo $sub->id; ?></td>
+								<td nowrap valign="top"><?php echo $sub->element; ?></td>
+								<td nowrap valign="top"><?php echo htmlentities($sub->title, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td nowrap valign="top"><?php echo $sub->name; ?></td>
+								<td nowrap valign="top"><?php echo $sub->type; ?></td>
+								<td width="50%" valign="top"><?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td width="50%" valign="top">
+								<?php
+								if($sub->type != 'Textarea' && $sub->type != 'File Upload')
+								{
+								?>
+									<input type="text" name="ff_nm_<?php echo $sub->name; ?>" value="<?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?>" style="width:100%"/>
+								<?php
+								}
+								else
+								{
+								?>
+									<textarea name="ff_nm_<?php echo $sub->name; ?>" style="width:100%;height:100px;"><?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?></textarea>
+								<?php
+								}
+								?>
+								<input type="checkbox" value="<?php echo $sub->name; ?>" name="update[]"/>
+								</td>
+							</tr>
+                                                        <tbody>
+<?php
+			} // for
+?>
+						</table>
+				</td>
+				<td></td>
+			</tr>
                         <tr>
 				<td></td>
 				<td colspan="2">
@@ -165,58 +217,7 @@ class bfRecordManagement
 				</td>
 				<td></td>
 			</tr>
-			<tr>
-				<td></td>
-				<td colspan="2">
-						<table class="widefat">
-                                                    <thead><th colspan="7"><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_SUBMVALUES'); ?></th></thead>
-                                                    <tbody>
-							<tr>
-								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_RECORDID'); ?></strong></td>
-								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_ELEMENTID'); ?></strong></td>
-								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_TITLE'); ?></strong></td>
-								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_NAME'); ?></strong></td>
-								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_TYPE'); ?></strong></td>
-								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_VALUE'); ?></strong></td>
-								<td nowrap><strong><?php echo BFText::_('COM_BREEZINGFORMS_EDIT'); ?></strong></td>
-							</tr>
-<?php
-			for($i=0; $i < count( $subs ); $i++) {
-				$sub = $subs[$i];
-?>
-							<tr>
-								<td nowrap valign="top"><?php echo $sub->id; ?></td>
-								<td nowrap valign="top"><?php echo $sub->element; ?></td>
-								<td nowrap valign="top"><?php echo htmlentities($sub->title, ENT_QUOTES, 'UTF-8'); ?></td>
-								<td nowrap valign="top"><?php echo $sub->name; ?></td>
-								<td nowrap valign="top"><?php echo $sub->type; ?></td>
-								<td width="50%" valign="top"><?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?></td>
-								<td width="50%" valign="top">
-								<?php
-								if($sub->type != 'Textarea' && $sub->type != 'File Upload')
-								{
-								?>
-									<input type="text" name="ff_nm_<?php echo $sub->name; ?>" value="<?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?>" style="width:100%"/>
-								<?php
-								}
-								else
-								{
-								?>
-									<textarea name="ff_nm_<?php echo $sub->name; ?>" style="width:100%;height:100px;"><?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?></textarea>
-								<?php
-								}
-								?>
-								<input type="checkbox" value="<?php echo $sub->name; ?>" name="update[]"/>
-								</td>
-							</tr>
-                                                        <tbody>
-<?php
-			} // for
-?>
-						</table>
-				</td>
-				<td></td>
-			</tr>
+			
 			<tr>
 				<td></td>
 				<td colspan="2" style="text-align:right">

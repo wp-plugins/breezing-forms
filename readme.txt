@@ -4,42 +4,24 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, posts, shortcode, sidebar, email, contact form, admin, feedback, page, plugin, Post, widget
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPL 2
 
-Breezing Forms, a free professional and enterprise featured form builder for WordPress.
+Form builder for any kind of form you need in WordPress. Very powerful and flexible.
 
 == Description ==
 
+[PRO VERSION HERE](http://crosstec.de/en/wordpress-forms-download.html) | 
 [Demos](http://crosstec.de/en/wordpress-forms-demos.html) |
-[Website](http://crosstec.de/en/wordpress-forms-download.html) | 
-[Ready-2-Go Forms](http://crosstec.de/en/markets/breezingforms-form-apps.html) | 
 [Forms Themes](http://crosstec.de/en/markets/breezingforms-themes.html) | 
+[Ready-2-Go Forms](http://crosstec.de/en/markets/breezingforms-form-apps.html) | 
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-[vimeo https://vimeo.com/50726688]
-
-BreezingForms video tutorial:
+Building forms introduction:
 [vimeo https://vimeo.com/51411276]
 
 ***If you have any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>***
-
-With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) you can create simple and advanced desktop and mobile forms on-the-fly.
-
-Includes features like true mobile support, Salesforce, Dropbox, Mailchimp, multipages, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
-
-From simple forms up to complex form applications -- almost everything is possible. If you are a professional, serving multiple customers who frequently require forms or form based applications, then Breezing Forms is the tool of your choice.
-
-It doesn't stop at simple contact forms but you can create complex multi-page forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the Joomla!® version. So if you serve customers on the both platforms, you simply export your existing forms and install on the target sites.
-
-[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html), you are holding a quality and value extension in your hands that you don't want to miss again. 
-
-If you need to collect data like complex forms, payment forms, contact forms, feedback forms, surveys, calculations or any form that is supposed to do more than just collecting data in a basic way, then Breezing Forms is the right tool for you.
-
-***No trial-ware, no light, not "crippled":*** BreezingForms a fully working GPL2 WordPress plugin. Members at [Crosstec](http://crosstec.de/) will have premium access to the latest versions + professional support.
-
-***If you want to add your forms to posts and pages, then please see the Breezing Forms icon on top of the text editor. It will open a shortcode helper to add the form to your post or page!***
 
 = Features =
 
@@ -81,6 +63,23 @@ If you need to collect data like complex forms, payment forms, contact forms, fe
 * Package system: Create your forms once and export them to other sites
 * Scripts and CSS only printed when there is a form on the page (not in the entire site as this often happens with plugins)
 * Developer friendly: Extend your forms within BreezingForms by using its PHP & Javascript API -- no hacking required.
+
+
+With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) you can create simple and advanced desktop and mobile forms on-the-fly.
+
+Includes features like true mobile support, Salesforce, Dropbox, Mailchimp, multipages, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
+
+From simple forms up to complex form applications -- almost everything is possible. If you are a professional, serving multiple customers who frequently require forms or form based applications, then Breezing Forms is the tool of your choice.
+
+It doesn't stop at simple contact forms but you can create complex multi-page forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the Joomla!® version. So if you serve customers on the both platforms, you simply export your existing forms and install on the target sites.
+
+[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html), you are holding a quality and value extension in your hands that you don't want to miss again. 
+
+If you need to collect data like complex forms, payment forms, contact forms, feedback forms, surveys, calculations or any form that is supposed to do more than just collecting data in a basic way, then Breezing Forms is the right tool for you.
+
+***No trial-ware, no light, not "crippled":*** BreezingForms a fully working GPL2 WordPress plugin. Members at [Crosstec](http://crosstec.de/) will have premium access to the latest versions + professional support.
+
+***If you want to add your forms to posts and pages, then please see the Breezing Forms icon on top of the text editor. It will open a shortcode helper to add the form to your post or page!***
 
 == Installation ==
 
@@ -157,6 +156,12 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.2.1 =
+* Swaped submission values in manage records with the head data as requested by users
+
+= 1.2.0 =
+* Fixed non-working summarize bug
 
 = 1.1.9 =
 * Fixed frontend query error with super cache
