@@ -257,7 +257,7 @@ $_17 = "CREATE TABLE `#__facileforms_records` (
   PRIMARY KEY  (`id`)
 ) AUTO_INCREMENT=1";
 
-$_18 = "DROP TABLE IF EXISTS `#__facileforms_subrecords";
+$_18 = "DROP TABLE IF EXISTS `#__facileforms_subrecords`";
     
 $_19 = "CREATE TABLE `#__facileforms_subrecords` (
   `id` int(11) NOT NULL auto_increment,

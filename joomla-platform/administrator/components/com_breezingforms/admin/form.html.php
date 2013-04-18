@@ -830,6 +830,24 @@ if($row->template_code == ''){
                                         </table>
 <?php
                 $tabs->endTab();
+		$tabs->startTab('Dropbox®','tab_dropbox');
+?>
+                <table border="0" width="100%">
+
+                    <tr><td><i>Dropbox is currently only available in the PRO version.</i></td><td></td></tr>
+                    
+                </table>
+<?php
+                $tabs->endTab();
+		$tabs->startTab('Salesforce®','tab_salesforce');
+?>
+                <table border="0" width="100%">
+
+                    <tr><td><i>Salesforce is currently only available in the PRO version.</i></td><td></td></tr>
+                    
+                </table>
+<?php
+                $tabs->endTab();
 		$tabs->startTab(BFText::_('COM_BREEZINGFORMS_FORMS_SCRIPTS'),'tab_scripts');
 		$subsize = $initsize = $ff_config->areasmall;
 		if ($row->script1cond==2)

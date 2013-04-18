@@ -3246,11 +3246,12 @@ div#element-box div.m {
 			            		</select>
 			            		<br/>
 			            		<br/>
-                                                <!--
-                                                <label class="bfPropertyLabel" for="bfElementAdvancedMobileEnabled"><?php echo BFText::_('COM_BREEZINGFORMS_MOBILE_ENABLED'); ?></label>
-			            		<input type="checkbox" value="" id="bfElementAdvancedMobileEnabled"/>
+                                                
+                                                <label class="bfPropertyLabel" for="bfElementAdvancedMobileEnabled_"><?php echo BFText::_('COM_BREEZINGFORMS_MOBILE_ENABLED'); ?></label>
+			            		<input onclick="alert('Mobile forms available in PRO version');" type="checkbox" value="" id="bfElementAdvancedMobileEnabled_"/>
                                                 <br/>
 			            		<br/>
+                                                <!--
                                                 <label class="bfPropertyLabel" for="bfElementAdvancedForceMobile"><?php echo BFText::_('COM_BREEZINGFORMS_FORCE_MOBILE'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedForceMobile"/>
                                                 <br/>

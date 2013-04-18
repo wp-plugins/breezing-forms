@@ -97,7 +97,38 @@ class bfRecordManagement
 								<td nowrap valign="top"><?php echo htmlentities($sub->title, ENT_QUOTES, 'UTF-8'); ?></td>
 								<td nowrap valign="top"><?php echo $sub->name; ?></td>
 								<td nowrap valign="top"><?php echo $sub->type; ?></td>
-								<td width="50%" valign="top"><?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?></td>
+								<td valign="top">
+                                                                    <?php
+                                                                       
+                                                                if($sub->type != 'File Upload'){
+                                                                    echo '<div style="overflow: auto; max-height: 300px; width: 250px;">';
+                                                                    echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8');
+                                                                    echo '</div>';
+                                                                }else {
+                                                                    if(trim($sub->value)){
+                                                                        echo '<div style="white-space: nowrap; overflow: auto; max-height: 300px; width: 250px;">';
+                                                                        $files = explode("\n", str_replace("\r","",$sub->value));
+                                                                        $fileIdx = 0;
+                                                                        foreach($files As $file){
+                                                                            if(!JFile::exists($file)){
+                                                                                echo 'file not found on server:<br/>' . basename($file).'<br/>';
+                                                                            }else{
+                                                                                $image = @getimagesize( $file );
+                                                                                if($image !== false){
+                                                                                    echo '<a href="javascript:alert(\'Direct downloads currently available in PRO version only.\');void(0);"><img src="'.BF_PLUGINS_URL.'/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/preview-button.png" border=\"0\"/></a><br/>';
+                                                                                }else{
+                                                                                    echo '<a href="javascript:alert(\'Direct downloads currently available in PRO version only.\');void(0);">'.basename($file).'</a>';
+                                                                                }
+                                                                            }
+                                                                            echo '<br/><br/>';
+                                                                            $fileIdx++;
+                                                                        }
+                                                                        echo '</div>';
+                                                                    }
+                                                                }
+                                                                
+                                                                ?>
+                                                                </td>
 								<td width="50%" valign="top">
 								<?php
 								if($sub->type != 'Textarea' && $sub->type != 'File Upload')
