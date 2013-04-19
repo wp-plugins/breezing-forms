@@ -9,6 +9,9 @@
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 
 function is_ip($ip) {
+    $ispv6 = isIPv6($ip);
+    if($ispv6) return true;
+    
 $valid = true;
 
 $ip = explode(".", $ip);
@@ -18,6 +21,10 @@ $ip = explode(".", $ip);
        }
    }
 return $valid;
+}
+
+function isIPv6($ip) { 
+    return (preg_match('#^[0-9A-F]{0,4}(:([0-9A-F]{0,4})){0,7}$#s', $ip)) ? true : false; 
 }
 
 class bfRecordManagement
