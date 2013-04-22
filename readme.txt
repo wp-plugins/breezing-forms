@@ -4,10 +4,10 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, contact forms, contact form, form builder, form maker, email form, contact form plugin, feedback form, page, plugin, Post, widget
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPL 2
 
-Form builder for any kind of form you need in WordPress (contacts, feedback, complex forms). Very powerful and flexible.
+Form builder for any kind of form you need in WordPress. Very powerful and flexible.
 
 == Description ==
 
@@ -18,9 +18,9 @@ Form builder for any kind of form you need in WordPress (contacts, feedback, com
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-With [Breezing Forms WordPress](http://crosstec.de/en/wordpress-forms-download.html) you can create from simple contact and [feedback](http://crosstec.de/en/wordpress-forms-download.html) up to advanced and complex desktop and mobile forms apps on-the-fly.
+Create [contact forms](http://crosstec.de/en/wordpress-forms-download.html), feedback forms, order forms or any other kind of form you need in WordPress. Use the flexibility of Breezing Forms to create even complex form applications -- for both, mobile devices and desktop.
 
-Includes features like true mobile support, Salesforce, Dropbox, Mailchimp, multipages, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
+Includes features like multi-pages, true mobile support, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
 
 Building forms introduction:
 [vimeo https://vimeo.com/51411276]
@@ -156,6 +156,9 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.2.4 =
+* Removed deprecated the_editor call for newer WP versions. Will now fallback depending on the WP version that is in use.
 
 = 1.2.3 =
 * Added ipv6 support in record management search

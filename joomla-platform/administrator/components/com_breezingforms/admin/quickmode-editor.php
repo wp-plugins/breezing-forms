@@ -33,8 +33,10 @@ echo '<input type="submit" value="'.JText::_('SAVE').'" onclick="saveText();pare
 
 global $wp_version;
 
-if(version_compare($wp_version, '3.3','>=')){
+if(version_compare($wp_version, '3.3','<') && version_compare($wp_version, '3.0','>=')){
     echo @the_editor('');
+}else if(version_compare($wp_version, '3.3','>=')){
+    echo wp_editor('', 'content');
 }else{
     echo '<textarea style="width: 100%; height: 300px;" name="content" id="content" value="content"></textarea>'."\n";
 }
