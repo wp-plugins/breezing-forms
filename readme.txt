@@ -7,41 +7,28 @@ Tested up to: 3.5.1
 Stable tag: 1.2.4
 License: GPL 2
 
-Form builder for any kind of form you need in WordPress. Very powerful and flexible.
+Form builder for any kind of form you need in WordPress. Quick form creation. Very powerful and flexible but yet easy to use.
 
 == Description ==
 
-[PRO VERSION](http://crosstec.de/en/wordpress-forms-download.html) | 
-[Demos](http://crosstec.de/en/wordpress-forms-demos.html) |
-[Forms Themes](http://crosstec.de/en/markets/breezingforms-themes.html) | 
-[Ready-2-Go Forms](http://crosstec.de/en/markets/breezingforms-form-apps.html) | 
+[Pro Version](http://crosstec.de/en/wordpress-forms-download.html) | 
+[Demo Forms](http://crosstec.de/en/wordpress-forms-demos.html) |
+[Form Themes](http://crosstec.de/en/markets/breezingforms-themes.html) | 
+[Pre-Made Forms](http://crosstec.de/en/markets/breezingforms-form-apps.html) | 
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
 Create [contact forms](http://crosstec.de/en/wordpress-forms-download.html), feedback forms, order forms or any other kind of form you need in WordPress. Use the flexibility of Breezing Forms to create even complex form applications -- for both, mobile devices and desktop.
 
-Includes features like multi-pages, true mobile support, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
+Includes features like quick form creation, multi-pages, true mobile support, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
 
-Building forms introduction:
-[vimeo https://vimeo.com/51411276]
-
-***If you have any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>***
-
-From simple forms up to complex form applications -- almost everything is possible. If you are a professional, serving multiple customers who frequently require forms or form based applications, then Breezing Forms is the tool of your choice.
-
-It doesn't stop at simple [contact forms](http://crosstec.de/en/wordpress-forms-download.html) but you can create complex multi-page forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the Joomla!® version. So if you serve customers on the both platforms, you simply export your existing forms and install on the target sites.
+It doesn't stop at simple [contact forms](http://crosstec.de/en/wordpress-forms-download.html) but you can create complex multi-page forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the [Joomla!® forms version](http://crosstec.de/en/extensions/joomla-forms-download.html).
 
 [Breezing Forms for WordPress](http://crosstec.de/en/wordpress-forms-download.html) has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html), you are holding a quality and value extension in your hands that you don't want to miss again. 
 
-If you need to collect data like complex forms, payment forms, contact forms, feedback forms, surveys, calculations or any form that is supposed to do more than just collecting data in a basic way, then Breezing Forms is the right tool for you.
-
-***No trial-ware, no light, not "crippled":*** BreezingForms a fully working GPL2 WordPress plugin. Members at [Crosstec](http://crosstec.de/) will have premium access to the latest versions + professional support.
-
-***If you want to add your forms to posts and pages, then please see the Breezing Forms icon on top of the text editor. It will open a shortcode helper to add the form to your post or page!***
-
 = Key Features =
 
-* True Mobile Support ***(Pro Version)***: Create your form once and display for Desktop and Mobiles
+* [Mobile Forms](http://crosstec.de/en/mobile-wordpress-forms.html) ***(Pro Version)***
 * Business/CRM: Salesforce® integration ***(Pro Version)***
 * Sharing: Dropbox® integration ***(Pro Version)***
 * Upload Image Preview ***(Pro Version)***
@@ -81,6 +68,11 @@ If you need to collect data like complex forms, payment forms, contact forms, fe
 * Scripts and CSS only printed when there is a form on the page (not in the entire site as this often happens with plugins)
 * Developer friendly: Extend your forms within BreezingForms by using its PHP & Javascript API -- no hacking required.
 
+***If you have any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>***
+
+Building forms introduction:
+[vimeo https://vimeo.com/51411276]
+
 == Installation ==
 
 Minimum requirements:    
@@ -119,9 +111,9 @@ Zip upload installation method (make sure uploads up to 5MB are allowed for your
 
 
 == Screenshots ==
-1. Simple contact form with "Aqua" theme
-2. Example job application form with "Glossy Blue" theme
-3. Form builder in backend
+1. Job application form with "Aqua" form-theme
+2. Example job application form with "Glossy Blue" form-theme
+3. Form settings admin
 
 == Frequently Asked Questions ==
 
