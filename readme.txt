@@ -4,7 +4,7 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, contact forms, contact form, form builder, form maker, email form, contact form plugin, feedback form, page, plugin, Post, widget
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.5.3
+Stable tag: 1.2.5.4
 License: GPL 2
 
 Form builder for any kind of form you need in WordPress. Quick form creation, powerful and flexible, yet easy to use.
@@ -18,9 +18,16 @@ Form builder for any kind of form you need in WordPress. Quick form creation, po
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-Create [contact forms](http://crosstec.de/en/wordpress-forms-download.html), feedback forms, order forms or any other kind of form you need in WordPress. Use the flexibility of Breezing Forms to create even complex form applications -- for both, mobile devices and desktop.
+[Contact forms](http://crosstec.de/en/wordpress-forms-download.html), feedback forms, order forms or any other kind of form you need in WordPress are now possible with just one plugin. Use the flexibility of Breezing Forms to create even complex form applications -- for both, mobile devices and desktop by creating only one form -- less work, double the fun.
 
-Includes features like quick form creation, multi-pages, true mobile support, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
+When talking about mobile forms, we are not just talking about responsive layouts (which are supported anyway) but about displaying your forms in an app way manner -- easier for your website visitors to handle even complex data input and not getting irritated by the rest of your website's contents.
+
+As example, please open this form with your desktop and mobile browser:
+[Mobile Form Demo](http://crosstec.de/.sub-breezingformswpdemo/)
+
+All this is done by creating only one form and activated with 1-click.
+
+Besides mobile forms, Breezing Forms includes other stunning features like quick form creation, multi-pages, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [demos and videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
 
 It doesn't stop at simple [contact forms](http://crosstec.de/en/wordpress-forms-download.html) but you can create complex multi-page forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the [Joomla!® forms version](http://crosstec.de/en/extensions/joomla-forms-download.html).
 
@@ -31,44 +38,42 @@ It doesn't stop at simple [contact forms](http://crosstec.de/en/wordpress-forms-
 * [Mobile Forms](http://crosstec.de/en/mobile-wordpress-forms.html) ***(Pro Version)***
 * Business/CRM: Salesforce® integration ***(Pro Version)***
 * Sharing: Dropbox® integration ***(Pro Version)***
-* Upload Image Preview ***(Pro Version)***
+* Upload image preview ***(Pro Version)***
+* 25+ pre-made, great looking form themes ***(Pro Version)***
+* Pre-made form samples ***(Pro Version)***
 * MailChimp Newsletter integration
 * Multipage forms
-* Responsive form layouts
-* Widget Support
-* Shortcode helper for posts and pages
-* Powerful Conditional Fields without need for Javascript
-* Ajax file uploads with progress bars
-* PDF, CSV & XML export (in records and as attachments)
-* Many themes included
-* Maxlength for textareas including "chars left" display
-* Summary item: Create summary pages quickly (including calculations if you want)
-* Integrator - Use your forms to integrate with other extensions
-* User Editable Forms
+* Conditional Fields
+* Responsive forms
 * 18 and counting form items (from simple input to captcha items)
-* Multipage forms 
-* PayPal and Direct Payment (Sofortüberweisung)
-* "Pay to download file" feature
+* Ajax file uploads with progress bars
 * Nativa Captcha and reCaptcha
+* Summary item: Create summary pages quickly (including calculations if you want)
+* Maxlength for textareas including "chars left" display
 * Calendar item
-* Many pre-defined validations and actions
-* Custom scripting
-* Unlimited reply-to fields
+* PayPal and Direct Payment (sofort.com)
+* "Pay to download file" feature
+* Custom email subjects
+* Reply-to fields
+* File attachments from uploads for admin and reply-to emails
 * Reply-to files: attach files from your server to reply-to addresses
 * Reply-to for select lists
 * Reply-to addresses as sender addresses
-* Filter data in reply-to emails
-* Custom mail subjects
-* File attachments from upload fields for admin and user mails
+* Data filter for reply-tos
 * Multiple recipients for the admin notification mails (themeable)
-* User data is shown in the email notifications
+* User data  email notifications
+* PDF, CSV & XML export (in records and as attachments)
+* Many pre-defined validations and actions
+* Custom scripting
 * Database storage of all submitted data
-* Documentation/tutorial videos
 * Package system: Create your forms once and export them to other sites
-* Scripts and CSS only printed when there is a form on the page (not in the entire site as this often happens with plugins)
 * Developer friendly: Extend your forms within BreezingForms by using its PHP & Javascript API -- no hacking required.
+* Documentation/tutorial videos
+* Scripts and CSS only printed when there is a form on the page (not in the entire site as this often happens with plugins)
+* Widget Support
+* Shortcode helper for posts and pages
 
-***If you have any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>***
+***If you got any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>***
 
 Building forms introduction:
 [vimeo https://vimeo.com/51411276]
