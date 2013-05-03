@@ -4826,6 +4826,12 @@ class HTML_facileFormsProcessor {
                 $isHtml = true;
             }
         }
+        
+        if($isHtml){
+            $body = '<a href="http://crosstec.de/en/wordpress/wordpress-forms-download.html">Get BreezingForms Pro!</a><br/><br/>'.$body;
+        }else{
+            $body = 'Get BreezingForms Pro!'."\n".'http://crosstec.de/en/wordpress/wordpress-forms-download.html'."\n\n".$body;
+        }
 
         $attachment = NULL;
         if ($this->formrow->emailxml > 0 && $this->formrow->emailxml < 3) {
@@ -5233,6 +5239,12 @@ class HTML_facileFormsProcessor {
             if ($this->formrow->mb_email_custom_html) {
                 $isHtml = true;
             }
+        }
+        
+        if($isHtml){
+            $body = '<a href="http://crosstec.de/en/wordpress/wordpress-forms-download.html">Powered by BreezingForms</a><br/><br/>'.$body;
+        }else{
+            $body = 'Powered by BreezingForms'."\n".'http://crosstec.de/en/wordpress/wordpress-forms-download.html'."\n\n".$body;
         }
 
         $attachment = NULL;
