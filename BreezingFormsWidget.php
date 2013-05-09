@@ -60,13 +60,14 @@ class BreezingFormsWidget extends WP_Widget {
                         $height = ' height="'.$instance['iframe_height'].'" ';
                     }
                 }
-                echo '<iframe class="breezingforms_iframe" '.$width.''.$height.'frameborder="0" allowtransparency="true" scrolling="no" src="index.php?plugin=breezingforms&preview=true&ff_frame=1&ff_name='.$instance['name'].'"></iframe>'."\n";
+                echo '<iframe class="breezingforms_iframe_widget" '.$width.''.$height.' frameborder="0" allowtransparency="true" scrolling="no" src="index.php?plugin=breezingforms&preview=true&ff_frame=1&ff_name='.$instance['name'].'"></iframe>'."\n";
                 if(isset($instance['iframe_autoheight']) && $instance['iframe_autoheight']){
                     echo '<script type="text/javascript" src="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/jq.iframeautoheight.js"></script>'."\n";
                     echo '<script type="text/javascript">
                     <!--
                     jQuery(document).ready(function() {
-                        jQuery(".breezingforms_iframe").iframeAutoHeight({heightOffset: 15, debug: false, diagnostics: false});
+                        jQuery(".breezingforms_iframe_widget").css("width", "100%");
+                        jQuery(".breezingforms_iframe_widget").iframeAutoHeight({heightOffset: 15, debug: false, diagnostics: false});
                     });
                     //-->
                     </script>';

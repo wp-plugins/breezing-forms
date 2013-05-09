@@ -3,7 +3,7 @@
 Plugin Name: Breezing Forms
 Plugin URI: http://crosstec.de/en/wordpress-forms-download.html
 Description: A professional forms plugin for wordpress.
-Version: 1.2.5.5
+Version: 1.2.5.6
 Author: Crosstec GmbH & Co. KG
 Author URI: http://crosstec.de
 License: GPL2
@@ -339,12 +339,13 @@ function breezingforms_site($atts = array()){
             }
         }
         
-        echo '<iframe class="breezingforms_iframe" '.$width.''.$height.'frameborder="0" allowtransparency="true" scrolling="no" src="index.php?plugin=breezingforms&preview=true&ff_frame=1&ff_name='.$_GET['ff_name'].'"></iframe>'."\n";
+        echo '<iframe class="breezingforms_iframe" '.$width.''.$height.' frameborder="0" allowtransparency="true" scrolling="no" src="index.php?plugin=breezingforms&preview=true&ff_frame=1&ff_name='.$_GET['ff_name'].'"></iframe>'."\n";
         if(isset($atts['iframe_autoheight']) && $atts['iframe_autoheight']){
             echo '<script type="text/javascript" src="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/jq.iframeautoheight.js"></script>'."\n";
             echo '<script type="text/javascript">
             <!--
             jQuery(document).ready(function() {
+                jQuery(".breezingforms_iframe").css("width", "100%");
                 jQuery(".breezingforms_iframe").iframeAutoHeight({heightOffset: 15, debug: false, diagnostics: false});
             });
             //-->

@@ -396,7 +396,6 @@ display:none;
                                                                                                     }
                                                                                                 }
 											}
-                                                                                        if(parent && parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }
 										}
 									);
 									break;
@@ -467,7 +466,6 @@ display:none;
                                                                                                     }
                                                                                                 }
 											}
-                                                                                        if(parent && parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }
 										}
 									);
 									break;
@@ -554,7 +552,6 @@ display:none;
                                                                                                             }
                                                                                                         }
 												}
-                                                                                                if(parent && parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }
 											}
 										 );
 									}
@@ -573,13 +570,7 @@ display:none;
 		}
 		
 		$this->addScriptDeclaration(
-                        '
-                        var JQuery = jQuery;
-			var inlineErrorElements = new Array();
-			var bfSummarizers = new Array();
-			var bfDeactivateField = new Array();
-			var bfDeactivateSection = new Array();
-			'.$toggleCode.'
+                        $toggleCode.'
 			function bfCheckMaxlength(id, maxlength, showMaxlength){
 				if( JQuery("#ff_elem"+id).val().length > maxlength ){
 					JQuery("#ff_elem"+id).val( JQuery("#ff_elem"+id).val().substring(0, maxlength) );
@@ -1451,9 +1442,9 @@ display:none;
 							$value = 'value="'.htmlentities(trim($mdata['value']), ENT_QUOTES, 'UTF-8').'" ';
 						}
 						if($mdata['actionClick'] == 1){
-							$onclick = 'onclick="populateSummarizers();if(document.getElementById(\'bfPaymentMethod\')){document.getElementById(\'bfPaymentMethod\').value=\'\';};'.$mdata['actionFunctionName'] . '(this,\'click\'); if(parent){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }; return false;" ';
+							$onclick = 'onclick="populateSummarizers();if(document.getElementById(\'bfPaymentMethod\')){document.getElementById(\'bfPaymentMethod\').value=\'\';};'.$mdata['actionFunctionName'] . '(this,\'click\'); return false;" ';
 						} else {
-							$onclick = 'onclick="populateSummarizers();if(document.getElementById(\'bfPaymentMethod\')){document.getElementById(\'bfPaymentMethod\').value=\'\';}; if(parent && parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }; return false;" ';
+							$onclick = 'onclick="populateSummarizers();if(document.getElementById(\'bfPaymentMethod\')){document.getElementById(\'bfPaymentMethod\').value=\'\';}; return false;" ';
 						}
                                                 if($src == ''){
                                                     echo '<button class="ff_elem" '.$value.$src.$tabIndex.$onclick.$onblur.$onchange.$onfocus.$onselect.$readonly.'type="'.$type.'" name="ff_nm_'.$mdata['bfName'].'[]" id="ff_elem'.$mdata['dbId'].'"><span>'.$mdata['value'].'</span></button>'."\n";
@@ -1692,11 +1683,11 @@ display:none;
 				}
 				
 				if($this->rootMdata['pagingInclude'] && $dataObject['properties']['pageNumber'] > 1){
-					echo '<button class="bfPrevButton'.$this->fadingClass.'" type="submit" onclick="if(ff_currentpage > 1){ff_switchpage(ff_currentpage-1);self.scrollTo(0,0);}populateSummarizers();if(parent && parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }" value="'.htmlentities(trim($this->rootMdata['pagingPrevLabel']), ENT_QUOTES, 'UTF-8').'"><span>'.htmlentities(trim($this->rootMdata['pagingPrevLabel']), ENT_QUOTES, 'UTF-8').'</span></button>'."\n";
+					echo '<button class="bfPrevButton'.$this->fadingClass.'" type="submit" onclick="if(ff_currentpage > 1){ff_switchpage(ff_currentpage-1);self.scrollTo(0,0);}populateSummarizers();" value="'.htmlentities(trim($this->rootMdata['pagingPrevLabel']), ENT_QUOTES, 'UTF-8').'"><span>'.htmlentities(trim($this->rootMdata['pagingPrevLabel']), ENT_QUOTES, 'UTF-8').'</span></button>'."\n";
 				}
 	
 				if($this->rootMdata['pagingInclude'] && $dataObject['properties']['pageNumber'] < count($this->dataObject['children']) - $last){
-					echo '<button class="bfNextButton'.$this->fadingClass.'" type="submit" onclick="ff_validate_nextpage(this, \'click\');populateSummarizers();if(parent && parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }" value="'.htmlentities(trim($this->rootMdata['pagingNextLabel']), ENT_QUOTES, 'UTF-8').'"><span>'.htmlentities(trim($this->rootMdata['pagingNextLabel']), ENT_QUOTES, 'UTF-8').'</span></button>'."\n";
+					echo '<button class="bfNextButton'.$this->fadingClass.'" type="submit" onclick="ff_validate_nextpage(this, \'click\');populateSummarizers();" value="'.htmlentities(trim($this->rootMdata['pagingNextLabel']), ENT_QUOTES, 'UTF-8').'"><span>'.htmlentities(trim($this->rootMdata['pagingNextLabel']), ENT_QUOTES, 'UTF-8').'</span></button>'."\n";
 				}
 	
 				if($this->rootMdata['cancelInclude'] && $dataObject['properties']['pageNumber'] + 1 > count($this->dataObject['children']) - $last){
@@ -1708,7 +1699,7 @@ display:none;
 					$callSubmit = 'if(typeof bfAjaxObject101 == \'undefined\' && typeof bfReCaptchaLoaded == \'undefined\'){bfDoFlashUpload()}else{ff_validate_submit(this, \'click\')}';
 				}
 				if($this->rootMdata['submitInclude'] && $dataObject['properties']['pageNumber'] + 1 > count($this->dataObject['children']) - $last){
-					echo '<button id="bfSubmitButton" class="bfSubmitButton'.$this->fadingClass.'" type="submit" onclick="if(document.getElementById(\'bfPaymentMethod\')){document.getElementById(\'bfPaymentMethod\').value=\'\';};'.$callSubmit.'; if(parent && parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight){ parent.jQuery(\'.breezingforms_iframe\').iframeAutoHeight({reload: 1, heightOffset: 15, debug: false, diagnostics: false}); }; return false;" value="'.htmlentities(trim($this->rootMdata['submitLabel']), ENT_QUOTES, 'UTF-8').'"><span>'.htmlentities(trim($this->rootMdata['submitLabel']), ENT_QUOTES, 'UTF-8').'</span></button>'."\n";
+					echo '<button id="bfSubmitButton" class="bfSubmitButton'.$this->fadingClass.'" type="submit" onclick="if(document.getElementById(\'bfPaymentMethod\')){document.getElementById(\'bfPaymentMethod\').value=\'\';};'.$callSubmit.'; return false;" value="'.htmlentities(trim($this->rootMdata['submitLabel']), ENT_QUOTES, 'UTF-8').'"><span>'.htmlentities(trim($this->rootMdata['submitLabel']), ENT_QUOTES, 'UTF-8').'</span></button>'."\n";
 				}
 			
 			}
@@ -1716,7 +1707,15 @@ display:none;
 	}
 	
 	public function render(){
-
+                echo '<script type="text/javascript">
+                <!--
+                var JQuery = jQuery;
+                var inlineErrorElements = new Array();
+                var bfSummarizers = new Array();
+                var bfDeactivateField = new Array();
+                var bfDeactivateSection = new Array();
+                //-->
+                </script>';
                 $this->process($this->dataObject);
 		echo '</div>'."\n"; // closing last page
                 if( $this->hasFlashUpload ){
