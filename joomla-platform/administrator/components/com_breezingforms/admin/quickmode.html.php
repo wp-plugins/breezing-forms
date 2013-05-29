@@ -2225,10 +2225,29 @@ class QuickModeHtml{
 		
 		JQuery('#bfNewElementButton').click(
 			function(){
-				var id = "bfQuickMode" + ( Math.floor(Math.random() * 10000000) );
-				var obj = appScope.createTextfield(id);
-				appScope.createTreeItem(obj);
-				JQuery.tree_reference('bfElementExplorer').select_branch(JQuery('#'+id));
+                                <?php
+                                if(BFWPISNEW){
+                                ?>
+                                var items = new Array();
+				appScope.getItemsFlattened(appScope.dataObject, items);
+                                if(items.length < 5){
+                                    var id = "bfQuickMode" + ( Math.floor(Math.random() * 10000000) );
+                                    var obj = appScope.createTextfield(id);
+                                    appScope.createTreeItem(obj);
+                                    JQuery.tree_reference('bfElementExplorer').select_branch(JQuery('#'+id));
+                                }else{
+                                    alert("The free version is limited up to 5 fields to add. If you need this functionality, you need to buy the pro version.");
+                                }
+                                <?php
+                                } else {
+                                ?>
+                                   var id = "bfQuickMode" + ( Math.floor(Math.random() * 10000000) );
+                                   var obj = appScope.createTextfield(id);
+                                   appScope.createTreeItem(obj);
+                                   JQuery.tree_reference('bfElementExplorer').select_branch(JQuery('#'+id));                                                                                                                                                                                                                         
+                                <?php
+                                }
+                                ?>
 			}
 		);
 		

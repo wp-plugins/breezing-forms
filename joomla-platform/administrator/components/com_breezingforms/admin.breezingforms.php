@@ -77,6 +77,8 @@ if(!JFolder::exists(WP_CONTENT_DIR.DS.'breezingforms'.DS.'uploads')){
 #### THEMES
 
 if(!JFolder::exists(WP_CONTENT_DIR.DS.'breezingforms'.DS.'themes')){
+    $wpisnew = '###';
+    JFile::write(WP_CONTENT_DIR.DS.'breezingforms'.DS.'WPISNEW',$wpisnew);
     JFolder::copy(
             JPATH_SITE.DS.'components'.DS.'com_breezingforms'.DS.'themes'.DS.'quickmode'.DS, 
             WP_CONTENT_DIR.DS.'breezingforms'.DS.'quickmode'.DS
@@ -85,6 +87,12 @@ if(!JFolder::exists(WP_CONTENT_DIR.DS.'breezingforms'.DS.'themes')){
            WP_CONTENT_DIR.DS.'breezingforms'.DS.'quickmode'.DS,
            WP_CONTENT_DIR.DS.'breezingforms'.DS.'themes'.DS
     );
+}
+
+if(JFile::exists(WP_CONTENT_DIR.DS.'breezingforms'.DS.'WPISNEW')){
+    define('BFWPISNEW',true);
+}else{
+    define('BFWPISNEW',false);
 }
 
 if(!JFolder::exists(WP_CONTENT_DIR.DS.'breezingforms'.DS.'themes'.DS.'images')){
@@ -474,7 +482,7 @@ if( !isset($_REQUEST['action']) && ( !isset($_REQUEST['task']) || !isset($_REQUE
         }
     </style>
     <div style="float: right; margin-top: 20px; margin-bottom: 20px; margin-right: 0px;">
-        <h2 style="float: left;" class="wrap"><a style="background-color: red !important; color: white !important;" class="add-new-h2" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Get BreezingForms Pro here! (mobile forms, Salesforce, Dropbox and professional support)</a></h2>
+        <h2 style="float: left;" class="wrap"><a style="background-color: red !important; color: white !important;" class="add-new-h2" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Get BreezingForms Pro! (unlimited fields, mobile forms, Salesforce, Dropbox and professional support)</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=recordmanagement">'.BFText::_('COM_BREEZINGFORMS_WP_RECORDS').'</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=manageforms">'.BFText::_('COM_BREEZINGFORMS_WP_FORMS').'</a></h2>
         <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=managescripts">'.BFText::_('COM_BREEZINGFORMS_WP_SCRIPTS').'</a></h2>
