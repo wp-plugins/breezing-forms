@@ -4,10 +4,10 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, contact forms, contact form, form builder, form maker, email form, contact form plugin, feedback form, page, plugin, Post, widget
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.5.7
+Stable tag: 1.2.5.8
 License: GPL 2
 
-Form builder for any kind of form you need in WordPress. Quick form creation, powerful and flexible, yet easy to use.
+Professional form builder for any kind of form you need in WordPress. Quick form creation, powerful and flexible, yet easy to use.
 
 == Description ==
 
@@ -20,7 +20,9 @@ Form builder for any kind of form you need in WordPress. Quick form creation, po
 
 [Contact forms](http://crosstec.de/en/wordpress-forms-download.html), feedback forms, order forms or any other kind of form you need in WordPress are now possible with just one plugin. Use the flexibility of Breezing Forms to create even complex form applications -- for both, mobile devices and desktop by creating only one form -- less work, double the fun.
 
-The form creation interface has been designed to support quick form building, even when there are large forms and complex forms need to be created. Rather than common drag and drop form builder interfaces that frequently trouble upon complicated forms, BreezingForms supports you with an uncompromising and fast form creation interface.
+Instead of the usual drag and drop interface that slows you down on larger form creation, Breezing Forms provides a clever interface to add and manage form elements quickly -- while quick means easy. 
+
+The form creation interface also helps you to keep an overview over large and complex form structures and getting your job done faster. Just try it and you'll see what we mean ;)
 
 When talking about mobile forms, we are not just talking about responsive layouts (which are supported anyway) but about displaying your forms in an app way manner -- easier for your website visitors to handle even complex data input and not getting irritated by the rest of your website's contents.
 
@@ -29,7 +31,7 @@ As example, please open this form with your desktop and mobile browser:
 
 All this is done by creating only one form and activated with 1-click.
 
-Besides mobile forms and quick form creation, Breezing Forms includes other stunning features like multi-pages, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [demos and videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
+Besides mobile forms and quick form creation, Breezing Forms includes other useful features like multi-page forms, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [demos and videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
 
 It doesn't stop at simple [contact forms](http://crosstec.de/en/wordpress-forms-download.html) but you can create complex multi-page forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the [Joomla!® forms version](http://crosstec.de/en/extensions/joomla-forms-download.html).
 
