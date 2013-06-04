@@ -7,6 +7,51 @@
 
 /* ##### General BreezingForms Default styles ##### */
 
+.bfQuickMode input[type="radio"]:checked + label:before {
+    background: none;
+    border: none;
+    content: none;
+}
+
+.bfQuickMode input[type="checkbox"]:checked + label:before {
+    background: none;
+    border: none;
+    content: none;
+}
+
+.bfQuickMode legend {
+    background: none;
+    font-weight: normal;
+    padding: 0;
+    width: auto;
+    height: auto;
+    line-height: none;
+}
+
+.bfQuickMode input:focus, .bfQuickMode textarea:focus {
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.bfQuickMode textarea:focus, .bfQuickMode input[type="text"]:focus, .bfQuickMode input[type="password"]:focus, .bfQuickMode input[type="datetime"]:focus, .bfQuickMode input[type="datetime-local"]:focus, .bfQuickMode input[type="date"]:focus, .bfQuickMode input[type="month"]:focus, .bfQuickMode input[type="time"]:focus, .bfQuickMode input[type="week"]:focus, .bfQuickMode input[type="number"]:focus, .bfQuickMode input[type="email"]:focus, .bfQuickMode input[type="url"]:focus, .bfQuickMode input[type="search"]:focus, .bfQuickMode input[type="tel"]:focus, .bfQuickMode input[type="color"]:focus, .bfQuickMode .uneditable-input:focus {
+    box-shadow: none;
+    outline: 0 none;
+}
+
+.bfQuickMode select, .bfQuickMode textarea, .bfQuickMode input[type="text"], .bfQuickMode input[type="password"], .bfQuickMode input[type="datetime"], .bfQuickMode input[type="datetime-local"], .bfQuickMode input[type="date"], .bfQuickMode input[type="month"], .bfQuickMode input[type="time"], .bfQuickMode input[type="week"], .bfQuickMode input[type="number"], .bfQuickMode input[type="email"], .bfQuickMode input[type="url"], .bfQuickMode input[type="search"], input[type="tel"], .bfQuickMode input[type="color"], .bfQuickMode .uneditable-input {
+    /*border-radius: 0;*/
+}
+
+.bfQuickMode input, .bfQuickMode textarea, .bfQuickMode select {
+    /*border-radius: 0;*/
+}
+
+.bfQuickMode .recaptchatable #recaptcha_response_field {
+    position: relative !important;
+    margin-top: 5px !important;
+}
+
+
 .bfQuickMode {
     width: 100%;
     padding: 0px;
@@ -18,7 +63,7 @@
 }
 
 .bfQuickMode .bfWrapperBlock {
-	margin: 15px 0 10px 0;
+	margin: 0px 0 10px 0;
 }
 
 .bfQuickMode .bfNoSection {
@@ -403,6 +448,14 @@
     float: none;
 }
 
+.bfQuickMode button{
+    box-shadow: none;
+}
+
+.ff_elem{
+    box-shadow: none;
+}
+
 #bfCaptchaEntry {
     width: 196px;
 }
@@ -421,12 +474,31 @@
 }
 
 #bfSubmitMessage{
-	font: 11px Verdana, Geneva, sans-serif;
 	border: 2px solid #E5E5E5;
 	background-color: #F5F5F5;
 	margin-top: 5px;
 	padding: 10px;
 	width: 350px;
+        -moz-border-radius-bottomright: 50px 25px;
+        border-bottom-right-radius: 50px 25px;
+}
+
+#bfFileQueue{
+	border: 2px solid #E5E5E5;
+	background-color: #F5F5F5;
+	margin-top: 5px;
+	padding: 10px;
+	width: 350px;
+        -moz-border-radius-bottomright: 50px 25px;
+        border-bottom-right-radius: 50px 25px;
+        z-index: 1100;
+}
+
+.bfFileQueueItem{
+	border: 2px solid #E5E5E5;
+	background-color: #F5F5F5;
+	margin: 5px;
+	padding: 10px;
 }
 
 .uploadifyQueueItem {

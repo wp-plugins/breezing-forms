@@ -4,7 +4,18 @@
  @copyright Copyright (C) 2009 crosstec.de. All rights reserved.
  ########################################
 */
-
+.bfElementGroup input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroup input[type='checkbox']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='checkbox']{
+    vertical-align: top;
+}
 /* ##### General BreezingForms styles ##### */
 
 .bfQuickMode {

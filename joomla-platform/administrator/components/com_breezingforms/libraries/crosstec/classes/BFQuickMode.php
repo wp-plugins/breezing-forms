@@ -80,15 +80,12 @@ class BFQuickMode{
                 // loading theme
 		$this->cancelImagePath = WP_CONTENT_URL . '/breezingforms/themes/cancel.png';
 		$this->uploadImagePath = WP_CONTENT_URL . '/breezingforms/themes/upload.png';
-		if($this->rootMdata['theme'] != 'none' && @file_exists(WP_CONTENT_DIR .'/breezingforms/themes/'. $this->rootMdata['theme'].'/theme.css')){
-			$this->addStyleSheet( WP_CONTENT_URL . '/breezingforms/themes/'. $this->rootMdata['theme'].'/theme.css' );
-			if(@file_exists(WP_CONTENT_URL .'/breezingforms/themes/'. $this->rootMdata['theme'].'/img/cancel.png')){
-				$this->cancelImagePath = WP_CONTENT_URL . '/breezingforms/themes/'. $this->rootMdata['theme'].'/img/cancel.png';
-			}
-			if(@file_exists(WP_CONTENT_URL .'/breezingforms/themes/'. $this->rootMdata['theme'].'/img/upload.png')){
-				$this->uploadImagePath = WP_CONTENT_URL . '/breezingforms/themes/'. $this->rootMdata['theme'].'/img/upload.png';
-			}
-		}
+                if(@file_exists(WP_CONTENT_URL .'/breezingforms/themes/'. $this->rootMdata['theme'].'/img/cancel.png')){
+                        $this->cancelImagePath = WP_CONTENT_URL . '/breezingforms/themes/'. $this->rootMdata['theme'].'/img/cancel.png';
+                }
+                if(@file_exists(WP_CONTENT_URL .'/breezingforms/themes/'. $this->rootMdata['theme'].'/img/upload.png')){
+                        $this->uploadImagePath = WP_CONTENT_URL . '/breezingforms/themes/'. $this->rootMdata['theme'].'/img/upload.png';
+                }
 	}
         
         public function fetchFoot($head)
@@ -879,26 +876,7 @@ display:none;
                                 });
 			});
 		');
-		// loading system css
-		$this->addStyleSheet( BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.css' );
 		
-                if(method_exists($obj = JFactory::getDocument(), 'addCustomTag')){
-                
-                    $stylelink = '<!--[if IE 7]>' ."\n";
-                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie7.css" />' ."\n";
-                    $stylelink .= '<![endif]-->' ."\n";
-                    $this->addCustomTag($stylelink);
-
-                    $stylelink = '<!--[if IE 6]>' ."\n";
-                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platformc/omponents/com_breezingforms/themes/quickmode/system.ie6.css" />' ."\n";
-                    $stylelink .= '<![endif]-->' ."\n";
-                    $this->addCustomTag($stylelink);
-
-                    $stylelink = '<!--[if IE]>' ."\n";
-                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie.css" />' ."\n";
-                    $stylelink .= '<![endif]-->' ."\n";
-                    $this->addCustomTag($stylelink);
-                }
                 
 		foreach($this->tipQueue As $tipqueue){
                     $this->addCustomTag($tipqueue);
@@ -1707,6 +1685,32 @@ display:none;
 	}
 	
 	public function render(){
+                // loading system css
+		if(method_exists($obj = JFactory::getDocument(), 'addCustomTag')){
+                
+                    $stylelink = '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.css" />' ."\n";
+                    $this->addCustomTag($stylelink);
+                    
+                    $stylelink = '<!--[if IE 7]>' ."\n";
+                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie7.css" />' ."\n";
+                    $stylelink .= '<![endif]-->' ."\n";
+                    $this->addCustomTag($stylelink);
+
+                    $stylelink = '<!--[if IE 6]>' ."\n";
+                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platformc/omponents/com_breezingforms/themes/quickmode/system.ie6.css" />' ."\n";
+                    $stylelink .= '<![endif]-->' ."\n";
+                    $this->addCustomTag($stylelink);
+
+                    $stylelink = '<!--[if IE]>' ."\n";
+                    $stylelink .= '<link rel="stylesheet" href="'.BF_PLUGINS_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/themes/quickmode/system.ie.css" />' ."\n";
+                    $stylelink .= '<![endif]-->' ."\n";
+                    $this->addCustomTag($stylelink);
+                    
+                    if($this->rootMdata['theme'] != 'none' && @file_exists(WP_CONTENT_DIR .'/breezingforms/themes/'. $this->rootMdata['theme'].'/theme.css')){
+			$stylelink = '<link rel="stylesheet" href="'.WP_CONTENT_URL . '/breezingforms/themes/'. $this->rootMdata['theme'].'/theme.css" />' ."\n";
+                        $this->addCustomTag($stylelink);
+                    }
+                }
                 echo '<script type="text/javascript">
                 <!--
                 var JQuery = jQuery;

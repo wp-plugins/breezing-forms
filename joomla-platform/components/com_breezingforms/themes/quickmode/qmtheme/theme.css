@@ -4,7 +4,21 @@
  @copyright Copyright (C) 2009 crosstec.de. All rights reserved.
  ########################################
 */
-
+.bfElementGroup input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroup input[type='checkbox']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='checkbox']{
+    vertical-align: top;
+}
+.bfQuickMode label{
+    cursor: pointer;
+}
 /* ##### General BreezingForms styles ##### */
 
 .bfQuickMode {
@@ -18,6 +32,7 @@
     border: 1px solid #ccc;
     margin: 0px 0px 10px 0px;
     width: auto;
+    border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
@@ -30,6 +45,9 @@
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    line-height: normal !important;
+    margin-top: 18px !important;
+    border: none !important;
 }
 
 .bfQuickMode p.bfElemWrap {
@@ -53,9 +71,33 @@
 /* ##### inline ##### */
 
 .bfQuickMode fieldset fieldset legend {
+    border-width: 1px !important;
+    border-style: solid !important;
+    padding: 5px;
     background: #fff;
     color: #92c1ff;
+    border-color: #92c1ff;
     font-size: 110%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    line-height: normal !important;
+    margin-top: 18px !important;
+}
+
+.bfQuickMode fieldset fieldset legend {
+    border-width: 1px !important;
+    border-style: solid !important;
+    padding: 5px;
+    background: #fff;
+    color: #92c1ff;
+    border-color: #92c1ff;
+    font-size: 110%;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    line-height: normal !important;
+    margin-top: 18px !important;
 }
 
 .bfQuickMode fieldset.bfInline {

@@ -129,6 +129,22 @@
     width: 50%;
 }
 
+.bfElementGroup input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroup input[type='checkbox']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='checkbox']{
+    vertical-align: top;
+}
+.bfQuickMode label{
+    cursor: pointer;
+}
+
 /* ##### Input Fields ##### */
 
 .bfQuickMode input[type=text], .bfQuickMode input[type=password], .bfQuickMode textarea, .bfQuickMode select {
@@ -269,7 +285,6 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari and Google Chrome only - fix margins */
     .bfQuickMode button span {
-        margin-top: -1px !important;
     }
 }
 

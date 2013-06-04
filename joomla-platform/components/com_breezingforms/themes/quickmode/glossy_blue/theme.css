@@ -7,6 +7,22 @@
 
 /* ##### General BreezingForms styles ##### */
 
+.bfElementGroup input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='radio']{
+    vertical-align: top;
+}
+.bfElementGroup input[type='checkbox']{
+    vertical-align: top;
+}
+.bfElementGroupNoWrap input[type='checkbox']{
+    vertical-align: top;
+}
+.bfQuickMode label{
+    cursor: pointer;
+}
+
 .bfQuickMode {
     width: 100%;
     padding: 0px;
@@ -261,7 +277,6 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari and Google Chrome only - fix margins */
     .bfQuickMode button span {
-        margin-top: -1px;
     }
 }
 
