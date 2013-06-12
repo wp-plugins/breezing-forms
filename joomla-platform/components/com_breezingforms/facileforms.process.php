@@ -4828,9 +4828,9 @@ class HTML_facileFormsProcessor {
         }
         
         if($isHtml){
-            $body = '<a href="http://crosstec.de/en/wordpress/wordpress-forms-download.html">Get BreezingForms Pro!</a><br/><br/>'.$body;
+            $body = '<a href="http://crosstec.de/en/wordpress/wordpress-forms-download.html">Remove field limits, messages and get more features!</a><br/><br/>'.$body;
         }else{
-            $body = 'Get BreezingForms Pro!'."\n".'http://crosstec.de/en/wordpress/wordpress-forms-download.html'."\n\n".$body;
+            $body = 'Remove field limits, messages and get more features:'."\n".'http://crosstec.de/en/wordpress/wordpress-forms-download.html'."\n\n".$body;
         }
 
         $attachment = NULL;
@@ -5242,9 +5242,9 @@ class HTML_facileFormsProcessor {
         }
         
         if($isHtml){
-            $body = '<a href="http://crosstec.de/en/wordpress/wordpress-forms-download.html">Powered by BreezingForms</a><br/><br/>'.$body;
+            $body = '<a href="http://crosstec.de/en/wordpress/wordpress-forms-download.html">Remove field limits, messages and get more features!</a><br/><br/>'.$body;
         }else{
-            $body = 'Powered by BreezingForms'."\n".'http://crosstec.de/en/wordpress/wordpress-forms-download.html'."\n\n".$body;
+            $body = 'Remove field limits, messages and get more features:'."\n".'http://crosstec.de/en/wordpress/wordpress-forms-download.html'."\n\n".$body;
         }
 
         $attachment = NULL;
