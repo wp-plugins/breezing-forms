@@ -4,7 +4,7 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, contact forms, contact form, form builder, email form, contact form plugin, feedback form, page, plugin, Post, widget, mobile
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 1.2.5.10
+Stable tag: 1.2.5.11
 License: GPL 2
 
 Professional form builder for any kind of form you need in WordPress. Powerful and flexible, yet easy to use.
@@ -18,7 +18,7 @@ Professional form builder for any kind of form you need in WordPress. Powerful a
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-Drag and drop is good, being quick is better. [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html provides a clever interface to add and manage form elements quickly -- while quick means easy. 
+Drag and drop is good, being quick is better. [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) provides a clever interface to add and manage form elements quickly -- while quick means easy. 
 
 The admin ui helps you to keep track of your form structure. No matter if simple or complicated forms, you never get lost in scrolling to find your fields.
 
@@ -36,8 +36,6 @@ All this is done by creating only one form and activated with one click.
 Besides mobile forms and quick form creation, Breezing Forms includes other useful features like multi-page forms, Salesforce, Dropbox, Mailchimp, summary pages, payments, conditional fields, themes and many more. See [demos and videos](http://crosstec.de/en/wordpress-forms-demos.html) to learn more about the features of Breezing Forms.
 
 It doesn't stop at simple [contact forms](http://crosstec.de/en/wordpress-forms-download.html) but you can create complex multi-page forms and extend your forms the way you like to. Additionally, the forms are interchangeable with the the [Joomla!® forms version](http://crosstec.de/en/extensions/joomla-forms-download.html).
-
-[Breezing Forms for WordPress](http://crosstec.de/en/wordpress-forms-download.html) has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html), you are holding a quality and value extension in your hands that you don't want to miss again. 
 
 = Key Features =
 
@@ -82,6 +80,8 @@ It doesn't stop at simple [contact forms](http://crosstec.de/en/wordpress-forms-
 * Shortcode helper for posts and pages
 
 ***If you got any questions on the pro, please don't hesitate to contact us at <sales@crosstec.de>***
+
+[Breezing Forms for WordPress](http://crosstec.de/en/wordpress-forms-download.html) has a long history of innovations that haven't been seen in WordPress Plugins before and until today. We continuously develop and implement new interesting features. With [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html), you are holding a quality and value extension in your hands that you don't want to miss again.
 
 Building forms introduction:
 [vimeo https://vimeo.com/51411276]
@@ -163,7 +163,7 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 
 == Changelog ==
 
-= 1.2.5.10 =
+= 1.2.5.11 =
 * backend message colors changed
 
 = 1.2.5.9 =
