@@ -3,8 +3,8 @@ Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, contact forms, contact form, form builder, email form, contact form plugin, feedback form, page, plugin, Post, widget, mobile
 Requires at least: 3.0
-Tested up to: 3.5.1
-Stable tag: 1.2.5.12
+Tested up to: 3.6
+Stable tag: 1.2.5.13
 License: GPL 2
 
 Professional form builder for any kind of form you need in WordPress. Powerful and flexible, yet easy to use.
