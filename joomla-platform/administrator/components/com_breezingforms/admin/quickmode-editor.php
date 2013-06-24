@@ -29,7 +29,7 @@
 **/
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 
-echo '<input type="submit" value="'.JText::_('SAVE').'" onclick="saveText();parent.SqueezeBox.close();"/>';
+echo '<button class="button-primary" onclick="saveText();parent.SqueezeBox.close();">'.JText::_('SAVE').'</button><p></p>';
 
 global $wp_version;
 
@@ -41,7 +41,7 @@ if(version_compare($wp_version, '3.3','<') && version_compare($wp_version, '3.0'
     echo '<textarea style="width: 100%; height: 300px;" name="content" id="content" value="content"></textarea>'."\n";
 }
 echo '<br/>';
-echo '<input type="submit" value="'.JText::_('SAVE').'" onclick="saveText();parent.SqueezeBox.close();"/>';
+echo '<p></p><button class="button-primary" onclick="saveText();parent.SqueezeBox.close();">'.JText::_('SAVE').'</button>';
 echo '<script>
 
 function get_tinymce_content(){

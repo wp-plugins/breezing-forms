@@ -395,6 +395,14 @@ if(isset($tables[JFactory::getDBO()->getPrefix().'facileforms_forms'])){
         JFactory::getDBO()->setQuery("ALTER TABLE `#__facileforms_forms` ADD `dropbox_folder` TEXT AFTER `dropbox_password` ");
         JFactory::getDBO()->query();
     }
+    if(!isset( $tables[JFactory::getDBO()->getPrefix().'facileforms_forms']['dropbox_submission_enabled'] )){
+        JFactory::getDBO()->setQuery("ALTER TABLE `#__facileforms_forms` ADD `dropbox_submission_enabled` TINYINT( 1 ) NOT NULL DEFAULT 0 AFTER `dropbox_folder` ");
+        JFactory::getDBO()->query();
+    }
+    if(!isset( $tables[JFactory::getDBO()->getPrefix().'facileforms_forms']['dropbox_submission_types'] )){
+        JFactory::getDBO()->setQuery("ALTER TABLE `#__facileforms_forms` ADD `dropbox_submission_types` VARCHAR( 255 ) NOT NULL DEFAULT 'pdf' AFTER `dropbox_submission_enabled` ");
+        JFactory::getDBO()->query();
+    }
 }
 /**
  * DB UPGRADE END
@@ -452,12 +460,64 @@ $db = JFactory::getDBO();
  * Temporary section end
  */
 
-if( !isset($_REQUEST['action']) && ( !isset($_REQUEST['task']) || !isset($_REQUEST['act']) || ( $_REQUEST['task'] != 'editform' && $_REQUEST['act'] != 'editpage' ) ) ){
+if( !isset($_REQUEST['action']) ){
     if( !isset($_REQUEST['act']) || ( isset($_REQUEST['act']) && $_REQUEST['act'] != 'quickmode_editor' ) ) {
-    echo '<div style="float:left; margin-top: 10px; margin-right: 30px;">
-        <img src="'.WP_PLUGIN_URL.'/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/libraries/jquery/themes/easymode/i/logo-breezingforms.png"/>
-    </div>
-    <style>
+    
+    $active_managerecs = JRequest::getVar('act','') == '' || JRequest::getVar('act','') == 'managerecs' || JRequest::getVar('act','') == 'recordmanagement';
+    $active_forms = JRequest::getVar('act','') == 'editpage' || JRequest::getVar('act','') == 'manageforms' || JRequest::getVar('act','') == 'easymode' || JRequest::getVar('act','') == 'quickmode';
+    $active_scripts = JRequest::getVar('act','') == 'managescripts';
+    $active_pieces = JRequest::getVar('act','') == 'managepieces';
+    $active_config = JRequest::getVar('act','') == 'configuration';
+    
+    $active_icon32 = 'icon-options-general';
+    $active_text = '';
+    $active_slug = -1;
+    if($active_managerecs){
+        $active_text = ' : Records';
+        $active_icon32 = 'icon-post';
+        $active_slug = 0;
+    }else 
+    if($active_forms){
+        $active_text = ' : Forms';
+        $active_icon32 = 'icon-themes';
+        $active_slug = 1;
+    }else 
+    if($active_scripts){
+        $active_text = ' : Scripts';
+        $active_icon32 = 'icon-tools';
+        $active_slug = 2;
+    }else 
+    if($active_pieces){
+        $active_text = ' : Pieces';
+        $active_icon32 = 'icon-plugins';
+        $active_slug = 3;
+    }else 
+    if($active_config){
+        $active_text = ' : Configuration';
+        $active_icon32 = 'icon-options-general';
+        $active_slug = 4;
+    }
+    
+    if( $active_slug > -1 ){
+        echo '<script type="text/javascript">
+            jQuery(document).ready(
+                function(){
+                    var next = jQuery("li .wp-first-item").next();
+                    for(var i = 0; i<5;i++){
+                        if( i == '.$active_slug.' ){
+                            next.css("font-weight","bold");
+                            break;
+                        }
+                        next = next.next();
+                    }
+                }
+            );
+        </script>';
+    }
+    
+    echo '
+        
+        <style>
         input[type=submit] {
             display: inline-block;
             text-decoration: none;
@@ -480,18 +540,130 @@ if( !isset($_REQUEST['action']) && ( !isset($_REQUEST['task']) || !isset($_REQUE
             color: #464646 !important;
             background-color: #fff !important;
         }
+        #bf-toolbar {
+        }
+
+        ul#bf-toolbar-links {
+            height: 28px;
+            position: relative;
+            border: 1px solid #DFDFDF;
+            background-color: #EFEFEF;
+            margin: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#EFEFEF"); /* for IE */
+            background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#EFEFEF)); /* for webkit browsers */
+            background: -moz-linear-gradient(top,  #fff,  #EFEFEF); /* for firefox 3.6+ */
+        }
+
+        ul#bf-toolbar-links li {
+            list-style: none;
+            display: inline;
+        }
+
+        ul#bf-toolbar-links li a{
+            text-decoration: none;
+            text-shadow: 0 1px 1px #FFF;
+            line-height: 16px;
+            white-space: nowrap;
+            float: left;
+            margin-top: 7px;
+        }
+
+        ul#bf-toolbar-links li div.bf-toolbar-link-bg{
+            background-image: url(images/menu.png);
+            background-repeat: no-repeat;
+            background-color: transparent;
+            width: 28px;
+            height: 28px;
+            float: left;
+        }
+
+        ul#bf-toolbar-links li div#bf-toolbar-link-records{
+            background-position: -269px -33px;
+        }
+        
+        ul#bf-toolbar-links li div#bf-toolbar-link-forms{
+            background-position: 1px -33px;
+        }
+        
+        ul#bf-toolbar-links li div#bf-toolbar-link-scripts{
+            background-position: -209px -33px;
+        }
+        
+        ul#bf-toolbar-links li div#bf-toolbar-link-pieces{
+            background-position: -179px -33px;
+        }
+        
+        ul#bf-toolbar-links li div#bf-toolbar-link-config{
+            background-position: -239px -33px;
+        }
+        
+        ul#bf-toolbar-links li div#bf-toolbar-link-docs{
+            background-position: -149px -33px;
+        }
+        
+        ul#bf-toolbar-links li a.bf-toolbar-active{
+            font-weight: bold;
+        }
+        .purchase-txt{
+            padding: 5px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            background:#eee;
+            color:#505050;
+            text-shadow: 1px 1px 0px #fff;
+        }
+        .purchase-txt span{
+            color: #E82C0C;
+        }
+        .purchase-txt button, .purchase-txt button:hover{
+            font-weight: normal;
+            cursor: pointer;
+            background-color: #E82C0C;
+            border-color: #fff;
+            width: 200px;
+            height: 50px;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            color: #fff;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-size:  24px;
+            text-shadow: 1px 1px 0px #000;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#EFEFEF"); /* for IE */
+            background: -webkit-gradient(linear, left top, left bottom, from(#FF775F), to(#E82C0C)); /* for webkit browsers */
+            background: -moz-linear-gradient(top,  #fff,  #EFEFEF); /* for firefox 3.6+ */
+        }
     </style>
-    <div style="float: right; margin-top: 20px; margin-bottom: 20px; margin-right: 0px;">
-        <h2 style="float: left;" class="wrap"><a style="background-color: green !important; color: white !important; text-decoration: underline;" class="add-new-h2" target="_blank" href="http://crosstec.de/en/wordpress-forms-download.html">Remove field limits, messages and get more features!</a></h2>
-        <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=recordmanagement">'.BFText::_('COM_BREEZINGFORMS_WP_RECORDS').'</a></h2>
-        <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=manageforms">'.BFText::_('COM_BREEZINGFORMS_WP_FORMS').'</a></h2>
-        <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=managescripts">'.BFText::_('COM_BREEZINGFORMS_WP_SCRIPTS').'</a></h2>
-        <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=managepieces">'.BFText::_('COM_BREEZINGFORMS_WP_PIECES').'</a></h2>
-        <h2 style="float: left" class="wrap"><a class="add-new-h2" href="admin.php?page=breezingforms&act=configuration">'.BFText::_('COM_BREEZINGFORMS_WP_CONFIGURATION').'</a></h2>
-        <h2 style="float: left" class="wrap"><a class="add-new-h2" target="_blank" href="http://crosstec.de/en/support/breezingforms-documentation.html">Docs</a></h2>
-        <h2 style="float: left" class="wrap"><a class="add-new-h2" target="_blank" href="http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html">Forum</a></h2>
+    <div class="wrap">
+    <p class="purchase-txt">
+    Purchase a license for BreezingForms and gain access to unlimited fields, more features, updates, no messages and professional support.
+    <br/>Starting for as little as <span>$20 USD</span>.
+    <br/>
+    <button onclick="location.href=\'http://crosstec.de/en/wordpress/wordpress-forms-download.html\'";>Purchase</button>
+    </p>
+    <div id="'.$active_icon32.'" class="icon32"></div>
+    <h2>BreezingForms'.$active_text.'</h2>
+    <p></p>
+    <div id="bf-toolbar">
+        <ul id="bf-toolbar-links">
+        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-records"></div><a class="'.($active_managerecs ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=recordmanagement">'.BFText::_('COM_BREEZINGFORMS_WP_RECORDS').'</a></li>
+        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-forms"></div><a class="'.($active_forms ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=manageforms">'.BFText::_('COM_BREEZINGFORMS_WP_FORMS').'</a></li>
+        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-scripts"></div><a class="'.($active_scripts ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=managescripts">'.BFText::_('COM_BREEZINGFORMS_WP_SCRIPTS').'</a></li>
+        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-pieces"></div><a class="'.($active_pieces ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=managepieces">'.BFText::_('COM_BREEZINGFORMS_WP_PIECES').'</a></li>
+        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-config"></div><a class="'.($active_config ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=configuration">'.BFText::_('COM_BREEZINGFORMS_WP_CONFIGURATION').'</a></li>
+        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-docs"></div><a href="http://crosstec.de">Docs &amp; Support</a></li>
+        </ul>
     </div>
-    <div style="clear: both;"></div>';
+    <div style="clear:both;"></div>
+    <p></p>';
     }
 }
 
@@ -591,6 +763,8 @@ switch($act) {
 		require_once($ff_admpath.'/admin/recordmanagement.php');
 		break;
 } // switch
+
+echo "</div>"; // wrap end
 
 // some general purpose functions for admin
 

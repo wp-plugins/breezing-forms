@@ -55,45 +55,50 @@ class HTML_facileFormsPiece
 		<div id="overDiv" style="position:absolute; visibility:hidden; z-index:10000;"></div>
 		<script type="text/javascript" src="<?php echo $ff_mossite; ?>/components/com_breezingforms/libraries/js/overlib_mini.js"></script>
 		<form action="admin.php?page=breezingforms" method="post" name="adminForm" id="adminForm" class="adminForm">
-		<table cellpadding="4" cellspacing="1" border="0" class="adminform" style="width:100px;">
-			<tr><td colspan="4" class="title"><strong><?php echo $action; ?></strong></td></tr>
+		<div style="float:right">
+                <button class="button-primary" onclick="submitbutton('save');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?></button>
+                <button class="button-secondary" onclick="submitbutton('cancel');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?></button>
+                </div>
+                <div style="clear:both;"></div>
+                <p></p>
+                <table cellpadding="4" cellspacing="1" border="0" class="adminform" style="width:100%;">
 			<tr>
 				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_TITLE'); ?>:</td>
-				<td nowrap>
-					<input type="text" size="50" maxlength="50" name="title" value="<?php echo $row->title; ?>" class="inputbox"/>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_TITLE'); ?>:</td>
+				<td>
+					<input type="text" style="width:100%;" maxlength="50" name="title" value="<?php echo $row->title; ?>" class="inputbox"/>
 
 				</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_PUBLISHED'); ?>:</td>
-				<td nowrap><?php echo JHTML::_('select.booleanlist', "published", "", $row->published); ?></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_PUBLISHED'); ?>:</td>
+				<td><?php echo JHTML::_('select.booleanlist', "published", "", $row->published); ?></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_PACKAGE'); ?>:</td>
-				<td nowrap>
-					<input type="text" size="30" maxlength="30" id="package" name="package" value="<?php echo $row->package; ?>" class="inputbox"/>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_PACKAGE'); ?>:</td>
+				<td>
+					<input type="text" style="width:100%;" maxlength="30" id="package" name="package" value="<?php echo $row->package; ?>" class="inputbox"/>
 				</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_NAME'); ?>:</td>
-				<td nowrap>
-					<input type="text" size="30" maxlength="30" id="name" name="name" value="<?php echo $row->name; ?>" class="inputbox"/>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_NAME'); ?>:</td>
+				<td>
+					<input type="text" style="width:100%;" maxlength="30" id="name" name="name" value="<?php echo $row->name; ?>" class="inputbox"/>
 
 				</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_TYPE'); ?>:</td>
-				<td nowrap>
-					<select id="type" name="type" class="inputbox" size="1">
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_TYPE'); ?>:</td>
+				<td>
+					<select style="width:100%;" id="type" name="type" class="inputbox" size="1">
 <?php
 					for ($t = 0; $t < count($typelist); $t++) {
 						$tl = $typelist[$t];
@@ -108,13 +113,13 @@ class HTML_facileFormsPiece
 			</tr>
 			<tr>
 				<td></td>
-				<td nowrap colspan="2">
+				<td colspan="2">
 					<?php echo BFText::_('COM_BREEZINGFORMS_PIECES_DESCRIPTION'); ?>:
 					<a href="#" onClick="textAreaResize('description',<?php echo $ff_config->areasmall; ?>);">[<?php echo $ff_config->areasmall; ?>]</a>
 					<a href="#" onClick="textAreaResize('description',<?php echo $ff_config->areamedium; ?>);">[<?php echo $ff_config->areamedium; ?>]</a>
 					<a href="#" onClick="textAreaResize('description',<?php echo $ff_config->arealarge; ?>);">[<?php echo $ff_config->arealarge; ?>]</a>
 					<br/>
-					<textarea wrap="off" name="description" style="width:750px;" rows="<?php echo $ff_config->areasmall; ?>" class="inputbox"><?php echo $row->description; ?></textarea>
+					<textarea wrap="off" name="description" style="width:100%;" rows="<?php echo $ff_config->areasmall; ?>" class="inputbox"><?php echo $row->description; ?></textarea>
 				</td>
 				<td></td>
 			</tr>
@@ -128,21 +133,18 @@ class HTML_facileFormsPiece
 				</td>
 				<td></td>
 			</tr>
-			<tr>
-				<td></td>
-				<td nowrap colspan="2" style="text-align:right">
-					<input onclick="submitbutton('save');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?>"/>
-					&nbsp;&nbsp;
-                                        <input onclick="submitbutton('cancel');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?>"/>
-				</td>
-				<td></td>
-			</tr>
 		</table>
 		<input type="hidden" name="pkg" value="<?php echo $pkg; ?>" />
 		<input type="hidden" name="id" value="<?php echo $row->id; ?>" />
 		<input type="hidden" name="option" value="<?php echo $option; ?>" />
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="act" value="managepieces" />
+                
+                <div style="float:right">
+                <button class="button-primary" onclick="submitbutton('save');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?></button>
+                <button class="button-secondary" onclick="submitbutton('cancel');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?></button>
+                </div>
+                <div style="clear:both;"></div>
 		</form>
 <?php
 	} // edit
@@ -210,14 +212,9 @@ class HTML_facileFormsPiece
 			//-->
 		</script>
 		<form action="admin.php?page=breezingforms" method="post" name="adminForm">
-		<table cellpadding="4" cellspacing="1" border="0">
+		<table cellpadding="4" cellspacing="1" border="0" width="100%">
 			<tr>
-				<td width="50%" nowrap>
-					<table class="adminheading">
-						<tr><td><strong><?php echo BFText::_('COM_BREEZINGFORMS_PIECES_MANAGEPIECES'); ?></strong></td></tr>
-					</table>
-				</td>
-				<td nowrap>
+				<td>
 					<?php echo BFText::_('COM_BREEZINGFORMS_PIECES_PACKAGE'); ?>:
 					<select id="pkgsel" name="pkgsel" class="inputbox" size="1" onchange="submitbutton('');">
 <?php
@@ -229,8 +226,8 @@ class HTML_facileFormsPiece
 ?>
 					</select>
 				</td>
-				<td align="right" width="50%" nowrap>
-                                    <button onclick="submitbutton('new')" class="button">
+				<td align="right" width="50%">
+                                    <button onclick="submitbutton('new')" class="button-primary">
                                     <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_NEW');?>
                                     </button>
 
@@ -249,16 +246,10 @@ class HTML_facileFormsPiece
                                     <button onclick="submitbutton('remove')" class="button">
                                     <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_DELETE');?>
                                     </button>
-<?php
-		JToolBarHelper::custom('new',       'new.png',       'new_f2.png',       BFText::_('COM_BREEZINGFORMS_TOOLBAR_NEW'),       false);
-		JToolBarHelper::custom('copy',      'copy.png',      'copy_f2.png',      BFText::_('COM_BREEZINGFORMS_TOOLBAR_COPY'),      false);
-		JToolBarHelper::custom('publish',   'publish.png',   'publish_f2.png',   BFText::_('COM_BREEZINGFORMS_TOOLBAR_PUBLISH'),   false);
-		JToolBarHelper::custom('unpublish', 'unpublish.png', 'unpublish_f2.png', BFText::_('COM_BREEZINGFORMS_TOOLBAR_UNPUBLISH'), false);
-		JToolBarHelper::custom('remove',    'delete.png',    'delete_f2.png',    BFText::_('COM_BREEZINGFORMS_TOOLBAR_DELETE'),    false);
-?>
 				</td>
 			</tr>
 		</table>
+                    <p></p>
 		<table class="widefat">
                     <thead>
 			<tr>

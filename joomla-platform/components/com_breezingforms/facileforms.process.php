@@ -3722,8 +3722,10 @@ class HTML_facileFormsProcessor {
             
             $quickMode->render();
             
-            echo $this->quickmode->fetchFoot(JFactory::getDocument()->getHeadData());
-            $this->quickmode->renderScriptsAndCss();
+            if(!$this->isMobile){
+                echo $this->quickmode->fetchFoot(JFactory::getDocument()->getHeadData());
+                $this->quickmode->renderScriptsAndCss();
+            }
             
         } else { // case if forms done with the easy mode
             // always load calendar
@@ -5323,69 +5325,7 @@ class HTML_facileFormsProcessor {
     
     function sendSalesforceNotification() {
         
-        if($this->formrow->salesforce_enabled != 1){
-            return;
-        }
         
-        define("BF_SOAP_CLIENT_BASEDIR", JPATH_SITE . DS . 'administrator' . DS . 'components' . DS . 'com_breezingforms' . DS . 'libraries' . DS . 'salesforce');
-        
-        if(!class_exists('SforcePartnerClient')){
-            require_once (BF_SOAP_CLIENT_BASEDIR . '/SforcePartnerClient.php');
-        }
-        if(!class_exists('SforceHeaderOptions')){
-            require_once (BF_SOAP_CLIENT_BASEDIR . '/SforceHeaderOptions.php');
-        }
-
-        try {
-            
-            $mySforceConnection = new SforcePartnerClient();
-            $trunc = new AllowFieldTruncationHeader(true);
-            $mySforceConnection->setAllowFieldTruncationHeader($trunc);
-            $mySoapClient = $mySforceConnection->createConnection(BF_SOAP_CLIENT_BASEDIR . '/partner.wsdl.xml');
-            $mylogin = $mySforceConnection->login($this->formrow->salesforce_username, $this->formrow->salesforce_password.$this->formrow->salesforce_token);
-            $sobjects = $mySforceConnection->describeSObject($this->formrow->salesforce_type)->fields;
-            
-            $fields = array();
-            $this->formrow->salesforce_fields = explode(',', $this->formrow->salesforce_fields);
-            
-            foreach($this->formrow->salesforce_fields As $sfields){
-                foreach($this->sfdata As $savedata){
-                    $sfield = explode('::',$sfields);
-                    if( $sfield[0] == $savedata[1] ){
-                        foreach($sobjects As $sobject){
-                            // forcing some primitives
-                            if($sobject->name == $sfield[1]){
-                              switch($sobject->type){
-                                  case 'boolean':
-                                      $savedata[4] = ( $savedata[4] ? 1 : 0 );
-                                      break;
-                                  case 'int':
-                                      $savedata[4] = intval($savedata[4]);
-                                      break;
-                                  case 'double':
-                                      $savedata[4] = doubleval($savedata[4]);
-                                      break;
-                              }
-                              break;  
-                            }
-                        }
-                        $fields[$sfield[1]] = '<![CDATA['.$savedata[4].']]>'; // bug in SF Toolkit appeareantly requires CDATA
-                        break;
-                    }
-                }
-            }
-
-            $sObject = new SObject();
-            $sObject->fields = $fields;
-            $sObject->type = $this->formrow->salesforce_type;
-
-            $createResponse = $mySforceConnection->create(array($sObject));
-            
-        } catch (Exception $e) {
-            echo 'Salesforce Exception: ' . $e->getMessage();
-            session_write_close();
-            exit;
-        }
     }
 
     function sendMailChimpNotification() {
@@ -5705,25 +5645,11 @@ class HTML_facileFormsProcessor {
                             if ($row->logging == 1) {
                                 // db and attachment
 
-                                // DROPBOX SUPPORT
-                                if( $this->formrow->dropbox_email && $this->formrow->dropbox_password ){
-                                    if(!class_exists('DropboxUploader')){
-                                        require_once(JPATH_SITE . DS . 'administrator' . DS . 'components' . DS . 'com_breezingforms' . DS . 'libraries' . DS . 'dropbox' . DS . 'dropbox.php');
-                                    }
-
-                                    try{
-                                        $dropbox = new DropboxUploader($this->formrow->dropbox_email, $this->formrow->dropbox_password); 
-                                    }catch(Exception $e){}
-                                }
+                                
                                 
                                 foreach($serverPaths As $serverPath){
                                     
-                                    // DROPBOX
-                                    if( $this->formrow->dropbox_email && $this->formrow->dropbox_password ){
-                                        try{
-                                            $dropbox->upload($serverPath, '/'.($this->formrow->dropbox_folder != '' ? $this->formrow->dropbox_folder : $this->formrow->name)); 
-                                        } catch(Exception $e){}
-                                    }
+                                    
                                     
                                     // CONTENTBUILDER: to keep the relative path with prefix
                                     $savedata_path = $serverPath;
@@ -6047,8 +5973,8 @@ class HTML_facileFormsProcessor {
                             if ($this->formrow->mb_emailntf > 0 && ( $cbEmailNotifications || $cbEmailUpdateNotifications )) { // CONTENTBUILDER
                                 $this->sendMailbackNotification();
                             }
+                            
                             $this->sendMailChimpNotification();
-                            $this->sendSalesforceNotification();
                             $tickets = JFactory::getSession()->get('bfFlashUploadTickets', array());
                             mt_srand();
                             if (isset($tickets[JRequest::getVar('bfFlashUploadTicket', mt_rand(0, mt_getrandmax()))])) {

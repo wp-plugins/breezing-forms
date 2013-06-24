@@ -13,137 +13,35 @@ JToolBarHelper::title('<img src="'. JURI::root() . 'administrator/components/com
 jimport('joomla.version');
 $version = new JVersion();
 
-if(version_compare($version->getShortVersion(), '1.6', '>=') && JRequest::getVar('act','') == 'configuration'){
-    JToolBarHelper::preferences('com_breezingforms');
-}
-
 class HTML_facileFormsConf
 {
 	function edit($option, $caller, $pkg, $downloadfile='')
 	{
 		global $ff_mossite, $ff_config, $ff_admsite, $ff_admicon, $ff_version;
 ?>
-		<div id="overDiv" style="position:absolute; visibility:hidden; z-index:10000;"></div>
-		<script type="text/javascript" src="<?php echo $ff_mossite; ?>/components/com_breezingforms/libraries/js/overlib_mini.js"></script>
 		<form action="admin.php?page=breezingforms" method="post" name="adminForm">
-		<table cellpadding="4" cellspacing="1" border="0" class="adminform" style="width:300px;">
-			<tr><td colspan="6" class="title" ><strong>BreezingForms <?php echo $ff_version.' - '.BFText::_('COM_BREEZINGFORMS_CONFIG'); ?></strong></td></tr>
-			<!--
-                        <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_USELIVESITE'); ?></td>
-				<td nowrap colspan="3">
-<?php
-					echo JHTML::_('select.booleanlist', "livesite", "", $ff_config->livesite);
-					echo bf_ToolTip(BFText::_('COM_BREEZINGFORMS_CONFIG_TIPLIVESITE'));
-?>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_PREVIEWFRAME'); ?></td>
-				<td nowrap colspan="3">
-<?php
-					echo JHTML::_('select.booleanlist', "stylesheet", "", $ff_config->stylesheet);
-					echo bf_ToolTip(BFText::_('COM_BREEZINGFORMS_CONFIG_TIPPREVIEW'));
-?>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_GRIDSIZE'); ?></td>
-				<td nowrap colspan="3">
-					<input size="4" maxlength="4" name="gridsize" value="<?php echo $ff_config->gridsize; ?>"/>
-					&nbsp;&nbsp;<?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_COLOR'); ?> 1 <input size="7" maxlength="20" name="gridcolor1" value="<?php echo $ff_config->gridcolor1; ?>"/>
-					&nbsp;&nbsp;<?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_COLOR'); ?> 2 <input size="7" maxlength="20" name="gridcolor2" value="<?php echo $ff_config->gridcolor2; ?>"/>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_USEWYSIWYG'); ?></td>
-				<td nowrap colspan="3">
-<?php
-					echo JHTML::_('select.booleanlist', "wysiwyg", "", $ff_config->wysiwyg);
-					echo bf_ToolTip(BFText::_('COM_BREEZINGFORMS_CONFIG_TIPWYSIWYG'));
-?>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_COMPRESS'); ?></td>
-				<td nowrap colspan="3">
-<?php
-					echo JHTML::_('select.booleanlist', "compress", "", $ff_config->compress);
-					echo bf_ToolTip(BFText::_('COM_BREEZINGFORMS_CONFIG_TIPCOMPRESS'));
-?>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_GETPROVIDER'); ?></td>
-				<td nowrap colspan="3">
-<?php
-					echo JHTML::_('select.booleanlist', "getprovider", "", $ff_config->getprovider);
-					echo bf_ToolTip(BFText::_('COM_BREEZINGFORMS_CONFIG_TIPPROVIDER'));
-?>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMALL'); ?></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_MEDIUM'); ?></td>
-				<td nowrap width="100%"><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_LARGE'); ?></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_TEXTAREA'); ?></td>
-				<td nowrap><input size="4" maxlength="4" name="areasmall" value="<?php echo $ff_config->areasmall; ?>"/></td>
-				<td nowrap><input size="4" maxlength="4" name="areamedium" value="<?php echo $ff_config->areamedium; ?>"/></td>
-				<td nowrap><input size="4" maxlength="4" name="arealarge" value="<?php echo $ff_config->arealarge; ?>"/></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_LIMITDESC'); ?></td>
-				<td nowrap colspan="3"><input size="6" maxlength="6" name="limitdesc" value="<?php echo $ff_config->limitdesc; ?>"/> <?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CHARS'); ?></td>
-				<td></td>
-			</tr>
-                        -->
+		<div style="float:right;">
+                <button class="button-primary" onclick="submitbutton('save');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'); ?></button>
+                <button class="button-secondary" onclick="submitbutton('instpackage');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_PKGINSTLR'); ?></button>
+                <button class="button-secondary" onclick="submitbutton('makepackage');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_CREAPKG'); ?></button>
+                </div>
+                <div style="clear:both;"></div>
+                <p></p>
+                <table cellpadding="4" cellspacing="1" border="0" class="adminform" style="width:100%;">
 			
-                        <!--
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_FFIMAGES'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="images" value="<?php echo $ff_config->images; ?>"/></td>
-				<td></td>
-			</tr>
-                        -->
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_FFUPLOADS'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="uploads" value="<?php echo $ff_config->uploads; ?>"/></td>
-				<td></td>
-			</tr>
+                    <tr>
+                        <td colspan="3"><legend>Basic Email Settings</legend></td>
+                    </tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_DEFAULTEMAIL'); ?></td>
-				<td nowrap colspan="3"><input size="70" name="emailadr" value="<?php echo $ff_config->emailadr; ?>"/></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_DEFAULTEMAIL'); ?></td>
+				<td colspan="3"><input type="text" style="width:100%;" name="emailadr" value="<?php echo $ff_config->emailadr; ?>"/></td>
 				<td><input type="hidden" name="images" value="<?php echo $ff_config->images; ?>"/></td>
 			</tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_MAILER'); ?></td>
-				<td nowrap colspan="3">
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_MAILER'); ?></td>
+				<td colspan="3">
                                     <input type="radio" name="mailer" value="smtp"<?php echo $ff_config->mailer == 'smtp' ? ' checked="checked"' : ''; ?>/> SMTP
                                     <input type="radio" name="mailer" value="mail"<?php echo $ff_config->mailer == 'mail' ? ' checked="checked"' : ''; ?>/> PHP
                                     <input type="radio" name="mailer" value="sendmail"<?php echo $ff_config->mailer == 'sendmail' ? ' checked="checked"' : ''; ?>/> Sendmail
@@ -152,30 +50,30 @@ class HTML_facileFormsConf
 			</tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SENDMAIL'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="sendmail" value="<?php echo $ff_config->sendmail; ?>"/></td>
-				<td></td>
-			</tr>
-                        
-                        <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_MAILFROM'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="mailfrom" value="<?php echo $ff_config->mailfrom; ?>"/></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SENDMAIL'); ?></td>
+				<td colspan="3"><input type="text" style="width:100%;" maxlength="255" name="sendmail" value="<?php echo $ff_config->sendmail; ?>"/></td>
 				<td></td>
 			</tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_FROMNAME'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="fromname" value="<?php echo $ff_config->fromname; ?>"/></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_MAILFROM'); ?> <em>(email address)</em></td>
+				<td colspan="3"><input type="text" style="width:100%;" maxlength="255" name="mailfrom" value="<?php echo $ff_config->mailfrom; ?>"/></td>
 				<td></td>
 			</tr>
                         
                         <tr>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_FROMNAME'); ?></td>
+				<td colspan="3"><input type="text" style="width:100%;" maxlength="255" name="fromname" value="<?php echo $ff_config->fromname; ?>"/></td>
 				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPAUTH'); ?></td>
-				<td nowrap colspan="3">
+			</tr>
+                        
+                        <tr>
+                        <td colspan="3"><legend>Advanced Email Settings</legend></td>
+                        </tr>
+                        
+                        <tr>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPAUTH'); ?></td>
+				<td colspan="3">
                                     <input type="radio" name="smtpauth" value="1"<?php echo $ff_config->smtpauth == 1 ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_YES'); ?>
                                     <input type="radio" name="smtpauth" value="0"<?php echo $ff_config->smtpauth == 0 ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_NO'); ?>
                                     
@@ -184,9 +82,8 @@ class HTML_facileFormsConf
 			</tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPSECURE'); ?></td>
-				<td nowrap colspan="3">
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPSECURE'); ?></td>
+				<td colspan="3">
                                     
                                     <input type="radio" name="smtpsecure" value="none"<?php echo $ff_config->smtpsecure == 'none' ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_NONE'); ?>
                                     <input type="radio" name="smtpsecure" value="ssl"<?php echo $ff_config->smtpsecure == 'ssl' ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SSL'); ?>
@@ -196,73 +93,75 @@ class HTML_facileFormsConf
 			</tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPPORT'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="smtpport" value="<?php echo $ff_config->smtpport; ?>"/></td>
-				<td></td>
-			</tr>
-                        
-                        <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPUSER'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="smtpuser" value="<?php echo $ff_config->smtpuser; ?>"/></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPPORT'); ?></td>
+				<td colspan="3"><input type="text" style="width:100%;" maxlength="255" name="smtpport" value="<?php echo $ff_config->smtpport; ?>"/></td>
 				<td></td>
 			</tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPPASS'); ?></td>
-				<td nowrap colspan="3"><input type="password" size="70" maxlength="255" name="smtppass" value="<?php echo $ff_config->smtppass; ?>"/></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPUSER'); ?></td>
+				<td colspan="3"><input type="text" style="width:100%;" maxlength="255" name="smtpuser" value="<?php echo $ff_config->smtpuser; ?>"/></td>
 				<td></td>
 			</tr>
                         
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPHOST'); ?></td>
-				<td nowrap colspan="3"><input size="70" maxlength="255" name="smtphost" value="<?php echo $ff_config->smtphost; ?>"/></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPPASS'); ?></td>
+				<td colspan="3"><input type="password" style="width:100%" maxlength="255" name="smtppass" value="<?php echo $ff_config->smtppass; ?>"/></td>
 				<td></td>
 			</tr>
                         
+                        <tr>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_SMTPHOST'); ?></td>
+				<td colspan="3"><input type="text" style="width:100%;" maxlength="255" name="smtphost" value="<?php echo $ff_config->smtphost; ?>"/></td>
+				<td></td>
+			</tr>
                         
+                        <tr>
+                        <td colspan="3"><legend>CSV Export Settings</legend></td>
+                        </tr>
                         
                          <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVDELIMITER'); ?></td>
-				<td nowrap colspan="3"><input size="1" maxlength="1" name="csvdelimiter" value="<?php echo htmlentities(stripslashes($ff_config->csvdelimiter), ENT_QUOTES, 'UTF-8'); ?>"/></td>
-				<td></td>
-			</tr>
-                        <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTE'); ?></td>
-				<td nowrap colspan="3"><input size="1" maxlength="1" name="csvquote" value="<?php echo htmlentities(stripslashes($ff_config->csvquote), ENT_QUOTES, 'UTF-8'); ?>"/></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVDELIMITER'); ?></td>
+				<td colspan="3"><input type="text" size="1" maxlength="1" name="csvdelimiter" value="<?php echo htmlentities(stripslashes($ff_config->csvdelimiter), ENT_QUOTES, 'UTF-8'); ?>"/></td>
 				<td></td>
 			</tr>
                         <tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTENEWLINE'); ?></td>
-                                <td nowrap colspan="3"><input type="radio" name="cellnewline" value="0"<?php echo $ff_config->cellnewline == 0 ? ' checked="checked"' : '' ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTENEWLINE_REGULAR'); ?> <input type="radio" name="cellnewline" value="1"<?php echo $ff_config->cellnewline != 0 ? ' checked="checked"' : '' ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTENEWLINE_QUOTED'); ?></td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap colspan="4" style="text-align:right"><br/>
-
-                                        <input onclick="submitbutton('save');" type="submit" value="<?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'); ?>"/>
-					&nbsp;&nbsp;
-                                        <input onclick="submitbutton('instpackage');" type="submit" value="<?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_PKGINSTLR'); ?>"/>
-                                        &nbsp;&nbsp;
-                                        <input onclick="submitbutton('makepackage');" type="submit" value="<?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_CREAPKG'); ?>"/>
-					 
-					</a>
-				</td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTE'); ?></td>
+				<td colspan="3"><input type="text" size="1" maxlength="1" name="csvquote" value="<?php echo htmlentities(stripslashes($ff_config->csvquote), ENT_QUOTES, 'UTF-8'); ?>"/></td>
 				<td></td>
 			</tr>
+                        <tr>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTENEWLINE'); ?></td>
+                                <td colspan="3"><input type="radio" name="cellnewline" value="0"<?php echo $ff_config->cellnewline == 0 ? ' checked="checked"' : '' ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTENEWLINE_REGULAR'); ?> <input type="radio" name="cellnewline" value="1"<?php echo $ff_config->cellnewline != 0 ? ' checked="checked"' : '' ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_CSVQUOTENEWLINE_QUOTED'); ?></td>
+				<td></td>
+			</tr>
+                        
+                        <tr>
+                        <td colspan="3"><legend>Misc</legend></td>
+                        </tr>
+                        
+                        <tr>
+				<td width="25%"><?php echo BFText::_('COM_BREEZINGFORMS_CONFIG_FFUPLOADS'); ?></td>
+				<td colspan="3"><input type="text" style="width:100%;" maxlength="255" name="uploads" value="<?php echo $ff_config->uploads; ?>"/></td>
+				<td></td>
+			</tr>
+                        
+                        <tr><td colspan="6">Version: BreezingForms <?php echo $ff_version; ?></td></tr>
+			
 		</table>
 		<input type="hidden" name="option" value="<?php echo $option; ?>" />
 		<input type="hidden" name="act" value="configuration" />
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="caller_url" value="<?php echo htmlspecialchars($caller, ENT_QUOTES); ?>" />
 		<input type="hidden" name="pkg" value="<?php echo $pkg; ?>" />
+                <p></p>
+                <div style="float:right;">
+                <button class="button-primary" onclick="submitbutton('save');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'); ?></button>
+                <button class="button-secondary" onclick="submitbutton('instpackage');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_PKGINSTLR'); ?></button>
+                <button class="button-secondary" onclick="submitbutton('makepackage');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_CREAPKG'); ?></button>
+                </div>
+                <div style="clear:both;"></div>
+                
 		</form>
 <?php
 		if ($downloadfile != '') {

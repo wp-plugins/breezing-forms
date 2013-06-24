@@ -520,7 +520,7 @@ class Securimage {
             if (trim($this->session_name) != '') {
                 session_name($this->session_name); // set session name if provided
             }
-            session_start();
+            @session_start();
         }
 
         // Calculated value

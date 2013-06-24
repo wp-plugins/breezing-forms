@@ -13,11 +13,7 @@ JToolBarHelper::title('<img src="'. JURI::root() . 'administrator/components/com
 jimport('joomla.version');
 $version = new JVersion();
 
-if(version_compare($version->getShortVersion(), '1.6', '>=')){
 
-echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL.'/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/admin/bluestork.fix.css" type="text/css" />';
-
-}
 
 class HTML_facileFormsForm
 {
@@ -26,27 +22,7 @@ class HTML_facileFormsForm
 		global $ff_mossite, $ff_admsite, $ff_config;
 		$action = $row->id ? BFText::_('COM_BREEZINGFORMS_FORMS_EDIT') : BFText::_('COM_BREEZINGFORMS_FORMS_ADD');
 ?>
-                <style type="text/css">
-                    #wphead { display:none !important; }
-                    #screen-meta { display:none !important; }
-                    #wpadminbar { display:none !important; }
-                    #adminmenu { display:none !important; }
-                    #adminmenuback { display:none !important; }
-                    #adminmenushadow { display:none !important; }
-                    #footer { display:none !important; }
-                    #footer { display:none !important; }
-                    #wpcontent, #footer {
-                        margin-left: 0px !important;
-                    }
-                    html.wp-toolbar {
-                        -moz-box-sizing: border-box;
-                        padding-top: 0px !important;
-                    }
-                    #wpbody {
-                        clear: both;
-                        margin-left: 0px !important;
-                    }
-                </style>
+                
 		<script type="text/javascript" src="<?php echo WP_PLUGIN_URL;?>/<?php echo BF_FOLDER;?>/joomla-platform/administrator/components/com_breezingforms/admin/areautils.js"></script>
 		<script type="text/javascript">
 		<!--
@@ -365,13 +341,16 @@ class HTML_facileFormsForm
 		} // onload
 		//-->
 		</script>
-		<div id="overDiv" style="position:absolute; visibility:hidden; z-index:10000;"></div>
-		<form action="admin.php?page=breezingforms&format=html" method="post" name="adminForm" id="adminForm" class="adminForm">
-		<table cellpadding="4" cellspacing="1" border="0" class="adminform" style="width:780px;">
-			<tr><th colspan="3" class="title">BreezingForms - <?php echo $action; ?></th></tr>
+		<div style="float:right;">
+                <button class="button-primary" onclick="bf_submitbutton('save');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?></button>
+		<button class="button-secondary" onclick="location.href='admin.php?page=breezingforms&format=html&act=quickmode&formName=<?php echo $row->name; ?>&form=<?php echo $row->id; ?>'"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?></button>
+                </div>
+                <form action="admin.php?page=breezingforms&format=html" method="post" name="adminForm" id="adminForm" class="adminForm">
+		<div style="clear:both;"></div>
+                <table border="0" style="width:100%;">
 			<tr>
 				<td></td>
-				<td width="100%">
+				<td>
 <?php
 		$tabs = new BFTabs(0);
 		$tabs->startPane('editPane');
@@ -379,61 +358,37 @@ class HTML_facileFormsForm
 ?>
 			<table class="adminform">
 			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_TITLE'); ?>:</td>
-				<td nowrap>
+				<td width="15%"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_TITLE'); ?>:</td>
+				<td>
 					<input type="text" size="50" maxlength="50" name="title" value="<?php echo $row->title; ?>" class="inputbox"/>
 
 				</td>
-				<td></td>
+                                <td></td>
 			</tr>
 
 			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PACKAGE'); ?>:</td>
-				<td nowrap>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PACKAGE'); ?>:</td>
+				<td>
 					<input type="text" size="30" maxlength="30" id="package" name="package" value="<?php echo $row->package; ?>" class="inputbox"/>
 				</td>
-				<td></td>
+                                <td></td>
 			</tr>
 
 			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_NAME'); ?>:</td>
-				<td nowrap>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_NAME'); ?>:</td>
+				<td>
 					<input type="text" size="30" maxlength="30" name="name" value="<?php echo $row->name; ?>" class="inputbox"/>
 
 				</td>
-				<td></td>
-			</tr>
-			<!--
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_CLASSFOR'); ?> &lt;div&gt;:</td>
-				<td nowrap>
-					<input type="text" size="30" maxlength="30" name="class1" value="<?php echo $row->class1; ?>" class="inputbox"/>
-				</td>
-				<td></td>
+                                <td></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_CLASSFOR'); ?> &lt;form&gt;:</td>
-				<td nowrap>
-					<input type="text" size="30" maxlength="30" name="class2" value="<?php echo $row->class2; ?>" class="inputbox"/>
-				</td>
-				<td></td>
-			</tr>
-                        -->
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_ORDERING'); ?>:</td>
-				<td nowrap><?php echo $lists['ordering']; ?></td>
-				<td></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_ORDERING'); ?>:</td>
+				<td><?php echo $lists['ordering']; ?></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PUBLISHED'); ?>:</td>
-				<td nowrap><?php echo JHTML::_('select.booleanlist',  "published", "", $row->published); ?></td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PUBLISHED'); ?>:</td>
+				<td><?php echo JHTML::_('select.booleanlist',  "published", "", $row->published); ?></td>
 				<td>
                                     <input type="hidden" name="class1" value="<?php echo $row->class1; ?>"/>
                                     <input type="hidden" name="class2" value="<?php echo $row->class2; ?>"/>
@@ -444,54 +399,12 @@ class HTML_facileFormsForm
                                     <input type="hidden" name="height" value="<?php echo $row->height; ?>"/>
                                 </td>
 			</tr>
-                        <!--
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_RUNMODE'); ?>:</td>
-				<td nowrap>
-					<select name="runmode" size="1" class="inputbox">
-						<option value="0"<?php if ($row->runmode==0) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_ANY'); ?></option>
-						<option value="1"<?php if ($row->runmode==1) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_FRONTEND'); ?></option>
-						<option value="2"<?php if ($row->runmode==2) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_BACKEND'); ?></option>
-					</select>
-				</td>
-				<td>
-                                    
-                                </td>
-			</tr>
-                        
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_WIDTH'); ?>:</td>
-				<td nowrap>
-					<input size="6" maxlength="6" name="width" value="<?php echo $row->width; ?>" class="inputbox" /><select name="widthmode" size="1" onchange="dispprevwidth();" class="inputbox">
-						<option value="0"<?php if ($row->widthmode==0) echo ' selected="selected"'; ?>>px</option>
-						<option value="1"<?php if ($row->widthmode==1) echo ' selected="selected"'; ?>>%</option>
-					</select>
-				</td>
-				<td></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_HEIGHT'); ?>:</td>
-				<td nowrap>
-					<select name="heightmode" size="1" onchange="dispheight(this.value);" class="inputbox">
-						<option value="0"<?php if ($row->heightmode==0) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_FIXED'); ?></option>
-						<option value="1"<?php if ($row->heightmode==1) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_AUTO'); ?></option>
-						<option value="2"<?php if ($row->heightmode==2) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_AUTOMAX'); ?></option>
-					</select><span id="heightmargin"<?php if ($row->heightmode==0) echo ' style="display:none;"'; ?>>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo BFText::_('COM_BREEZINGFORMS_FORMS_BOTTOMMARGIN'); ?>:
-					</span><input size="6" maxlength="6" name="height" value="<?php echo $row->height; ?>" class="inputbox"/> px
-				</td>
-				<td></td>
-			</tr>
-                        -->
 <?php
 if($row->template_code == ''){
 ?>
 			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PREVMODE'); ?>:</td>
-				<td nowrap>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PREVMODE'); ?>:</td>
+				<td>
 					<select name="prevmode" size="1" onchange="dispprevwidth();" class="inputbox">
 						<option value="0"<?php if ($row->prevmode==0) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_NONE'); ?></option>
 						<option value="1"<?php if ($row->prevmode==1) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_BELOW'); ?></option>
@@ -507,9 +420,8 @@ if($row->template_code == ''){
 }
 ?>
 			<tr>
-				<td></td>
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_LOGTODB'); ?>:</td>
-				<td nowrap>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_LOGTODB'); ?>:</td>
+				<td>
 					<select name="dblog" size="1" class="inputbox">
 						<option value="0"<?php if ($row->dblog==0) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_NO'); ?></option>
 						<option value="1"<?php if ($row->dblog==1) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_NONEMPTY'); ?></option>
@@ -521,7 +433,6 @@ if($row->template_code == ''){
 			
 
                         <tr>
-				<td></td>
 				<td colspan="2">
 					<?php echo BFText::_('COM_BREEZINGFORMS_FORMS_DESCRIPTION'); ?>:
 					<a href="#" onClick="textAreaResize('description',<?php echo $ff_config->areasmall; ?>);">[<?php echo $ff_config->areasmall; ?>]</a>
@@ -543,7 +454,7 @@ if($row->template_code == ''){
                 <table class="adminform">
                 <tr>
 				
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_EMAILNOTIFY'); ?>:</td>
+				<td  width="15%"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_EMAILNOTIFY'); ?>:</td>
 				<td>
 					<select name="emailntf" size="1" onchange="dispemail(this.value);" class="inputbox">
 						<option value="0"<?php if ($row->emailntf==0) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_NO'); ?></option>
@@ -558,8 +469,8 @@ if($row->template_code == ''){
 				<td>
 					<table cellpadding="0" cellspacing="0" border="0">
 						<tr id="emailaddress"<?php if ($row->emailntf!=2) echo ' style="display:none;"'; ?>>
-							<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_EMAIL'); ?>:</td>
-							<td><input size="50" name="emailadr" value="<?php echo $row->emailadr; ?>" class="inputbox"/></td>
+							<td width="15%"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_EMAIL'); ?>:</td>
+							<td><input size="50" type="text" name="emailadr" value="<?php echo $row->emailadr; ?>" class="inputbox"/></td>
 						</tr>
 						<tr id="emaillogging"<?php if ($row->emailntf==0) echo ' style="display:none;"'; ?>>
 							<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_REPORT'); ?>:</td>
@@ -589,31 +500,31 @@ if($row->template_code == ''){
 			</tr>
                         <tr>
 				
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_ALT_MAILFROM'); ?>:</td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_ALT_MAILFROM'); ?>:</td>
 				<td>
-					<input name="alt_mailfrom"  value="<?php echo $row->alt_mailfrom; ?>" size="50"  class="inputbox"/>
+					<input type="text" name="alt_mailfrom"  value="<?php echo $row->alt_mailfrom; ?>" size="50"  class="inputbox"/>
 				</td>
 				<td></td>
 			</tr>
                         <tr>
 				
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_ALT_FROMNAME'); ?>:</td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_ALT_FROMNAME'); ?>:</td>
 				<td>
-					<input name="alt_fromname"  value="<?php echo $row->alt_fromname; ?>" size="50"  class="inputbox"/>
+					<input type="text" name="alt_fromname"  value="<?php echo $row->alt_fromname; ?>" size="50"  class="inputbox"/>
 				</td>
 				<td></td>
 			</tr>
 			<tr>
 				
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CUSTOM_MAIL_SUBJECT'); ?>:</td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CUSTOM_MAIL_SUBJECT'); ?>:</td>
 				<td>
-					<input name="custom_mail_subject"  value="<?php echo $row->custom_mail_subject; ?>" size="50"  class="inputbox"/>
+					<input type="text" name="custom_mail_subject"  value="<?php echo $row->custom_mail_subject; ?>" size="50"  class="inputbox"/>
 				</td>
 				<td></td>
 			</tr>
 
                         <tr>
-                            <td valign="top" nowrap><?php echo BFText::_('COM_BREEZINGFORMS_EDIT_EMAILS'); ?>:
+                            <td valign="top"><?php echo BFText::_('COM_BREEZINGFORMS_EDIT_EMAILS'); ?>:
                             <br/>
                             <br/>
                             <div style="height: 250px; overflow: auto;<?php echo $row->email_type == 0 ? ' display: none;' : '' ?>" id="email_custom_template_picker">
@@ -645,12 +556,12 @@ if($row->template_code == ''){
 ?>
                 <table class="adminform">
 			<tr>
-                            <td valign="top" nowrap><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_EMAILNOTIFY'); ?>:</td>
+                            <td valign="top" width="15%"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_EMAILNOTIFY'); ?>:</td>
 				
-				<td>
+				<td valign="top">
 					<table cellpadding="0" cellspacing="0" border="0">
 						<tr id="bf_emaillogging"<?php if ($row->mb_emailntf==0) echo ' style="display:none;"'; ?>>
-							<td><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_REPORT'); ?>:</td>
+							<td width="15%"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_REPORT'); ?>:</td>
 							<td>
 								<select name="mb_emaillog" size="1" class="inputbox">
 									<option value="0"<?php if ($row->mb_emaillog==0) echo ' selected="selected"'; ?>><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_HDRONLY'); ?></option>
@@ -677,31 +588,31 @@ if($row->template_code == ''){
 			</tr>
                         <tr>
 				
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_ALT_MAILFROM'); ?>:</td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_ALT_MAILFROM'); ?>:</td>
 				<td>
-					<input name="mb_alt_mailfrom"  value="<?php echo $row->mb_alt_mailfrom; ?>" size="50"  class="inputbox"/>
+					<input type="text" name="mb_alt_mailfrom"  value="<?php echo $row->mb_alt_mailfrom; ?>" size="50"  class="inputbox"/>
 				</td>
 				<td></td>
 			</tr>
                         <tr>
 				
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_ALT_FROMNAME'); ?>:</td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_ALT_FROMNAME'); ?>:</td>
 				<td>
-					<input name="mb_alt_fromname"  value="<?php echo $row->mb_alt_fromname; ?>" size="50"  class="inputbox"/>
+					<input type="text" name="mb_alt_fromname"  value="<?php echo $row->mb_alt_fromname; ?>" size="50"  class="inputbox"/>
 				</td>
 				<td></td>
 			</tr>
 			<tr>
 				
-				<td nowrap><?php echo BFText::_('COM_BREEZINGFORMS_CUSTOM_MAIL_SUBJECT'); ?>:</td>
+				<td><?php echo BFText::_('COM_BREEZINGFORMS_CUSTOM_MAIL_SUBJECT'); ?>:</td>
 				<td>
-					<input name="mb_custom_mail_subject"  value="<?php echo $row->mb_custom_mail_subject; ?>" size="50"  class="inputbox"/>
+					<input type="text" name="mb_custom_mail_subject"  value="<?php echo $row->mb_custom_mail_subject; ?>" size="50"  class="inputbox"/>
 				</td>
 				<td></td>
 			</tr>
 
                         <tr>
-                            <td valign="top" nowrap><?php echo BFText::_('COM_BREEZINGFORMS_EDIT_EMAILS'); ?>:
+                            <td valign="top"><?php echo BFText::_('COM_BREEZINGFORMS_EDIT_EMAILS'); ?>:
                             <br/>
                             <br/>
                             <div style="height: 250px; overflow: auto;<?php echo $row->mb_email_type == 0 ? ' display: none;' : '' ?>" id="mb_email_custom_template_picker">
@@ -739,41 +650,41 @@ if($row->template_code == ''){
 		$tabs->startTab('MailChimp®','tab_mailchimp');
 ?>
 
-                <table border="0" width="100%">
+                <table class="adminform" border="0" width="100%">
 
                                             <tr>
-                                                <td><?php echo BFText::_('COM_BREEZINGFORMS_API_KEY'); ?></td>
-                                                <td><input name="mailchimp_api_key"  value="<?php echo $row->mailchimp_api_key; ?>" size="50"  class="inputbox"/></td>
+                                                <td width="30%" valign="top"><?php echo BFText::_('COM_BREEZINGFORMS_API_KEY'); ?></td>
+                                                <td><input type="text" name="mailchimp_api_key"  value="<?php echo $row->mailchimp_api_key; ?>" size="50"  class="inputbox"/></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_LIST_ID'); ?></td>
-                                                <td><input name="mailchimp_list_id"  value="<?php echo $row->mailchimp_list_id; ?>" size="50"  class="inputbox"/></td>
+                                                <td><input type="text" name="mailchimp_list_id"  value="<?php echo $row->mailchimp_list_id; ?>" size="50"  class="inputbox"/></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_EMAIL_FIELD'); ?></td>
-                                                <td><input name="mailchimp_email_field"  value="<?php echo $row->mailchimp_email_field; ?>" size="50"  class="inputbox"/></td>
+                                                <td><input type="text" name="mailchimp_email_field"  value="<?php echo $row->mailchimp_email_field; ?>" size="50"  class="inputbox"/></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_CHECKBOX_FIELD'); ?></td>
-                                                <td><input name="mailchimp_checkbox_field"  value="<?php echo $row->mailchimp_checkbox_field; ?>" size="50"  class="inputbox"/></td>
+                                                <td><input type="text" name="mailchimp_checkbox_field"  value="<?php echo $row->mailchimp_checkbox_field; ?>" size="50"  class="inputbox"/></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_UNSUBSCRIBE_FIELD'); ?></td>
-                                                <td><input name="mailchimp_unsubscribe_field"  value="<?php echo $row->mailchimp_unsubscribe_field; ?>" size="50"  class="inputbox"/></td>
+                                                <td><input type="text" name="mailchimp_unsubscribe_field"  value="<?php echo $row->mailchimp_unsubscribe_field; ?>" size="50"  class="inputbox"/></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_TEXT_HTML_MOBILE_FIELD'); ?></td>
-                                                <td><input name="mailchimp_text_html_mobile_field"  value="<?php echo $row->mailchimp_text_html_mobile_field; ?>" size="50"  class="inputbox"/></td>
+                                                <td><input type="text" name="mailchimp_text_html_mobile_field"  value="<?php echo $row->mailchimp_text_html_mobile_field; ?>" size="50"  class="inputbox"/></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_MERGE_VARS'); ?></td>
-                                                <td><input name="mailchimp_mergevars"  value="<?php echo $row->mailchimp_mergevars; ?>" style="width:100%;"  class="inputbox"/></td>
+                                                <td><input type="text" name="mailchimp_mergevars"  value="<?php echo $row->mailchimp_mergevars; ?>" style="width:100%;"  class="inputbox"/></td>
                                             </tr>
 
                                             <tr>
@@ -789,65 +700,79 @@ if($row->template_code == ''){
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_DOUBLE_OPTIN'); ?></td>
-                                                <td><input type="radio" name="mailchimp_double_optin" class="inputbox"<?php echo $row->mailchimp_double_optin ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_double_optin"  class="inputbox"<?php echo !$row->mailchimp_double_optin ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_double_optin" class="inputbox"<?php echo $row->mailchimp_double_optin ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_double_optin"  class="inputbox"<?php echo !$row->mailchimp_double_optin ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_UPDATE_EXISTING'); ?></td>
-                                                <td><input type="radio" name="mailchimp_update_existing" class="inputbox"<?php echo $row->mailchimp_update_existing ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_update_existing"  class="inputbox"<?php echo !$row->mailchimp_update_existing ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_update_existing" class="inputbox"<?php echo $row->mailchimp_update_existing ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_update_existing"  class="inputbox"<?php echo !$row->mailchimp_update_existing ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_REPLACE_INTERESTS'); ?></td>
-                                                <td><input type="radio" name="mailchimp_replace_interests" class="inputbox"<?php echo $row->mailchimp_replace_interests ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_replace_interests"  class="inputbox"<?php echo !$row->mailchimp_replace_interests ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_replace_interests" class="inputbox"<?php echo $row->mailchimp_replace_interests ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_replace_interests"  class="inputbox"<?php echo !$row->mailchimp_replace_interests ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_SEND_WELCOME'); ?></td>
-                                                <td><input type="radio" name="mailchimp_send_welcome" class="inputbox"<?php echo $row->mailchimp_send_welcome ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_welcome"  class="inputbox"<?php echo !$row->mailchimp_send_welcome ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_send_welcome" class="inputbox"<?php echo $row->mailchimp_send_welcome ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_welcome"  class="inputbox"<?php echo !$row->mailchimp_send_welcome ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_UNSUBSCRIBE_DELETE_MEMBER'); ?></td>
-                                                <td><input type="radio" name="mailchimp_delete_member" class="inputbox"<?php echo $row->mailchimp_delete_member ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_delete_member"  class="inputbox"<?php echo !$row->mailchimp_delete_member ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_delete_member" class="inputbox"<?php echo $row->mailchimp_delete_member ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_delete_member"  class="inputbox"<?php echo !$row->mailchimp_delete_member ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_UNSUBSCRIBE_SEND_GOODBYE'); ?></td>
-                                                <td><input type="radio" name="mailchimp_send_goodbye" class="inputbox"<?php echo $row->mailchimp_send_goodbye ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_goodbye"  class="inputbox"<?php echo !$row->mailchimp_send_goodbye ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_send_goodbye" class="inputbox"<?php echo $row->mailchimp_send_goodbye ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_goodbye"  class="inputbox"<?php echo !$row->mailchimp_send_goodbye ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_UNSUBSCRIBE_SEND_NOTIFY'); ?></td>
-                                                <td><input type="radio" name="mailchimp_send_notify" class="inputbox"<?php echo $row->mailchimp_send_notify ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_notify"  class="inputbox"<?php echo !$row->mailchimp_send_notify ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_send_notify" class="inputbox"<?php echo $row->mailchimp_send_notify ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_notify"  class="inputbox"<?php echo !$row->mailchimp_send_notify ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                             <tr>
                                                 <td><?php echo BFText::_('COM_BREEZINGFORMS_SEND_ERRORS'); ?></td>
-                                                <td><input type="radio" name="mailchimp_send_errors" class="inputbox"<?php echo $row->mailchimp_send_errors ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_errors"  class="inputbox"<?php echo !$row->mailchimp_send_errors ? ' checked="checked"' : '';?> value="0"/><?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
+                                                <td><input type="radio" name="mailchimp_send_errors" class="inputbox"<?php echo $row->mailchimp_send_errors ? ' checked="checked"' : '';?> value="1"/> <?php echo BFText::_('COM_BREEZINGFORMS_YES');?> <input type="radio" name="mailchimp_send_errors"  class="inputbox"<?php echo !$row->mailchimp_send_errors ? ' checked="checked"' : '';?> value="0"/> <?php echo BFText::_('COM_BREEZINGFORMS_NO');?></td>
                                             </tr>
 
                                         </table>
 <?php
                 $tabs->endTab();
-		$tabs->startTab('Dropbox®','tab_dropbox');
-?>
-                <table border="0" width="100%">
-
-                    <tr><td><i>Dropbox is currently only available in the PRO version.</i></td><td></td></tr>
-                    
-                </table>
-<?php
-                $tabs->endTab();
 		$tabs->startTab('Salesforce®','tab_salesforce');
 ?>
+                 Salesforce® available in Pro version only
+<?php
+                $tabs->endTab();
+		$tabs->startTab('Dropbox®','tab_dropbox');
+?>
+                Dropbox® available in Pro version only
+<?php
+                $tabs->endTab();
+                /*
+		$tabs->startTab(BFText::_('COM_BREEZINGFORMS_POST_TEMPLATE'),'tab_posttemplate');
+?>
                 <table border="0" width="100%">
 
-                    <tr><td><i>Salesforce is currently only available in the PRO version.</i></td><td></td></tr>
+                   <tr>
+                        <td><?php echo BFText::_('COM_BREEZINGFORMS_POST_TEMPLATE'); ?></td>
+                        <td><?php
+                        global $wp_version;
+                        if(version_compare($wp_version, '3.3','<') && version_compare($wp_version, '3.0','>=')){
+                            echo @the_editor('', 'post_template');
+                        }else if(version_compare($wp_version, '3.3','>=')){
+                            echo wp_editor('', 'post_template');
+                        }else{
+                            echo '<textarea style="width: 100%; height: 300px;" name="post_template" id="post_template"></textarea>'."\n";
+                        }
+                        ?></td>
+                    </tr>
                     
                 </table>
 <?php
-                $tabs->endTab();
+		$tabs->endTab();*/
 		$tabs->startTab(BFText::_('COM_BREEZINGFORMS_FORMS_SCRIPTS'),'tab_scripts');
 		$subsize = $initsize = $ff_config->areasmall;
 		if ($row->script1cond==2)
@@ -858,7 +783,6 @@ if($row->template_code == ''){
 ?>
 			<table class="adminform">
 			<tr>
-				<td></td>
 				<td colspan="2">
 					<fieldset><legend><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_INITSCRIPT'); ?></legend>
 						<table cellpadding="4" cellspacing="1" border="0">
@@ -909,7 +833,6 @@ if($row->template_code == ''){
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
 				<td colspan="2">
 					<fieldset><legend><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_SUBMITTEDSCRIPT'); ?></legend>
 						<table cellpadding="4" cellspacing="1" border="0">
@@ -972,7 +895,6 @@ if($row->template_code == ''){
 ?>
 			<table class="adminform">
 			<tr>
-				<td></td>
 				<td colspan="2">
 					<fieldset><legend><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_BEFOREFORM'); ?></legend>
 						<table cellpadding="4" cellspacing="1" border="0">
@@ -1019,7 +941,6 @@ if($row->template_code == ''){
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
 				<td colspan="2">
 					<fieldset><legend><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_AFTERFORM'); ?></legend>
 						<table cellpadding="4" cellspacing="1" border="0">
@@ -1078,7 +999,6 @@ if($row->template_code == ''){
 ?>
 			<table class="adminform">
 			<tr>
-				<td></td>
 				<td colspan="2">
 					<fieldset><legend><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_BEGINSUBMIT'); ?></legend>
 						<table cellpadding="4" cellspacing="1" border="0">
@@ -1125,7 +1045,6 @@ if($row->template_code == ''){
 				<td></td>
 			</tr>
 			<tr>
-				<td></td>
 				<td colspan="2">
 					<fieldset><legend><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_ENDSUBMIT'); ?></legend>
 						<table cellpadding="4" cellspacing="1" border="0">
@@ -1179,17 +1098,6 @@ if($row->template_code == ''){
 				</td>
 				<td></td>
 			</tr>
-			<tr>
-				<td></td>
-				<td nowrap style="text-align:right">
-					
-					<input onclick="bf_submitbutton('save');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?>"/>
-					&nbsp;&nbsp;
-                    <input onclick="bf_submitbutton('cancel');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?>"/>
-				
-				</td>
-				<td></td>
-			</tr>
 		</table>
 		<input type="hidden" name="id" value="<?php echo $row->id; ?>" />
 		<input type="hidden" name="pkg" value="<?php echo $pkg; ?>" />
@@ -1199,6 +1107,12 @@ if($row->template_code == ''){
 		<input type="hidden" name="pages" value="<?php echo $row->pages; ?>" />
 		<input type="hidden" name="caller_url" value="<?php echo htmlspecialchars($caller, ENT_QUOTES); ?>" />
 		</form>
+                <p></p>
+                <div style="float:right;">
+                <button class="button-primary" onclick="bf_submitbutton('save');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?></button>
+		<button class="button-secondary" onclick="location.href='admin.php?page=breezingforms&format=html&act=quickmode&formName=<?php echo $row->name; ?>&form=<?php echo $row->id; ?>'"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?></button>
+                </div>
+                <div style="clear:both;"></div>
 <?php
 	} // edit
 
@@ -1263,15 +1177,7 @@ if($row->template_code == ''){
 			//-->
 		</script>
 		<form action="admin.php?page=breezingforms&format=html" method="post" name="adminForm">
-		<table width="100%" border="0">
-			<tr>
-				<td width="50%" nowrap>
-					<table class="adminheading">
-						<tr><td><strong><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_MANAGEFORMS'); ?></strong></td></tr>
-					</table>
-				</td>
-				<td nowrap>
-					<?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PACKAGE'); ?>:
+		Package:
 					<select id="pkgsel" name="pkgsel" class="inputbox" size="1" onchange="submitbutton('');">
 <?php
 					if (count($pkglist)) foreach ($pkglist as $pkg) {
@@ -1281,10 +1187,8 @@ if($row->template_code == ''){
 					} // foreach
 ?>
 					</select>
-				</td>
-                        
-                        <td align="right" width="50%" nowrap>
-                        <button onclick="bf_submitbutton('quickmode')" class="button">
+                <div style="float:right">
+                        <button onclick="bf_submitbutton('quickmode')" class="button-primary">
                         <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_NEW');?>
                         </button>
 
@@ -1303,28 +1207,19 @@ if($row->template_code == ''){
                         <button onclick="bf_submitbutton('remove')" class="button">
                         <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_DELETE');?>
                         </button>
-<?php
-		JToolBarHelper::custom('quickmode',  'new.png',       'new_f2.png',     BFText::_('COM_BREEZINGFORMS_TOOLBAR_QUICKMODE'),  false);
-		JToolBarHelper::custom('easymode',  'new.png',       'new_f2.png',     BFText::_('COM_BREEZINGFORMS_TOOLBAR_EASYMODE'),  false);
-		JToolBarHelper::custom('new',       'new.png',       'new_f2.png',     BFText::_('COM_BREEZINGFORMS_TOOLBAR_CLASSICMODE'),       false);
-		JToolBarHelper::custom('copy',      'copy.png',      'copy_f2.png',    BFText::_('COM_BREEZINGFORMS_TOOLBAR_COPY'),      false);
-		JToolBarHelper::custom('publish',   'publish.png',   'publish_f2.png', BFText::_('COM_BREEZINGFORMS_TOOLBAR_PUBLISH'),   false);
-		JToolBarHelper::custom('unpublish', 'unpublish.png', 'unpublish_f2.png',BFText::_('COM_BREEZINGFORMS_TOOLBAR_UNPUBLISH'), false);
-		JToolBarHelper::custom('remove',    'delete.png',    'delete_f2.png',  BFText::_('COM_BREEZINGFORMS_TOOLBAR_DELETE'),    false);
-?>
-				</td>
-			</tr>
-		</table>
+                </div>
+                <div style="clear:both;"></div>
+                <p></p>
 		<table class="widefat">
 			<thead>
                         <tr>
-				<th nowrap align="center"><input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($rows); ?>);" /></th>
+				<th nowrap align="left"><input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($rows); ?>);" /></th>
 				<th nowrap align="left"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_TITLE'); ?></th>
 				<th nowrap align="left"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_NAME'); ?></th>
-				<th nowrap align="left"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PAGES'); ?></th>
-				<th nowrap align="right"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_SCRIPTID'); ?></th>
-				<th nowrap align="center"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PUBLISHED'); ?></th>
-				<th nowrap align="center" colspan="2"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_REORDER'); ?></th>
+				<th nowrap align="left">Shortcode</th>
+				<th nowrap align="left">ID</th>
+				<th nowrap align="left"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_PUBLISHED'); ?></th>
+				<th nowrap align="left" colspan="2"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_REORDER'); ?></th>
 				<th align="left"><?php echo BFText::_('COM_BREEZINGFORMS_FORMS_DESCRIPTION'); ?></th>
 			</tr>
                         </thead>
@@ -1352,19 +1247,7 @@ if($row->template_code == ''){
 					<td valign="top" align="left"><a href="#editform" onclick="return listItemTask('cb<?php echo $i; ?>','edit')"><?php echo $row->name; ?></a></td>
 					<?php } ?>
 					
-					<td nowrap valign="top" align="left"><?php
-					for ($p = 1; $p <= $row->pages; $p++) {
-						if ($p > 1) echo '&nbsp;';
-						if($row->template_code_processed == '' && $row->template_code_processed != 'QuickMode'){
-						?><a href="#editpage<?php echo $p; ?>" onclick="return listItemTask('cb<?php echo $i; ?>','editpage<?php echo $p; ?>')"><?php echo $p; ?></a><?php
-						}else if($row->template_code_processed == 'QuickMode'){
-						?><a href="admin.php?page=breezingforms&amp;format=html&amp;act=quickmode&amp;formName=<?php echo $row->name?>&amp;form=<?php echo $row->id; ?>&amp;page=<?php echo $p; ?>"><?php echo $p; ?></a><?php	
-						} else {?>
-						<a href="admin.php?page=breezingforms&amp;format=html&amp;act=easymode&amp;formName=<?php echo $row->name?>&amp;form=<?php echo $row->id; ?>&amp;page=<?php echo $p; ?>"><?php echo $p; ?></a>
-						<?php
-						}
-					} // for
-					?></td>
+					<td nowrap valign="top" align="left"><input type="text" style="width:100%;" value="[breezingforms name=&quot;<?php echo $row->name?>&quot;]" class="readonly" readonly="readonly"/></td>
 					<td nowrap valign="top" align="left"><?php echo $row->id; ?></td>
 					<td nowrap valign="top" align="left"><?php
 					if ($row->published == "1") {

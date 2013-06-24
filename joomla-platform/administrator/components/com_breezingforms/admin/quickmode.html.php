@@ -1447,7 +1447,7 @@ class QuickModeHtml{
 				for(var i = 0; i < appScope.elementScripts.validation.length;i++){
 					var option = document.createElement('option');
 					JQuery(option).val(appScope.elementScripts.validation[i].id);
-					JQuery(option).text(appScope.elementScripts.validation[i].package + '::' + appScope.elementScripts.validation[i].name); 
+					JQuery(option).text(appScope.elementScripts.validation[i].title); 
 					if(appScope.elementScripts.validation[i].id == mdata.validationId){
 						JQuery(option).get(0).setAttribute('selected', true);
 					}
@@ -1497,7 +1497,7 @@ class QuickModeHtml{
 				for(var i = 0; i < appScope.elementScripts.init.length;i++){
 					var option = document.createElement('option');
 					JQuery(option).val(appScope.elementScripts.init[i].id);
-					JQuery(option).text(appScope.elementScripts.init[i].package + '::' + appScope.elementScripts.init[i].name); 
+					JQuery(option).text(appScope.elementScripts.init[i].title); 
 					if(appScope.elementScripts.init[i].id == mdata.initId){
 						JQuery(option).get(0).setAttribute('selected', true);
 					}
@@ -1571,7 +1571,7 @@ class QuickModeHtml{
 					var option = document.createElement('option');
 					
 					JQuery(option).val(appScope.elementScripts.action[i].id);
-					JQuery(option).text(appScope.elementScripts.action[i].package + '::' + appScope.elementScripts.action[i].name); 
+					JQuery(option).text(appScope.elementScripts.action[i].title); 
 					
 					if(appScope.elementScripts.action[i].id == mdata.actionId){
 						
@@ -2236,7 +2236,7 @@ class QuickModeHtml{
                                     appScope.createTreeItem(obj);
                                     JQuery.tree_reference('bfElementExplorer').select_branch(JQuery('#'+id));
                                 }else{
-                                    alert("The free version is limited up to 5 fields to add. If you need this functionality, you need to buy the pro version.");
+                                    alert("The free version is limited up to 5 fields to add. If you need unlimited fields, you need to buy the pro version.");
                                 }
                                 <?php
                                 } else {
@@ -2556,7 +2556,7 @@ class QuickModeHtml{
         
 <div style="float:right; margin-top: 10px; margin-right: 15px;">
             
-    <button onclick="app.saveButton(); bf_submitbutton('save')" class="button">
+    <button onclick="app.saveButton(); bf_submitbutton('save')" class="button-primary">
     <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_QUICKMODE_SAVE');?>
     </button>
     
@@ -2589,16 +2589,19 @@ class QuickModeHtml{
 <style type="text/css">
 
 fieldset {
-    border: 1px solid #CCCCCC;
+    
     margin-bottom: 10px;
     padding: 5px;
     text-align: left;
 }
 
 legend {
-    color: #146295;
+    color: #777;
     font-size: 1.182em;
     font-weight: bold;
+    border-bottom: 1px solid #CCCCCC;
+    width: 100%;
+    padding-bottom: 5px;
 }
 
 div#element-box div.m {
@@ -2606,7 +2609,8 @@ div#element-box div.m {
 }
 .submenu-box, div.m {
     border: 1px solid #CCCCCC;
-    border-radius: 10px 10px 10px 10px;
+    
+    /*border-radius: 10px 10px 10px 10px;*/
     padding: 0 8px;
 }
     
@@ -2674,17 +2678,18 @@ div#element-box div.m {
     border: 1px solid #bbb;
     padding: 2px;
     line-height: normal;
-    background: #f8f8f8;
+    /*background: #f8f8f8;*/
     font-size: 100%;
     width: 50%;
 }
 
 #bfQuickModeWrapper textarea:hover, #bfQuickModeWrapper input[type='text']:hover, #bfQuickModeWrapper input[type='password']:hover, #bfQuickModeWrapper select:hover {
-    border-color: #92c1ff;
+    /*border-color: #92c1ff;*/
 }
 
 #bfQuickModeWrapper textarea:focus, #bfQuickModeWrapper input[type='text']:focus, #bfQuickModeWrapper input[type='password']:focus, #bfQuickModeWrapper select:focus {
-    border-color: #0071bc; outline: 2px solid #92c1ff;
+    /*border-color: #0071bc; outline: 2px solid #92c1ff;*/
+    background-color: #ffffdd;
 }
 
 #bfQuickModeWrapper input[type='button'], #bfQuickModeWrapper input[type='submit'], #bfQuickModeWrapper input[type='checkbox'], #bfQuickModeWrapper input[type='image'], #bfQuickModeWrapper input[type='radio'], #bfQuickModeWrapper input[type='reset'], #bfQuickModeWrapper select, #bfQuickModeWrapper button {
@@ -3249,7 +3254,7 @@ div#element-box div.m {
 			            	<fieldset>
 			            		<legend><?php echo BFText::_('COM_BREEZINGFORMS_ADVANCED_FORM_OPTIONS'); ?></legend>
 			            		<?php if($formId != 0){ ?>
-			            		<a href="admin.php?page=breezingforms&tmpl=component&task=editform&act=editpage&form=<?php echo $formId ?>&pkg=QuickModeForms" title="<?php echo BFText::_('COM_BREEZINGFORMS_MORE_OPTIONS');?>" class="modal" rel="{handler: 'iframe', size: {x: 820, y: 400}}"><?php echo htmlentities( BFText::_('COM_BREEZINGFORMS_MORE_OPTIONS'), ENT_QUOTES, 'UTF-8') ?></a>
+			            		<a href="admin.php?page=breezingforms&tmpl=component&task=editform&act=editpage&form=<?php echo $formId ?>&pkg=QuickModeForms" title="<?php echo BFText::_('COM_BREEZINGFORMS_MORE_OPTIONS');?>"><?php echo htmlentities( BFText::_('COM_BREEZINGFORMS_MORE_OPTIONS'), ENT_QUOTES, 'UTF-8') ?></a>
 			            		<?php } ?>
 			            	</fieldset>
 			            	<fieldset>
@@ -3265,12 +3270,11 @@ div#element-box div.m {
 			            		</select>
 			            		<br/>
 			            		<br/>
-                                                
-                                                <label class="bfPropertyLabel" for="bfElementAdvancedMobileEnabled_"><?php echo BFText::_('COM_BREEZINGFORMS_MOBILE_ENABLED'); ?></label>
-			            		<input onclick="alert('Mobile forms available in PRO version');" type="checkbox" value="" id="bfElementAdvancedMobileEnabled_"/>
+                                                <label class="bfPropertyLabel" for="bfElementAdvancedMobileEnabled"><?php echo BFText::_('COM_BREEZINGFORMS_MOBILE_ENABLED'); ?></label>
+			            		<input type="checkbox" value="" id="bfElementAdvancedMobileEnabledFake"/> <em>(available in Pro version only)</em>
+                                                <input type="hidden" value="" id="bfElementAdvancedMobileEnabled"/>
                                                 <br/>
 			            		<br/>
-                                                <!--
                                                 <label class="bfPropertyLabel" for="bfElementAdvancedForceMobile"><?php echo BFText::_('COM_BREEZINGFORMS_FORCE_MOBILE'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedForceMobile"/>
                                                 <br/>
@@ -3279,7 +3283,7 @@ div#element-box div.m {
 			            		<input type="text" value="" id="bfElementAdvancedForceMobileUrl"/>
 			            		<br/>
 		            			<br/>
-                                                <label class="bfPropertyLabel" for="bfElementAdvancedJoomlaHint"><?php echo BFText::_('COM_BREEZINGFORMS_JOOMLA_HINT'); ?></label>
+                                                <!--<label class="bfPropertyLabel" for="bfElementAdvancedJoomlaHint"><?php echo BFText::_('COM_BREEZINGFORMS_JOOMLA_HINT'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedJoomlaHint"/>
                                                 <br/>
 			            		<br/>
@@ -3289,9 +3293,6 @@ div#element-box div.m {
 			            		<br/>-->
                                                 <input type="hidden" value="0" id="bfElementAdvancedDisableJQuery"/>
                                                 <input type="hidden" value="0" id="bfElementAdvancedJoomlaHint"/>
-                                                <input type="hidden" value="0" id="bfElementAdvancedMobileEnabled"/>
-                                                <input type="hidden" value="0" id="bfElementAdvancedForceMobile"/>
-                                                <input type="hidden" value="../index.php" id="bfElementAdvancedForceMobileUrl"/>
                                                 
 			            		<label class="bfPropertyLabel" for="bfElementAdvancedUseErrorAlerts"><?php echo BFText::_('COM_BREEZINGFORMS_USE_ERROR_ALERTS'); ?></label>
 			            		<input type="checkbox" value="" id="bfElementAdvancedUseErrorAlerts"/>

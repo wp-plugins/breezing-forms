@@ -112,9 +112,18 @@ class facileFormsForm
                         $row->salesforce_fields = '';
                         $row->salesforce_username = '';
                         $row->salesforce_password = '';
+                        $row->dropbox_email = '';
+                        $row->dropbox_password = '';
+                        $row->dropbox_folder = '';
+                        $row->dropbox_submission_enabled = 0;
+                        $row->dropbox_submission_enabled = 0;
+                        $row->dropbox_submission_types = 'pdf';
+                        
                         $database->setQuery("select max(ordering)+1 from #__facileforms_forms");
 			$row->ordering = $database->loadResult();
 		} // if
+                
+                $row->dropbox_submission_types = explode(',',$row->dropbox_submission_types);
 
                 $row->salesforce_types = array();
                 $row->salesforce_type_fields = array();
@@ -239,6 +248,12 @@ class facileFormsForm
                     $_POST['salesforce_enabled'] = 0;
                 }
                 
+                if(isset($_POST['dropbox_submission_types']) && is_array($_POST['dropbox_submission_types'])){
+                    $_POST['dropbox_submission_types'] = implode(',', $_POST['dropbox_submission_types']);
+                }else{
+                    $_POST['dropbox_submission_types'] = '';
+                }
+                
 		// bind it to the table
 		if (!$row->bind($_POST)) {
 			echo "<script> alert('".$row->getError()."'); window.history.go(-1); </script>\n";
@@ -260,14 +275,20 @@ class facileFormsForm
 			
 			ob_start();
 			ob_end_clean();
-
-                        if(!$quickmode){
-                                echo '<html><head><script>parent.SqueezeBox.close();</script></head><body></body></html>';
-                        } else {
-                                echo '<html><head><script>parent.location.href="admin.php?page=breezingforms&act=quickmode&formName='.$row->name.'&form='.$row->id.'"</script></head><body></body></html>';
+                        
+                        if(isset($_POST['salesforce_flag']) && isset($_POST['salesforce_enabled']) && $_POST['salesforce_flag'] == 1 && $_POST['salesforce_enabled'] == 1){
+                            
+                            JFactory::getApplication()->redirect( 'admin.php?page=breezingforms&tmpl=component&task=editform&act=editpage&form='.intval($_POST['id']).($quickmode ? '&pkg=QuickModeForms' : '') );
+                            
+                        }else{
+                            if(!$quickmode){
+                                    echo '<html><head><script>parent.SqueezeBox.close();</script></head><body></body></html>';
+                            } else {
+                                    echo '<html><head><script>parent.location.href="admin.php?page=breezingforms&act=quickmode&formName='.$row->name.'&form='.$row->id.'"</script></head><body></body></html>';
+                            }
+                            
+                            exit;
                         }
-
-                        exit;
 			
 		}
 	} // save

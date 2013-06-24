@@ -37,7 +37,11 @@
 .ui-tabs-nav a, .ui-tabs-nav a span {
     float: left !important; /* fixes dir=ltr problem and other quirks IE */
     padding: 0 12px !important;
-    background: url(i/tabs.png) no-repeat !important;
+    /*background: url(i/tabs.png) no-repeat !important;*/
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: #777;
 }
 .ui-tabs-nav a {
     margin: 5px 0 0 !important; /* position: relative makes opacity fail for disabled tab in IE */
@@ -105,8 +109,8 @@
 
 /* Icons */
 
-.tab-items { padding-right: 25px !important; background: url('i/icon_items.png') right no-repeat !important;}
-.tab-element { padding-right: 25px !important; background: url('i/icon_elements.png') right no-repeat !important;}
+.tab-items { font-weight: normal !important; padding-right: 25px !important; /*background: url('i/icon_items.png') right no-repeat !important;*/}
+.tab-element { font-weight: normal !important; padding-right: 25px !important; /*background: url('i/icon_elements.png') right no-repeat !important;*/}
 .tab-form { padding-right: 25px !important; background: url('i/icon_forms.png') right no-repeat !important;}
 
 .ui-accordion-content span { padding-left: 25px !important; }

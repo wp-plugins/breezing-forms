@@ -3,7 +3,7 @@
 Plugin Name: Breezing Forms
 Plugin URI: http://crosstec.de/en/wordpress-forms-download.html
 Description: A professional forms plugin for wordpress.
-Version: 1.2.5.13
+Version: 1.2.5.14
 Author: Crosstec GmbH & Co. KG
 Author URI: http://crosstec.de
 License: GPL2
@@ -111,7 +111,7 @@ function breezingforms_add_admin_scripts(){
     
     echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/media/system/css/modal.css"/>';
     
-    if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'editform' && $_REQUEST['act'] == 'editpage'){
+    if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'editform' && $_REQUEST['act'] == 'editpage' || (isset($_REQUEST['act'])  && $_REQUEST['act'] == 'configuration') ){
         echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/templates/bluestork/css/template.css"/>';
     }
 }
@@ -218,11 +218,27 @@ if(is_admin() && ( ( isset($_GET['plugin']) && $_GET['plugin'] == 'breezingforms
 add_action('admin_menu', 'breezingforms_admin_init');
 function breezingforms_admin_init(){
     add_object_page('BreezingForms', 'BreezingForms', 'administrator', 'breezingforms', 'breezingforms_admin', BF_PLUGINS_URL . '/'.BF_FOLDER.'/breezingforms-icon.png');
+    add_submenu_page('breezingforms', 'BreezingForms', 'Records', 'administrator', 'admin.php?page=breezingforms&act=recordmanagement');
+    add_submenu_page('breezingforms', 'BreezingForms', 'Forms', 'administrator', 'admin.php?page=breezingforms&act=manageforms');
+    add_submenu_page('breezingforms', 'BreezingForms', 'Scripts', 'administrator', 'admin.php?page=breezingforms&act=managescripts');
+    add_submenu_page('breezingforms', 'BreezingForms', 'Pieces', 'administrator', 'admin.php?page=breezingforms&act=managepieces');
+    add_submenu_page('breezingforms', 'BreezingForms', 'Configuration', 'administrator', 'admin.php?page=breezingforms&act=configuration');
 }
 // ADMINISTRATOR bootstrapping joomla platform & breezingforms
 function breezingforms_admin(){
     
     if(!is_admin()) die();
+    
+    // session mayhem
+    $session_name = "wordpress_" . md5( get_site_url() );
+    if (!isset($_COOKIE[$session_name]))
+    {
+        @setcookie($session_name, session_id(), time() - 3600);
+    }else{
+        session_id(md5($_COOKIE[$session_name]));
+    }
+    @session_start();
+    // mayhem end
     
     define('_JEXEC', 1);
     define('DS', DIRECTORY_SEPARATOR);
@@ -294,7 +310,7 @@ function breezingforms_admin(){
 $bf_processor = null;
 $add_my_script = false;
 
-add_action('bfwp_footer', 'breezingforms_print_scripts');
+add_action('wp_footer', 'breezingforms_print_scripts');
  
 function breezingforms_print_scripts() {
 	global $add_my_script, $bf_processor;
@@ -304,7 +320,8 @@ function breezingforms_print_scripts() {
         }
         
         if($bf_processor != null){
-            // TODO: set additional head data
+            //echo $bf_processor->quickmode->fetchFoot(JFactory::getDocument()->getHeadData());
+            //$bf_processor->quickmode->renderScriptsAndCss();
         }
     
 }
@@ -315,6 +332,17 @@ add_shortcode( 'breezingforms', 'breezingforms_site' );
 function breezingforms_site($atts = array()){
     
     global $add_my_script;
+    
+    // session mayhem
+    $session_name = "wordpress_" . md5( get_site_url() );
+    if (!isset($_COOKIE[$session_name]))
+    {
+        @setcookie($session_name, session_id(), time() - 3600);
+    }else{
+        session_id(md5($_COOKIE[$session_name]));
+    }
+    @session_start();
+    // mayhem end
     
     $add_my_script = true;
     
@@ -339,7 +367,7 @@ function breezingforms_site($atts = array()){
             }
         }
         
-        echo '<iframe class="breezingforms_iframe" '.$width.''.$height.' frameborder="0" allowtransparency="true" scrolling="no" src="index.php?plugin=breezingforms&preview=true&ff_frame=1&ff_name='.$_GET['ff_name'].'"></iframe>'."\n";
+        echo '<iframe class="breezingforms_iframe" '.$width.''.$height.'frameborder="0" allowtransparency="true" scrolling="no" src="index.php?plugin=breezingforms&preview=true&ff_frame=1&ff_name='.$_GET['ff_name'].'"></iframe>'."\n";
         if(isset($atts['iframe_autoheight']) && $atts['iframe_autoheight']){
             echo '<script type="text/javascript" src="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/jq.iframeautoheight.js"></script>'."\n";
             echo '<script type="text/javascript">
@@ -353,14 +381,11 @@ function breezingforms_site($atts = array()){
         }
         $c = ob_get_contents();
         ob_end_clean();
-        
         wp_cache_init();
         require_wp_db();
         global $wp_the_query, $wp_query;
         $wp_the_query = $wp_query = new WP_Query();
         return $c;
-        
-        
     }
     
     if(!defined('_JEXEC')){
@@ -418,18 +443,23 @@ function breezingforms_site($atts = array()){
     // Mark afterRender in the profiler.
     JDEBUG ? $_PROFILER->mark('afterRender') : null;
 
-    ob_start();
+    // making the shortcode appear at the right spot
+    //if(!JFactory::getSession()->get('com_breezingforms.mobile', false)){
+        ob_start();
+    //}
     
     // Return the response.
     echo $app;
     
-    $c = ob_get_contents();
-    ob_end_clean();
-    wp_cache_init();
-    require_wp_db();
-    global $wp_the_query, $wp_query;
-    $wp_the_query = $wp_query = new WP_Query();
-    return $c;
+    //if(!JFactory::getSession()->get('com_breezingforms.mobile', false)){
+        $c = ob_get_contents();
+        ob_end_clean();
+        wp_cache_init();
+        require_wp_db();
+        global $wp_the_query, $wp_query;
+        $wp_the_query = $wp_query = new WP_Query();
+        return $c;
+    //}
         
     unset($_GET['ff_name']);
     unset($_POST['ff_name']);

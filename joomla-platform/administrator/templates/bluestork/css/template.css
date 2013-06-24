@@ -26,15 +26,9 @@ html {
 }
 
 body {
-	margin: 10px;
-	padding: 0;
-	background: #fff;
-	padding-bottom: 1px;
-	font-size: 68.8%; /* Set base to 11px */
 }
 
 body,td,th {
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 body#minwidth-body {
@@ -105,9 +99,10 @@ fieldset {
 }
 
 legend {
-	color: #146295;
+	color: #777;
+        width: 100%;
 	font-size: 1.182em;
-	font-weight: bold;
+        border-bottom: 1px solid #CCCCCC;
 }
 
 input, select {
@@ -117,8 +112,8 @@ input, select {
 }
 
 textarea {
-	font-size: 1.273em;
-	border: 1px solid silver;
+	/*font-size: 1.273em;*/
+	/*border: 1px solid silver;*/
 }
 
 iframe {
@@ -905,7 +900,7 @@ fieldset ul {
 
 form label,
 form span.faux-label {
-	font-size: 1.091em;
+	/*font-size: 1.091em;*/
 }
 
 fieldset input,
@@ -913,9 +908,6 @@ fieldset textarea,
 fieldset select,
 fieldset img,
 fieldset button {
-	float: left;
-	width: auto;
-	margin: 5px 5px 5px 0;
 }
 
 fieldset.adminform textarea {
@@ -1032,7 +1024,6 @@ fieldset.batch label {
 	min-width: 40px;
 }
 fieldset.batch button {
-	margin: 3px;
 }
 fieldset#batch-choose-action {
 	clear: left;
@@ -1376,7 +1367,7 @@ label.filter-published-lbl {
 
 table.adminform {
 	background-color: #fff;
-	border: solid 1px #d5d5d5;
+	/*border: solid 1px #d5d5d5;*/
 	width: 100%;
 	border-collapse: collapse;
 	margin: 8px 0 10px 0;
@@ -1403,7 +1394,7 @@ table.adminform th {
 table.adminform td {
 	padding: 5px;
 	text-align: left;
-	font-size: 1.091em;
+	/*font-size: 1.091em;*/
 }
 
 table.adminform td.filter {
@@ -1827,17 +1818,9 @@ a.saveorder.inactive {
 a.pointer { cursor: pointer; }
 
 button {
-	margin-top: 4px;
-	background: #fff;
-	border: 1px solid #ccc;
-	text-decoration: none;
 }
 
 button:hover {
-	cursor: pointer;
-	background: #E8F6FE;
-	text-decoration: none;
-	border: 1px solid #aaa;
 }
 
 div.button2-left button {

@@ -877,8 +877,7 @@ display:none;
 			});
 		');
 		
-                
-		foreach($this->tipQueue As $tipqueue){
+                foreach($this->tipQueue As $tipqueue){
                     $this->addCustomTag($tipqueue);
                 }
                 

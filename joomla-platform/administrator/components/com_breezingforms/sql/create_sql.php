@@ -99,6 +99,8 @@ $_9 = "CREATE TABLE `#__facileforms_forms` (
     `dropbox_email` VARCHAR( 255 ) NOT NULL DEFAULT '',
     `dropbox_password` VARCHAR( 255 ) NOT NULL DEFAULT '',
     `dropbox_folder` TEXT,
+    `dropbox_submission_enabled` TINYINT( 1 ) NOT NULL DEFAULT 0,
+    `dropbox_submission_types` VARCHAR( 255 ) NOT NULL DEFAULT 'pdf',
     
   `package` VARCHAR( 30 ) NOT NULL default '',
   `template_code` longtext NOT NULL,

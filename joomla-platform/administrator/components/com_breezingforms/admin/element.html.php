@@ -15,7 +15,7 @@ $version = new JVersion();
 
 if(version_compare($version->getShortVersion(), '1.6', '>=')){
 
-echo '<link rel="stylesheet" href="'.JURI::root(true).'/administrator/components/com_breezingforms/admin/bluestork.fix.css" type="text/css" />';
+echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL.'/'.BF_FOLDER.'/joomla-platform/administrator/components/com_breezingforms/admin/bluestork.fix.css" type="text/css" />';
 
 }
 

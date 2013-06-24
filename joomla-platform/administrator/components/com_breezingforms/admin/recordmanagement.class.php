@@ -67,18 +67,14 @@ class bfRecordManagement
                                 ?>
 <div id="overDiv" style="position:absolute; visibility:hidden; z-index:10000;"></div>
 		<form action="admin.php?page=breezingforms" method="post" name="adminForm" id="adminForm" class="adminForm">
-		<table width="100%" border="0">
-                        <tr>
-				<td><strong><?php echo BFText::_('COM_BREEZINGFORMS_RECORDS_VIEWRECORD'); ?></strong></td>
-				<td colspan="2" style="text-align:right">
-					<input onclick="submitbutton('save');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?>"/>
-					&nbsp;&nbsp;
-                                        <input onclick="submitbutton('cancel');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?>"/>
-				</td>
-				<td></td>
-			</tr>
-                </table>
-                <table width="100%" border="0">
+                    <div style="float:right;">
+                        <button class="button-primary" onclick="submitbutton('save');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?></button>
+                        &nbsp;&nbsp;
+                        <input onclick="submitbutton('cancel');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?>"/>
+                    </div>
+                    <div style="clear:both"></div>
+                    <p></p>
+                    <table width="100%" border="0">
                     <tr>
 				<td></td>
 				<td colspan="2">
@@ -120,14 +116,9 @@ class bfRecordManagement
                                                                             if(!JFile::exists($file)){
                                                                                 echo 'file not found on server:<br/>' . basename($file).'<br/>';
                                                                             }else{
-                                                                                $image = @getimagesize( $file );
-                                                                                if($image !== false){
-                                                                                    echo '<a href="javascript:alert(\'Direct downloads currently available in PRO version only.\');void(0);"><img src="'.BF_PLUGINS_URL.'/breezing-forms/joomla-platform/administrator/components/com_breezingforms/images/preview-button.png" border=\"0\"/></a><br/>';
-                                                                                }else{
-                                                                                    echo '<a href="javascript:alert(\'Direct downloads currently available in PRO version only.\');void(0);">'.basename($file).'</a>';
-                                                                                }
+                                                                                echo 'Image/File preview and download in Pro version only<br/>' . basename($file).'<br/>';
                                                                             }
-                                                                            echo '<br/><br/>';
+                                                                            echo '<br/>';
                                                                             $fileIdx++;
                                                                         }
                                                                         echo '</div>';
@@ -136,18 +127,18 @@ class bfRecordManagement
                                                                 
                                                                 ?>
                                                                 </td>
-								<td width="50%" valign="top">
+								<td valign="top">
 								<?php
 								if($sub->type != 'Textarea' && $sub->type != 'File Upload')
 								{
 								?>
-									<input type="text" name="ff_nm_<?php echo $sub->name; ?>" value="<?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?>" style="width:100%"/>
+									<input type="text" name="ff_nm_<?php echo $sub->name; ?>" value="<?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?>" style="width:200px;"/>
 								<?php
 								}
 								else
 								{
 								?>
-									<textarea name="ff_nm_<?php echo $sub->name; ?>" style="width:100%;height:100px;"><?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?></textarea>
+									<textarea name="ff_nm_<?php echo $sub->name; ?>" style="width:200px;height:100px;"><?php echo htmlentities($sub->value, ENT_QUOTES, 'UTF-8'); ?></textarea>
 								<?php
 								}
 								?>
@@ -159,6 +150,7 @@ class bfRecordManagement
 			} // for
 ?>
 						</table>
+                                    <p></p>
 				</td>
 				<td></td>
 			</tr>
@@ -186,6 +178,7 @@ class bfRecordManagement
 							</tr>
                                                         </tbody>
 						</table>
+                                    <p></p>
 				</td>
 				<td></td>
 			</tr>
@@ -211,6 +204,7 @@ class bfRecordManagement
 							</tr>
                                                     </tbody>
 						</table>
+                                    <p></p>
 				</td>
 				<td></td>
 			</tr>
@@ -255,17 +249,16 @@ class bfRecordManagement
 				</td>
 				<td></td>
 			</tr>
-			
-			<tr>
-				<td></td>
-				<td colspan="2" style="text-align:right">
-					<input onclick="submitbutton('save');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?>"/>
+		</table>
+                    
+                    <div style="float:right;">
+                        <p></p>
+					<button class="button-primary" onclick="submitbutton('save');"><?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_SAVE'), ENT_QUOTES, 'UTF-8'); ?></button>
 					&nbsp;&nbsp;
                                         <input onclick="submitbutton('cancel');" type="submit" value="<?php echo htmlentities(BFText::_('COM_BREEZINGFORMS_TOOLBAR_CANCEL'), ENT_QUOTES, 'UTF-8'); ?>"/>
-				</td>
-				<td></td>
-			</tr>
-		</table>
+				
+                    </div>
+                    
 		<input type="hidden" name="option" value="com_breezingforms" />
 		<input type="hidden" name="act" value="<?php echo JRequest::getVar('act', '') ?>" />
 		<input type="hidden" id="limitstart" name="limitstart" value="<?php echo JRequest::getInt('limitstart',0); ?>" />
@@ -609,7 +602,7 @@ class bfRecordManagement
 			$limiter = '';
 		}
 
-		$this->db->setQuery("Select Distinct SQL_CALC_FOUND_ROWS record.* From #__facileforms_records As record $subs $ands Order By record.".JRequest::getWord('orderBy','submitted')." ".(JRequest::getWord('order','DESC') == 'DESC' ? 'ASC' : 'DESC').$limiter);
+		$this->db->setQuery("Select Distinct SQL_CALC_FOUND_ROWS record.* From #__facileforms_records As record $subs $ands Order By record.".JRequest::getWord('orderBy','submitted')." ".(JRequest::getWord('order','DESC') == 'DESC' || JRequest::getWord('order','DESC') == '' ? 'DESC' : 'ASC').$limiter);
 		$rows = $this->db->loadObjectList();
                 
 		//echo $this->db->getQuery();
@@ -859,67 +852,54 @@ div.button2-left button {
 	margin: 0 auto;
 }
 </style>
-<form action="admin.php?page=breezingforms" method="post" name="adminForm">
-    <table width="100%" border="0">
-			<tr>
-				<td width="50%" nowrap>
-					<table class="adminheading">
-						<tr><td><strong><?php echo BFText::_('COM_BREEZINGFORMS_MANAGERECS'); ?></strong></td></tr>
-					</table>
-				</td>
-				<td nowrap>
-				</td>
-                        
-                        <td align="right" width="50%" nowrap>
+State:
+<a href="javascript:bf_submitbutton('all');void(0);" style="<?php echo JFactory::getSession()->get('bfStatus', '') == '' ? 'font-weight: bold;' : '';?>">Any</a>
+|
+<a href="javascript:bf_submitbutton('viewed');void(0);" style="<?php echo JFactory::getSession()->get('bfStatus', '') == 'viewed' ? 'font-weight: bold;' : '';?>">
+<?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_VIEWED');?>
+</a>
+|              
+<a href="javascript:bf_submitbutton('exported');void(0);" style="<?php echo JFactory::getSession()->get('bfStatus', '') == 'exported' ? 'font-weight: bold;' : '';?>">
+<?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_EXPORTED');?>
+</a>
+|                            
+<a href="javascript:bf_submitbutton('archived');void(0);" style="<?php echo JFactory::getSession()->get('bfStatus', '') == 'archived' ? 'font-weight: bold;' : '';?>">
+<?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_ARCHIVED');?>
+</a>
+|
+Records: <?php echo $foundRows;?>
+<div style="float:right">
+                        <button onclick="bf_submitbutton('remove')" class="button-primary">
+                        Delete Selected Records
+                        </button>
                         <button onclick="bf_submitbutton('exportPdf')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_PDF');?>
+                        Export <?php echo BFText::_('COM_BREEZINGFORMS_PDF');?>
                         </button>
                                 
                         <td align="right" width="50%" nowrap>
                         <button onclick="bf_submitbutton('exportCsv')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_CSV');?>
+                        Export <?php echo BFText::_('COM_BREEZINGFORMS_CSV');?>
                         </button>
 
                         <button onclick="bf_submitbutton('exportXml')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_XML');?>
+                        Export <?php echo BFText::_('COM_BREEZINGFORMS_XML');?>
                         </button>
 
-                        <button onclick="bf_submitbutton('all')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_ALL');?>
-                        </button>
-                            
-                        <button onclick="bf_submitbutton('viewed')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_VIEWED');?>
-                        </button>
-                            
-                        <button onclick="bf_submitbutton('exported')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_EXPORTED');?>
-                        </button>
-                            
-                        <button onclick="bf_submitbutton('archived')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_ARCHIVED');?>
-                        </button>
-                          
-                        <button onclick="bf_submitbutton('remove')" class="button">
-                        <?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_DELETE');?>
-                        </button>
-				</td>
-			</tr>
-		</table>
+                        </div>
+<p></p>
+<form action="admin.php?page=breezingforms" method="post" name="adminForm">
+    Change State: <input type="radio" name="write_status" value=""<?php echo JRequest::getVar('write_status','') == '' ? ' checked="checked"' : ''; ?>/>  <?php echo BFText::_('COM_BREEZINGFORMS_NONE'); ?> <input type="radio" name="write_status" value="unset"<?php echo JRequest::getVar('write_status','') == 'unset' ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_UNSET'); ?> <input type="radio" name="write_status" value="set"<?php echo JRequest::getVar('write_status','') == 'set' ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_SET'); ?>
+    <p></p>
 <div id="editcell">
 
-    <table class="widefat">
-    <thead>
-    	<tr>
-    		<td valign="top" colspan="1000">
-    			<table class="adminlist" width="100%">
-    				<thead>
+    <table class="adminlist" width="100%">
 	    			<tr>
-	    				<td>
+	    				<td>    
+                                            
 			    			<?php echo BFText::_('COM_BREEZINGFORMS_FILTER'); ?>:
-			    			<input type="text" name="search" value="<?php echo htmlentities(JRequest::getVar('search',''),ENT_QUOTES, 'UTF-8'); ?>" onchange="form.status_update.value = 1;document.adminForm.submit()"/>
-			    			<?php echo BFText::_('COM_BREEZINGFORMS_TEXT'); ?>: <input type="checkbox" name="txtsearch" onclick="form.status_update.value = 1;document.adminForm.submit()" value="true"<?php echo JRequest::getWord('txtsearch','false') == 'true' ? ' checked="checked"' : ''; ?>/>
-			    			<select name="form" onchange="form.status_update.value = 1;document.adminForm.submit()">
+			    			<input type="text" name="search" value="<?php echo htmlentities(JRequest::getVar('search',''),ENT_QUOTES, 'UTF-8'); ?>" onchange="form.status_update.value = 1;"/>
+                                                <input type="checkbox" id="txtsearch" name="txtsearch" onclick="form.status_update.value = 1;" value="true"<?php echo JRequest::getWord('txtsearch','false') == 'true' ? ' checked="checked"' : ''; ?>/> <label for="txtsearch">Search in records</label> 
+                                                <select name="form" onchange="form.status_update.value = 1;">
 			    				<option value=""><?php echo BFText::_('COM_BREEZINGFORMS_ALL'); ?></option>
 			    				<?php
 								foreach($forms As $form)
@@ -931,15 +911,16 @@ div.button2-left button {
 								}
 			    				?>
 			    			</select>
+                                                <button onclick="document.adminForm.submit()" class="button">Filter</button>
 						</td>
 						<td align="right" valign="top">
-			    			<?php echo BFText::_('COM_BREEZINGFORMS_WRITE_STATUS'); ?>: <input type="radio" name="write_status" value=""<?php echo JRequest::getVar('write_status','') == '' ? ' checked="checked"' : ''; ?>/>  <?php echo BFText::_('COM_BREEZINGFORMS_NONE'); ?> <input type="radio" name="write_status" value="unset"<?php echo JRequest::getVar('write_status','') == 'unset' ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_UNSET'); ?> <input type="radio" name="write_status" value="set"<?php echo JRequest::getVar('write_status','') == 'set' ? ' checked="checked"' : ''; ?>/> <?php echo BFText::_('COM_BREEZINGFORMS_SET'); ?>
+                                                    
 			    		</td>
 					</tr>
-					</thead>
 				</table>
-    		</td>
-    	</tr>
+    <p></p>
+    <table class="widefat">
+    <thead>
         <tr>
         	<th nowrap align="center"><input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($rows); ?>);" /></th>
             <th>
@@ -1150,6 +1131,264 @@ function(){
 		}
 
 	} // expxml
+        
+        function renderFile($file, $record_id, $element_id, $file_index){
+            if(JRequest::getVar('renderFile','') != '' && md5(basename($file).$record_id.$element_id.$file_index) == JRequest::getVar('renderFile','')){
+                ob_end_clean();
+                $this->resizeFile($file, 200, 200, '#ffffff', 'simple');
+                exit;
+            }
+            if(JRequest::getVar('downloadFile','') != '' && md5(basename($file).$record_id.$element_id.$file_index) == JRequest::getVar('downloadFile','')){
+                ob_end_clean();
+                $this->downloadFile($file);
+                exit;
+            }
+            $image = @getimagesize( $file );
+            $ids = JRequest::getVar('ids', array());
+            if($image !== false){
+                echo '<a href="admin-ajax.php?action=breezingformsadminajax&task=edit&form=&write_status=&act=recordmanagement&status_update=0&Order=ASC&orderBy=submitted&limitstart=0&mylimit=20&exportt=0&ids[]='.intval($ids[0]).'&downloadFile='.md5(basename($file).$record_id.$element_id.$file_index).'"><img src="admin-ajax.php?action=breezingformsadminajax&task=edit&form=&write_status=&act=recordmanagement&status_update=0&Order=ASC&orderBy=submitted&limitstart=0&mylimit=20&exportt=0&ids[]='.intval($ids[0]).'&renderFile='.md5(basename($file).$record_id.$element_id.$file_index).'" border=\"0\"/></a><br/>';
+            }else{
+                echo '<a href="admin-ajax.php?action=breezingformsadminajax&task=edit&form=&write_status=&act=recordmanagement&status_update=0&Order=ASC&orderBy=submitted&limitstart=0&mylimit=20&exportt=0&ids[]='.intval($ids[0]).'&downloadFile='.md5(basename($file).$record_id.$element_id.$file_index).'">'.basename($file).'</a>';
+            }
+        }
+        
+        public function downloadFile($filename){
+            header('Content-Type: application/octet-stream');
+            header('Content-Disposition: inline; filename="'.basename($filename).'"');
+            header('Content-Length: ' . @filesize($filename));
+            $chunksize = 1*(1024*1024); // how many bytes per chunk
+            $buffer = '';
+            $handle = @fopen($filename, 'rb');
+            if ($handle === false) {
+              return false;
+            }
+            while (!@feof($handle)) {
+              $buffer = @fread($handle, $chunksize);
+              print $buffer;
+            }
+            return @fclose($handle);
+        }
+        
+        public function exifImageType($filename){
+            // some hosting providers think it is a good idea not to compile in exif with php...
+            if ( ! function_exists( 'exif_imagetype' ) ) {
+                if ( ( list($width, $height, $type, $attr) = getimagesize( $filename ) ) !== false ) {
+                    return $type;
+                }
+                return false;
+            }else{
+                return exif_imagetype($filename);
+            }
+        }
+
+        public function resizeFile($path, $width, $height, $bgcolor = '#ffffff', $type = ''){
+            $image = @getimagesize( $path );
+
+            if($image !== false){
+
+               if($image[0] > 16384){
+                   return;
+               }
+
+               if($image[1] > 16384){
+                   return;
+               }
+
+               $col_ = $bgcolor;
+               if($bgcolor !== null){
+                   $col = array();
+                   $col[0] = intval(@hexdec(@substr($bgcolor, 1, 2)));
+                   $col[1] = intval(@hexdec(@substr($bgcolor, 3, 2)));
+                   $col[2] = intval(@hexdec(@substr($bgcolor, 5, 2)));
+                   $col_ = $col;
+               }
+               $exif_type = $this->exifImageType( $path );
+               // try to prevent memory issues
+               $memory = true;
+
+               $imageInfo = $image;
+
+               $MB = 1048576;
+               $K64 = 65536;
+               $TWEAKFACTOR = 1.5;
+               $channels = isset($image['channels']) ? $image['channels'] : 0;
+               $memoryNeeded = round(( $image[0] * $image[1]
+                       * $image['bits']
+                       * ($channels / 8)
+                       + $K64
+                       ) * $TWEAKFACTOR
+               );
+
+               $ini = 8 * $MB;
+               if(ini_get('memory_limit') !== false){
+                   $ini = $this->returnBytes(ini_get('memory_limit'));
+               }
+               $memoryLimit = $ini;
+               if (function_exists('memory_get_usage') &&
+                       memory_get_usage() + $memoryNeeded > $memoryLimit) {
+                   $memory = false;
+               }
+               if($memory){
+                   switch ($exif_type){
+                       case IMAGETYPE_JPEG2000 :
+                       case IMAGETYPE_JPEG :
+                           $resource = @imagecreatefromjpeg($path);
+                           if($resource){
+                               $resized = @$this->resize_image($resource, $width, $height, $type == 'crop' ? 1 : ( $type == 'simple' ? 3 : 2), $col_);
+                               if($resized) {
+                                   ob_start();
+                                   @imagejpeg($resized);
+                                   $buffer = ob_get_contents();
+                                   ob_end_clean();
+                                   if($exif_type == IMAGETYPE_JPEG2000){
+                                       header('Content-Type: ' . @image_type_to_mime_type(IMAGETYPE_JPEG2000));
+                                   }else{
+                                       header('Content-Type: ' . @image_type_to_mime_type(IMAGETYPE_JPEG));
+                                   }
+                                   header('Content-Disposition: inline; filename="'.basename($path).'"');
+                                   echo $buffer;
+                                   @imagedestroy($resized);
+                               }
+                               @imagedestroy($resource);
+                           }
+                           break;
+                       case IMAGETYPE_GIF :
+                           $resource = @imagecreatefromgif($path);
+                           if($resource){
+                               $resized = @$this->resize_image($resource, $width, $height, $type == 'crop' ? 1 : ( $type == 'simple' ? 3 : 2), $col_);
+                               if($resized) {
+                                   ob_start();
+                                   @imagegif($resized);
+                                   $buffer = ob_get_contents();
+                                   ob_end_clean();
+                                   header('Content-Type: ' . @image_type_to_mime_type(IMAGETYPE_GIF));
+                                   header('Content-Disposition: inline; filename="'.basename($path).'"');
+                                   echo $buffer;
+                                   @imagedestroy($resized);
+                               }
+                               @imagedestroy($resource);
+                           }
+                           break;
+                       case IMAGETYPE_PNG :
+                           $resource = @imagecreatefrompng($path);
+                           if($resource){
+                               $resized = @$this->resize_image($resource, $width, $height, $type == 'crop' ? 1 : ( $type == 'simple' ? 3 : 2), $col_);
+                               if($resized) {
+                                   ob_start();
+                                   @imagepng($resized);
+                                   $buffer = ob_get_contents();
+                                   ob_end_clean();
+                                   header('Content-Type: ' . @image_type_to_mime_type(IMAGETYPE_PNG));
+                                   header('Content-Disposition: inline; filename="'.basename($path).'"');
+                                   echo $buffer;
+                                   @imagedestroy($resized);
+                               }
+                               @imagedestroy($resource);
+                           }
+                           break;
+                   }
+               }
+            }
+        }
+
+        public function resize_image($source_image, $destination_width, $destination_height, $type = 0, $bgcolor = array(0,0,0)) {
+            // $type (1=crop to fit, 2=letterbox)
+            $source_width = imagesx($source_image);
+            $source_height = imagesy($source_image);
+            $source_ratio = $source_width / $source_height;
+            if($destination_height == 0 && $type == 3){
+                $destination_height = $source_height;
+            }
+            $destination_ratio = $destination_width / $destination_height;
+            if($type == 3){
+
+                $old_width  = $source_width;
+                $old_height = $source_height;
+
+                // Target dimensions
+                $max_width = $destination_width;
+                $max_height = $destination_height;
+                // Get current dimensions
+
+                // Calculate the scaling we need to do to fit the image inside our frame
+                $scale      = min($max_width/$old_width, $max_height/$old_height);
+
+                // Get the new dimensions
+                $destination_width  = ceil($scale*$old_width);
+                $destination_height = ceil($scale*$old_height);
+
+                $new_destination_width = $destination_width;
+                $new_destination_height = $destination_height;
+
+                $source_x = 0;
+                $source_y = 0;
+                $destination_x = 0;
+                $destination_y = 0;
+
+            } else if ($type == 1) {
+                // crop to fit
+                if ($source_ratio > $destination_ratio) {
+                    // source has a wider ratio
+                    $temp_width = (int) ($source_height * $destination_ratio);
+                    $temp_height = $source_height;
+                    $source_x = (int) (($source_width - $temp_width) / 2);
+                    $source_y = 0;
+                } else {
+                    // source has a taller ratio
+                    $temp_width = $source_width;
+                    $temp_height = (int) ($source_width * $destination_ratio);
+                    $source_x = 0;
+                    $source_y = (int) (($source_height - $temp_height) / 2);
+                }
+                $destination_x = 0;
+                $destination_y = 0;
+                $source_width = $temp_width;
+                $source_height = $temp_height;
+                $new_destination_width = $destination_width;
+                $new_destination_height = $destination_height;
+            } else {
+                // letterbox
+                if ($source_ratio < $destination_ratio) {
+                    // source has a taller ratio
+                    $temp_width = (int) ($destination_height * $source_ratio);
+                    $temp_height = $destination_height;
+                    $destination_x = (int) (($destination_width - $temp_width) / 2);
+                    $destination_y = 0;
+                } else {
+                    // source has a wider ratio
+                    $temp_width = $destination_width;
+                    $temp_height = (int) ($destination_width / $source_ratio);
+                    $destination_x = 0;
+                    $destination_y = (int) (($destination_height - $temp_height) / 2);
+                }
+                $source_x = 0;
+                $source_y = 0;
+                $new_destination_width = $temp_width;
+                $new_destination_height = $temp_height;
+            }
+            $destination_image = imagecreatetruecolor($destination_width, $destination_height);
+            if ($type == 2) {
+                imagefill($destination_image, 0, 0, imagecolorallocate($destination_image, $bgcolor[0], $bgcolor[1], $bgcolor[2]));
+            }
+            imagecopyresampled($destination_image, $source_image, $destination_x, $destination_y, $source_x, $source_y, $new_destination_width, $new_destination_height, $source_width, $source_height);
+            return $destination_image;
+        }
+
+        public function returnBytes($val) {
+            $val = trim($val);
+            $last = strtolower($val[strlen($val)-1]);
+            switch($last) {
+                // The 'G' modifier is available since PHP 5.1.0
+                case 'g':
+                    $val *= 1024;
+                case 'm':
+                    $val *= 1024;
+                case 'k':
+                    $val *= 1024;
+            }
+
+            return $val;
+        }
 
 	function exppdf($ids)
 	{
