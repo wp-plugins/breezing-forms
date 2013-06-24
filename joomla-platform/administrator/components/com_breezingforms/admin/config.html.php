@@ -8,8 +8,6 @@
 **/
 defined('_JEXEC') or die('Direct Access to this location is not allowed.');
 
-JToolBarHelper::title('<img src="'. JURI::root() . 'administrator/components/com_breezingforms/libraries/jquery/themes/easymode/i/logo-breezingforms.png'.'" align="top"/>');
-
 jimport('joomla.version');
 $version = new JVersion();
 

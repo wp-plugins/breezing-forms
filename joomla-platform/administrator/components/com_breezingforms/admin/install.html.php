@@ -77,7 +77,7 @@ class HTML_facileFormsInstaller
 			<tr>
 				<td></td>
 				<td nowrap style="text-align:right">
-					<input class="button-primary" onclick="submitbutton('step3');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_CONTINUE'); ?></button>
+					<button class="button-primary" onclick="submitbutton('step3');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_CONTINUE'); ?></button>
 				</td>
 				<td></td>
 			</tr>
@@ -112,7 +112,7 @@ class HTML_facileFormsInstaller
 			<tr>
 				<td></td>
 				<td nowrap style="text-align:right">
-                                        <input onclick="submitbutton('step4');" type="submit" value="<?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_CONTINUE'); ?>"/>
+                                        <button class="button-primary" onclick="submitbutton('step4');"><?php echo BFText::_('COM_BREEZINGFORMS_TOOLBAR_CONTINUE'); ?></button>
 				</td>
 				<td></td>
 			</tr>
