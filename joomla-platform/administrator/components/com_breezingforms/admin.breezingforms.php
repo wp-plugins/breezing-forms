@@ -627,15 +627,11 @@ if( !isset($_REQUEST['action']) ){
             cursor: pointer;
             background-color: #E82C0C;
             border-color: #fff;
-            width: 200px;
-            height: 50px;
-            border-radius: 5px;
+            padding: 10px;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
             color: #fff;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            font-size:  24px;
+            font-size:  16px;
             text-shadow: 1px 1px 0px #000;
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#EFEFEF"); /* for IE */
             background: -webkit-gradient(linear, left top, left bottom, from(#FF775F), to(#E82C0C)); /* for webkit browsers */
@@ -644,10 +640,9 @@ if( !isset($_REQUEST['action']) ){
     </style>
     <div class="wrap">
     <p class="purchase-txt">
-    Purchase a license for BreezingForms and gain access to unlimited fields, more features, updates, no messages and professional support.
+    Get BreezingForms Pro and gain access to unlimited fields, more features, updates, no messages and professional support.
     <br/>Starting for as little as <span>$20 USD</span>.
-    <br/>
-    <button onclick="location.href=\'http://crosstec.de/en/wordpress/wordpress-forms-download.html\'";>Purchase</button>
+    <br/><button onclick="location.href=\'http://crosstec.de/en/wordpress/wordpress-forms-download.html\'";>Get BreezingForms Pro</button>
     </p>
     <div id="'.$active_icon32.'" class="icon32"></div>
     <h2>BreezingForms'.$active_text.'</h2>

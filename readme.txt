@@ -1,10 +1,10 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, contact forms, contact form, form builder, email form, contact form plugin, feedback form, page, plugin, Post, widget, mobile
+Tags: forms, contact form, form builder, email form, feedback form, order form, admin, page, plugin, Post, widget, mobile
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 1.2.5.15
+Stable tag: 1.2.5.16
 License: GPL 2
 
 Professional form builder for any kind of form you need in WordPress. Powerful and flexible, yet easy to use.
@@ -156,7 +156,7 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 
 == Changelog ==
 
-= 1.2.5.15 =
+= 1.2.5.16 =
 * Complete backend interface overhaul. Now feels like home in WordPress
 * Fixed session based issues that happen under certain circumstances in administration
 
