@@ -1,10 +1,10 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, contact form, form builder, email form, feedback form, order form, admin, page, plugin, Post, widget, mobile
+Tags: forms, contact form, form builder, email form, feedback form, order form, contact, admin, page, plugin, Post, widget, mobile
 Requires at least: 3.0
 Tested up to: 3.6
-Stable tag: 1.2.5.16
+Stable tag: 1.2.5.17
 License: GPL 2
 
 Professional form builder for any kind of form you need in WordPress. Powerful and flexible, yet easy to use.
