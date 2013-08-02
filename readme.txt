@@ -1,10 +1,10 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, form data, contact form, form builder, email form, feedback form, order form, contact, admin, page, plugin, Post, widget, mobile
+Tags: forms, contact form, form builder, email form, feedback form, order form, admin, page, plugin, Post, widget, mobile
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 1.2.5.18
+Tested up to: 4.0
+Stable tag: 1.2.5.19
 License: GPL 2
 
 Professional form builder for any kind of form you need in WordPress. Powerful and flexible, yet easy to use.
@@ -18,6 +18,8 @@ Professional form builder for any kind of form you need in WordPress. Powerful a
 [Pre-Made Forms](http://crosstec.de/en/markets/breezingforms-form-apps.html) | 
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
+
+Forms for professionals. The only form builder for WordPress that is capable of creating simple forms but also dealing with large and complex form applications. You can either use it the regular way, without any coding and create standard forms rapidly or if you need to create more, extend with bits of js or php, without the need to hack the plugin.
 
 Drag and drop is good, quick form creation is better. [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) provides a clever interface to add and manage form elements quickly -- while quick means easy. 
 
@@ -156,7 +158,10 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 
 == Changelog ==
 
-= 1.2.5.16 =
+= 1.2.5.19 =
+* Tested with WordPress 3.6 final and everything appears to be working well. WP_DEBUG should for now be turned off, because not everything is yet php strict mode compatible. Will address that in the next updates.
+
+= 1.2.5.18 =
 * Fixed a captcha bug that happened under certain server configurations
 
 = 1.2.5.16 =
