@@ -3,7 +3,7 @@
 Plugin Name: Breezing Forms
 Plugin URI: http://crosstec.de/en/wordpress-forms-download.html
 Description: A professional forms plugin for wordpress.
-Version: 1.2.5.20
+Version: 1.2.6
 Author: Crosstec GmbH & Co. KG
 Author URI: http://crosstec.de
 License: GPL2
@@ -30,14 +30,23 @@ define('BF_PLUGINS_URL', plugins_url());
 define('BF_FOLDER', basename(dirname(__FILE__)));
 define('BF_SITE_URL', get_option('siteurl'));
 
+$bf_wp_query_tmp = null;
+$bf_wpdb_tmp = null;
+
 // frontend requires jquery, just to make sure
 add_action('init', 'breezingforms_init');
 function breezingforms_init(){
+    global $bf_wp_query_tmp, $wp_query, $bf_wpdb_tmp, $wpdb;
+    $bf_wp_query_tmp = $wp_query;
+    $bf_wpdb_tmp = $wpdb;
     wp_enqueue_script('jquery');
 }
 // building preview
 add_action('init', 'breezingforms_preview_init');
 function breezingforms_preview_init(){
+    
+    global $bf_wp_query_tmp, $wp_query, $wp_the_query, $bf_wpdb_tmp, $wpdb;
+    
     if( isset($_GET['plugin']) && $_GET['plugin'] == 'breezingforms' && isset($_GET['preview']) && $_GET['preview'] == 'true' ){
         if ( !defined( 'ABSPATH' ) && !defined( 'XMLRPC_REQUEST' )) {
             global $wp;
@@ -66,9 +75,9 @@ function breezingforms_preview_init(){
     </html>
     <?php
         wp_cache_init();
-        require_wp_db();
-        global $wp_the_query, $wp_query;
-        $wp_the_query = $wp_query = new WP_Query();
+        global $wp_query, $wp_the_query, $wpdb;
+        $wp_query = $wp_the_query = $bf_wp_query_tmp;
+        $wpdb = $bf_wpdb_tmp;
         exit;
     }
 }
@@ -102,17 +111,17 @@ if( ( isset($_GET['page']) && $_GET['page'] == 'breezingforms' ) || ( isset($_PO
 }
 function breezingforms_add_admin_scripts(){
     // scripts
-    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/media/system/js/mootools-core.js');
-    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/media/system/js/core.js');
-    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/media/system/js/mootools-more.js');
-    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/media/system/js/modal.js');
-    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/media/system/js/tabs.js');
+    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/media/system/js/mootools-core.js');
+    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/media/system/js/core.js');
+    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/media/system/js/mootools-more.js');
+    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/media/system/js/modal.js');
+    wp_enqueue_script(mt_rand(0, mt_getrandmax()), WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/media/system/js/tabs.js');
     // styles
     
-    echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/media/system/css/modal.css"/>';
+    echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/media/system/css/modal.css"/>';
     
     if(isset($_REQUEST['task']) && $_REQUEST['task'] == 'editform' && $_REQUEST['act'] == 'editpage' || (isset($_REQUEST['act'])  && $_REQUEST['act'] == 'configuration') ){
-        echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/administrator/templates/bluestork/css/template.css"/>';
+        echo '<link rel="stylesheet" href="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/administrator/templates/bluestork/css/template.css"/>';
     }
 }
 // building the tinymce shortcode helper
@@ -227,6 +236,8 @@ function breezingforms_admin_init(){
 // ADMINISTRATOR bootstrapping joomla platform & breezingforms
 function breezingforms_admin(){
     
+    global $bf_wp_query_tmp, $wp_query, $wp_the_query, $bf_wpdb_tmp, $wpdb;
+    
     if(!is_admin()) die();
     
     // session mayhem
@@ -243,10 +254,10 @@ function breezingforms_admin(){
     define('_JEXEC', 1);
     define('DS', DIRECTORY_SEPARATOR);
 
-    define('JPATH_BASE', dirname(__FILE__).DS.'joomla-platform'.DS.'administrator');
-    include_once dirname(__FILE__) . '/joomla-platform/administrator/includes/defines.php';
+    define('JPATH_BASE', dirname(__FILE__).DS.'platform'.DS.'administrator');
+    include_once dirname(__FILE__) . '/platform/administrator/includes/defines.php';
     
-    include_once dirname(__FILE__) . '/joomla-platform/configuration.php';
+    include_once dirname(__FILE__) . '/platform/configuration.php';
     require_once(JPATH_SITE.'/libraries/cms/version/version.php');
     
     require_once JPATH_SITE.'/administrator/includes/framework.php';
@@ -298,9 +309,9 @@ function breezingforms_admin(){
     echo $app;
     
     wp_cache_init();
-    require_wp_db();
-    global $wp_the_query, $wp_query;
-    $wp_the_query = $wp_query = new WP_Query();
+    global $wp_query, $wp_the_query, $wpdb;
+    $wp_query = $wp_the_query = $bf_wp_query_tmp;
+    $wpdb = $bf_wpdb_tmp;
 }
 
 // FRONTEND SCRIPTS
@@ -331,7 +342,7 @@ add_shortcode( 'breezingforms', 'breezingforms_site' );
 
 function breezingforms_site($atts = array()){
     
-    global $add_my_script;
+    global $add_my_script, $bf_wp_query_tmp, $wp_query, $wp_the_query, $bf_wpdb_tmp, $wpdb;
     
     // session mayhem
     $session_name = "wordpress_" . md5( get_site_url() );
@@ -369,7 +380,7 @@ function breezingforms_site($atts = array()){
         
         echo '<iframe class="breezingforms_iframe" '.$width.''.$height.'frameborder="0" allowtransparency="true" scrolling="no" src="index.php?plugin=breezingforms&preview=true&ff_frame=1&ff_name='.$_GET['ff_name'].'"></iframe>'."\n";
         if(isset($atts['iframe_autoheight']) && $atts['iframe_autoheight']){
-            echo '<script type="text/javascript" src="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/joomla-platform/components/com_breezingforms/libraries/jquery/jq.iframeautoheight.js"></script>'."\n";
+            echo '<script type="text/javascript" src="'.WP_PLUGIN_URL . '/'.BF_FOLDER.'/platform/components/com_breezingforms/libraries/jquery/jq.iframeautoheight.js"></script>'."\n";
             echo '<script type="text/javascript">
             <!--
             jQuery(document).ready(function() {
@@ -382,9 +393,9 @@ function breezingforms_site($atts = array()){
         $c = ob_get_contents();
         ob_end_clean();
         wp_cache_init();
-        require_wp_db();
-        global $wp_the_query, $wp_query;
-        $wp_the_query = $wp_query = new WP_Query();
+        global $wp_query, $wp_the_query, $wpdb;
+        $wp_query = $wp_the_query = $bf_wp_query_tmp;
+        $wpdb = $bf_wpdb_tmp;
         return $c;
     }
     
@@ -396,11 +407,11 @@ function breezingforms_site($atts = array()){
     }
 
     if(!defined('JPATH_BASE')){
-        define('JPATH_BASE', dirname(__FILE__).DS.'joomla-platform');
+        define('JPATH_BASE', dirname(__FILE__).DS.'platform');
     }
-    include_once dirname(__FILE__) . '/joomla-platform/includes/defines.php';
+    include_once dirname(__FILE__) . '/platform/includes/defines.php';
     
-    include_once dirname(__FILE__) . '/joomla-platform/configuration.php';
+    include_once dirname(__FILE__) . '/platform/configuration.php';
     require_once(JPATH_SITE.'/libraries/cms/version/version.php');
     
     require_once JPATH_SITE.'/includes/framework.php';
@@ -455,9 +466,10 @@ function breezingforms_site($atts = array()){
         $c = ob_get_contents();
         ob_end_clean();
         wp_cache_init();
-        require_wp_db();
-        global $wp_the_query, $wp_query;
-        $wp_the_query = $wp_query = new WP_Query();
+        global $wp_query, $wp_the_query, $wpdb;
+        $wp_query = $wp_the_query = $bf_wp_query_tmp;
+        $wpdb = $bf_wpdb_tmp;
+        
         return $c;
     //}
         

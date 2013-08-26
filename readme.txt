@@ -4,7 +4,7 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, contact form, form builder, email form, feedback form, order form, admin, page, plugin, Post, widget, responsive
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.2.5.20
+Stable tag: 1.2.6
 License: GPL 2
 
 Professional form builder for any kind of form you need in WordPress. Powerful and flexible, yet easy to use.
@@ -19,9 +19,7 @@ Professional form builder for any kind of form you need in WordPress. Powerful a
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-Forms for professionals. The only form builder for WordPress that is capable of creating simple forms but also dealing with large and complex form applications. You can either use it the regular way, without any coding and create standard forms rapidly or if you need to create more, extend with bits of js or php, without the need to hack the plugin.
-
-Drag and drop is good, quick form creation is better. [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) provides a clever interface to add and manage form elements quickly -- while quick means easy. 
+BreezingForms is a quick form creation with professional features for WordPress. [Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) provides a clever interface to add and manage form elements quickly -- while quick means easy. 
 
 The admin ui helps you to keep track of your form structure. No matter if simple or complicated forms, you never get lost in scrolling to find your fields.
 
@@ -43,6 +41,7 @@ As example, please open this form with your desktop and mobile browser:
 * Upload image preview ***(Pro Version)***
 * 25+ pre-made, great looking form themes ***(Pro Version)***
 * Pre-made form samples ***(Pro Version)***
+* Responsive forms
 * Max. 5 Fields (Free Version)
 * MailChimp Newsletter integration
 * Multipage forms
@@ -157,6 +156,11 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.2.6 =
+* Fixed an issue with footer display (missing data)
+* Fixed php strict mode issues
+* Refurbished theme engine for better responsiveness (on updates, please copy your themes from /wp-content/plugins/breezing-forms/platform/components/com_breezingforms/themes/quickmode/ into /wp-content/breezingforms/themes/
 
 = 1.2.5.20 =
 * Tested with WordPress 3.6 final and everything appears to be working well. WP_DEBUG should for now be turned off, because not everything is yet php strict mode compatible. Will address that in the next updates.
