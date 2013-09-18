@@ -6368,7 +6368,7 @@ class HTML_facileFormsProcessor {
             } // if
 
             if (!$this->inline) {
-                $url = ($this->inframe) ? $ff_mossite . '/?format=html&amp;tmpl=component' . (isset($_GET['plugin']) && isset($_GET['preview']) ? '&amp;plugin=breezingforms&amp;preview=true' : 'index.php') : (($this->runmode == _FF_RUNMODE_FRONTEND) ? '' . (isset($_GET['plugin']) && isset($_GET['preview']) ? '?plugin=breezingforms&amp;preview=true' : '') : '?format=html' . (JRequest::getCmd('tmpl','') ? '&amp;tmpl='.JRequest::getCmd('tmpl','') . (isset($_GET['plugin']) && isset($_GET['preview']) ? '&amp;plugin=breezingforms&amp;preview=true' : '') : '' . (isset($_GET['plugin']) && isset($_GET['preview']) ? '?plugin=breezingforms&amp;preview=true' : 'index.php')) );
+                $url = ($this->inframe) ? $ff_mossite . '/?format=html&amp;tmpl=component' . (isset($_GET['plugin']) && isset($_GET['preview']) ? '&amp;plugin=breezingforms&amp;preview=true' : '') : (($this->runmode == _FF_RUNMODE_FRONTEND) ? '' . (isset($_GET['plugin']) && isset($_GET['preview']) ? '?plugin=breezingforms&amp;preview=true' : '') : '?format=html' . (JRequest::getCmd('tmpl','') ? '&amp;tmpl='.JRequest::getCmd('tmpl','') . (isset($_GET['plugin']) && isset($_GET['preview']) ? '&amp;plugin=breezingforms&amp;preview=true' : '') : '' . (isset($_GET['plugin']) && isset($_GET['preview']) ? '?plugin=breezingforms&amp;preview=true' : '')) );
 
                 echo '<form name="ff_submitform" action="' . $url . '" method="post">' . nl();
             } // if

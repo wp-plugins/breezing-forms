@@ -1,10 +1,10 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, contact form, multi step form, multi page form, email form, feedback form, order form, web form, form, plugin, Post, widget
+Tags: contact form, contact forms, contact us, custom form, feedback form, feedback forms, form, form builder, form manager, form plugin, form with recaptcha, forms, forms plugin, multiple forms, multi step form, multi page form
 Requires at least: 3.0
-Tested up to: 3.6
-Stable tag: 1.2.7.2
+Tested up to: 4.0
+Stable tag: 1.2.7.3
 License: GPL 2
 
 Professional form builder for beginners and experts. Create any kind of form you need. Powerful and flexible, yet easy to use.
@@ -18,7 +18,7 @@ Professional form builder for beginners and experts. Create any kind of form you
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is a professional form builder for WordPress and suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
+[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is a professional form builder to create custom forms for WordPress and suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
 
 The admin ui feels like home in WordPress and helps you to keep track of your form structure. No matter if simple or complex forms, you never get lost in the process and this makes it a huge advantage over classic drag-from-left-to-right form builders.
 
@@ -156,6 +156,9 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.2.7.3 =
+* Fixed a 404 issue upon submit that could happen under certain circumstances
 
 = 1.2.7.1 =
 * Fixed an issue with footer display (missing data)
