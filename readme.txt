@@ -1,7 +1,7 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, contact form, multi step form, multi page form, email form, feedback form, order form, responsive forms, form, plugin, Post, widget
+Tags: forms, contact form, multi step form, multi page form, email form, feedback form, order form, responsive, contact, plugin, Post, widget
 Requires at least: 3.0
 Tested up to: 4.0
 Stable tag: 1.2.7.6
@@ -157,7 +157,7 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 
 == Changelog ==
 
-= 1.2.7.6 =
+= 1.2.7.7 =
 * Fixed a 404 issue upon submit that could happen under certain circumstances
 
 = 1.2.7.1 =
