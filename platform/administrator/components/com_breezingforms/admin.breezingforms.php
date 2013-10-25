@@ -641,7 +641,7 @@ if( !isset($_REQUEST['action']) ){
     <div class="wrap">
     <p class="purchase-txt">
     Get BreezingForms Pro and gain access to unlimited fields, more features, updates, no messages and professional support.
-    <br/>Starting for as little as <span>$20 USD</span>.
+    <br/>Starting for as little as <span>$29 USD</span>.
     <br/><button onclick="location.href=\'http://crosstec.de/en/wordpress/wordpress-forms-download.html\'";>Get BreezingForms Pro</button>
     </p>
     <div id="'.$active_icon32.'" class="icon32"></div>
