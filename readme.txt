@@ -4,7 +4,7 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: forms, contact form, multi step form, multi page form, email form, feedback form, order form, responsive, contact, plugin, Post, widget
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.2.7.13
+Stable tag: 1.2.7.14
 License: GPL 2
 
 Professional form builder for beginners and experts. Create any kind of form you need. Powerful and flexible, yet easy to use.
@@ -35,7 +35,7 @@ BreezingForms is well supported, frequently updated and one of the most popular 
 
 = Key Features =
 
-* Unlimited Fields ***(Pro Version)***
+* Unlimited Fields in Pro Version (up to 5 fields in free version)
 * [Mobile Forms](http://crosstec.de/en/mobile-wordpress-forms.html) ***(Pro Version)***
 * Business/CRM: Salesforce® integration ***(Pro Version)***
 * Sharing: Dropbox® integration ***(Pro Version)***
@@ -157,7 +157,7 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 
 == Changelog ==
 
-= 1.2.7.13 =
+= 1.2.7.14 =
 * readme.txt adjustments
 
 = 1.2.7.11 =
