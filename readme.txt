@@ -1,10 +1,10 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: forms, contact form, multi step form, multi page form, email form, feedback form, order form, responsive, contact, plugin, Post, widget
+Tags: contact form, contact forms, contact us, custom form, feedback form, feedback forms, form, form builder, multistep form, form manager, form plugin, form with recaptcha, forms, forms plugin, multiple forms, paypal form
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.2.7.14
+Stable tag: 1.2.7.15
 License: GPL 2
 
 Professional form builder for beginners and experts. Create any kind of form you need. Powerful and flexible, yet easy to use.
@@ -18,11 +18,11 @@ Professional form builder for beginners and experts. Create any kind of form you
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is a professional form builder to create custom forms for WordPress and suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
+[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is a professional form builder to create custom forms for WordPress and is suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
 
-BreezingForms supports responsiveness and form theme support but it also gives you the ability to display your form in a web app way manner.
+Breezing Forms supports responsiveness and theme support but it also gives you the ability to display your form optimized for mobile devices.
 
-As example, please open this form with your desktop and mobile browser:
+As example, open this form with your desktop and mobile browser:
 [Mobile Form Demo](http://crosstec.de/.sub-breezingformswpdemo/)
 
 The admin ui feels like home in WordPress and helps you to keep track of your form structure. No matter if simple or complex forms, you never get lost in the process and this makes it a huge advantage over classic drag-from-left-to-right form builders.
@@ -157,7 +157,7 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 
 == Changelog ==
 
-= 1.2.7.14 =
+= 1.2.7.15 =
 * readme.txt adjustments
 
 = 1.2.7.11 =
