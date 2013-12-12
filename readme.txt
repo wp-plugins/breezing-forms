@@ -1,10 +1,10 @@
 === Breezing Forms ===
 Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
-Tags: contact form, contact forms, contact us, custom form, feedback form, feedback forms, form, form builder, multistep form, form manager, form plugin, form with recaptcha, forms, forms plugin, multiple forms, paypal form
+Tags: contact, contact button, contact for paypal, contact form, contact form builder, contact form payments, contact form plugin, contact form to email, contact form with recaptcha, contact us, drag and drop contact form, easy contact form, feedback, feedback form, file upload contact form, form, form builder, form solution, forms, request form
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.2.7.15
+Stable tag: 1.2.7.16
 License: GPL 2
 
 Professional form builder for beginners and experts. Create any kind of form you need. Powerful and flexible, yet easy to use.
@@ -18,7 +18,7 @@ Professional form builder for beginners and experts. Create any kind of form you
 [Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
 [Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
 
-[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is a professional form builder to create custom forms for WordPress and is suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
+[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is a professional form builder to create contact forms and any kind of custom forms for WordPress you can think of. Breezing Forms is suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
 
 Breezing Forms supports responsiveness and theme support but it also gives you the ability to display your form optimized for mobile devices.
 
