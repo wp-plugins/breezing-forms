@@ -4,10 +4,10 @@ Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags: contact, contact button, contact for paypal, contact form, contact form builder, contact form payments, contact form plugin, contact form to email, contact form with recaptcha, contact us, drag and drop contact form, easy contact form, feedback, feedback form, file upload contact form, form, form builder, form solution, forms, request form
 Requires at least: 3.0
 Tested up to: 4.0
-Stable tag: 1.2.7.16
+Stable tag: 1.2.7.17
 License: GPL 2
 
-Professional form builder for beginners and experts. Create any kind of form you need. Powerful and flexible, yet easy to use.
+Form builder for beginners and experts. Create contact forms or any kind of form you can think of. Powerful and flexible, yet easy to use.
 
 == Description ==
 
@@ -156,6 +156,9 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.2.7.17 =
+ * Minor WP related CSS fixes
 
 = 1.2.7.15 =
 * readme.txt adjustments
