@@ -23,12 +23,12 @@ $formid = JRequest::getVar('ff_form',null);
 if ($formid!=null) {
 	$database->setQuery(
 		"select * from #__facileforms_forms ".
-		"where id=$formid ".
+		"where id=".intval($formid)." ".
 		"and published=1 ".
 		"and (runmode=0 or runmode=2)"
 	);
 	$forms = $database->loadObjectList();
-	if (count($forms) < 1) { echo 'Form '.$formid.' not found!'; exit; }
+	if (count($forms) < 1) { echo 'Form '.intval($formid).' not found!'; exit; }
 	$form = $forms[0];
 } else {
 	$formname = JRequest::getVar('ff_name','');
@@ -38,13 +38,13 @@ if ($formid!=null) {
 	} // if
 	$database->setQuery(
 		"select * from #__facileforms_forms ".
-		"where name='".$formname."' ".
+		"where name=".$database->Quote($formname)." ".
 		"and published=1 ".
 		"and (runmode=0 or runmode=2)".
 		"order by ordering, id"
 	);
 	$forms = $database->loadObjectList();
-	if (count($forms) < 1) { echo 'Form <em>'.$formname.'</em> not found!'; exit; }
+	if (count($forms) < 1) { echo 'Form <em>'.htmlentities($formname, ENT_QUOTES, 'UTF-8').'</em> not found!'; exit; }
 	$form = $forms[0];
 } // if
 

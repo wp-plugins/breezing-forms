@@ -225,11 +225,11 @@ if(
 	if (is_numeric($formid)) {
 		$database->setQuery(
 			"select * from #__facileforms_forms ".
-			"where id=$formid and published=1"
+			"where id=".intval($formid)." and published=1"
 		);
 		$forms = $database->loadObjectList();
 		if (count($forms) < 1) {
-			echo '[Form '.$formid.' not found!]';
+			echo '[Form '.intval($formid).' not found!]';
 			$ok = false;
 		} else
 		$form = $forms[0];
@@ -242,7 +242,7 @@ if(
 				);
 				$forms = $database->loadObjectList();
 				if (count($forms) < 1) {
-					echo '[Form '.$formname.' not found!]';
+					echo '[Form '.htmlentities($formname, ENT_QUOTES, 'UTF-8').' not found!]';
 					$ok = false;
 				} else
 				$form = $forms[0];
