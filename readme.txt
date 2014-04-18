@@ -3,8 +3,8 @@ Contributors: crosstec
 Donate link: http://crosstec.de/en/wordpress-forms-download.html
 Tags:  advanced form, application form, contact form, multistep forms, multi page forms, contact forms, contact us form, custom form, feedback form, feedback forms, form, form builder, form manager, form plugin, form with recaptcha, forms, forms plugin, multiple forms, paypal form, survey form
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.2.7.19
+Tested up to: 5.0
+Stable tag: 1.2.7.20
 License: GPL 2
 
 Form builder for beginners and experts. Create contact forms or any kind of form you can think of. Powerful and flexible, yet easy to use.
@@ -156,6 +156,9 @@ A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One
 [Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.2.7.20 =
+ * minor WP 3.9 related changes regarding tinymce and mysqli
 
 = 1.2.7.19 =
  * Minor update reflecting some changes since wp 3.8.1
