@@ -10,7 +10,7 @@ defined( '_JEXEC' ) or die( 'Direct Access to this location is not allowed.' );
 
 global $ff_version, $ff_resnames, $ff_request, $ff_target;
 
-$ff_version = '1.2.7.27 FREE VERSION (build 265)';
+$ff_version = '1.2.7.28 FREE VERSION (build 266)';
 $ff_target  = 0;
 
 $ff_resnames = array(
