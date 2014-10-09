@@ -147,16 +147,29 @@ function bf_copy($file1,$file2){
     
 function bf_createMail( $from='', $fromname='', $subject, $body ) {
 
+	jimport('joomla.version');
+        $version = new JVersion();
+        $version = $version->getShortVersion();
+    
+        $_mailfrom = '';
+        $_fromname = '';
+        
+        if(version_compare($version, '3.0', '<')){
+            $_mailfrom = JFactory::getConfig()->getValue('config.mailfrom','');
+            $_fromname = JFactory::getConfig()->getValue('config.fromname','');
+        }else{
+            $_mailfrom = JFactory::getConfig()->get('mailfrom','');
+            $_fromname = JFactory::getConfig()->get('fromname','');
+        }
+    
 	$mail = JFactory::getMailer();
         
-        $mail->From 	= $from ? $from : $mail->From;
-        //$mail->Sender 	= $from ? $from : $mail->From;
-        $mail->FromName = $fromname ? $fromname : $mail->FromName;
-	$mail->Subject 	= $subject;
-	$mail->Body 	= $body;
+        $mail->setSender(array($_mailfrom, trim($_fromname)));
+        $mail->setSubject($subject);
+        $mail->setBody($body);
         
-        //$mail->AddReplyTo($from ? $from : $mail->From, $fromname ? $fromname : $mail->FromName);
-
+        $mail->addReplyTo( array( $from ? $from : $_mailfrom, $fromname ? $fromname : $_fromname ) );
+        
 	return $mail;
 }
 
