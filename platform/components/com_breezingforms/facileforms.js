@@ -8,6 +8,7 @@
 
 function ff_traceWindow()
 {
+    /*
 	var dwin = window.open(
 		'components/com_breezingforms/index.html',
 		'TraceDumpWindow',
@@ -38,6 +39,10 @@ function ff_traceWindow()
 		'</html>\n'
 	);
 	dwin.document.close();
+        */
+       if(typeof console != "undefined" && typeof console.log == "function" ){
+           console.log("BF-Trace", ff_processor.traceBuffer);
+       }
 } // ff_traceWindow
 
 function ff_trim(s)

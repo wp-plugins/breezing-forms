@@ -227,7 +227,7 @@ class facileFormsElement
 		$order = JHTML::_('list.genericordering',
 					 "select ordering as value, title as text ".
 					   "from #__facileforms_elements ".
-					  "where form=$form and page=$page ".
+					  "where form=".$database->Quote($form)." and page=".$database->Quote($page)." ".
 					  "order by ordering"
 				 );
 		$lists['ordering'] =
@@ -309,7 +309,7 @@ class facileFormsElement
 		global $database;
 		$database = JFactory::getDBO();
 		$ids = implode(',', $ids);
-		$database->setQuery("delete from #__facileforms_elements where form=$form and page=$page and id in ($ids)");
+		$database->setQuery("delete from #__facileforms_elements where form=".$database->Quote($form)." and page=".$database->Quote($page)." and id in ($ids)");
 		if (!$database->query()) {
 			echo "<script> alert('".$database->getErrorMsg()."'); window.history.go(-1); </script>\n";
 		} // if
@@ -530,7 +530,7 @@ class facileFormsElement
 		global $database;
 		$database = JFactory::getDBO();
 		$database->setQuery(
-			"select * from #__facileforms_elements where form=$form and page=$page order by ordering"
+			"select * from #__facileforms_elements where form=".$database->Quote($form)." and page=".$database->Quote($page)." order by ordering"
 		);
 		$rows = $database->loadObjectList();
 		if ($database->getErrorNum()) {
@@ -551,7 +551,7 @@ class facileFormsElement
 		$row->load($form);
 		if ($page < $row->pages) {
 			$database->setQuery(
-				"update #__facileforms_elements set page=page+1 where form=$form and page>$page"
+				"update #__facileforms_elements set page=page+1 where form=".$database->Quote($form)." and page>".$database->Quote($page).""
 			);
 			if (!$database->query()) {
 				echo "<script> alert('".$database->getErrorMsg()."'); window.history.go(-1); </script>\n";
@@ -589,14 +589,14 @@ class facileFormsElement
 		$row = new facileFormsForms($database);
 		$row->load($form);
 		$database->setQuery(
-			"delete from #__facileforms_elements where form=$form and page=$page"
+			"delete from #__facileforms_elements where form=".$database->Quote($form)." and page=".$database->Quote($page).""
 		);
 		if (!$database->query()) {
 			echo "<script> alert('".$database->getErrorMsg()."'); window.history.go(-1); </script>\n";
 			exit();
 		} // if
 		$database->setQuery(
-			"update #__facileforms_elements set page=page-1 where form=$form and page>$page"
+			"update #__facileforms_elements set page=page-1 where form=".$database->Quote($form)." and page>".$database->Quote($page).""
 		);
 		if (!$database->query()) {
 			echo "<script> alert('".$database->getErrorMsg()."'); window.history.go(-1); </script>\n";
@@ -632,7 +632,7 @@ class facileFormsElement
 		$newpage = JRequest::getVar('destination','');
 		if ($newpage != $page) {
 			$database->setQuery(
-				"update #__facileforms_elements set page=0 where form=$form and page=$page"
+				"update #__facileforms_elements set page=0 where form=".$database->Quote($form)." and page=".$database->Quote($page).""
 			);
 			if (!$database->query()) {
 				echo "<script> alert('".$database->getErrorMsg()."'); window.history.go(-1); </script>\n";
@@ -640,11 +640,11 @@ class facileFormsElement
 			} // if
 			if ($newpage > $page) {
 				$database->setQuery(
-					"update #__facileforms_elements set page=page-1 where form=$form and page>$page and page<=$newpage"
+					"update #__facileforms_elements set page=page-1 where form=".$database->Quote($form)." and page>".$database->Quote($page)." and page<=".$database->Quote($newpage).""
 				);
 			} else {
 				$database->setQuery(
-					"update #__facileforms_elements set page=page+1 where form=$form and page>=$newpage and page<$page"
+					"update #__facileforms_elements set page=page+1 where form=".$database->Quote($form)." and page>=".$database->Quote($newpage)." and page<".$database->Quote($form).""
 				);
 			} // if
 			if (!$database->query()) {
@@ -652,7 +652,7 @@ class facileFormsElement
 				exit();
 			} // if
 			$database->setQuery(
-				"update #__facileforms_elements set page=$newpage where form=$form and page=0"
+				"update #__facileforms_elements set page=".$database->Quote($newpage)." where form=".$database->Quote($form)." and page=0"
 			);
 			if (!$database->query()) {
 				echo "<script> alert('".$database->getErrorMsg()."'); window.history.go(-1); </script>\n";
