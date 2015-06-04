@@ -654,7 +654,7 @@ if( !isset($_REQUEST['action']) ){
         <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-scripts"></div><a class="'.($active_scripts ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=managescripts">'.BFText::_('COM_BREEZINGFORMS_WP_SCRIPTS').'</a></li>
         <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-pieces"></div><a class="'.($active_pieces ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=managepieces">'.BFText::_('COM_BREEZINGFORMS_WP_PIECES').'</a></li>
         <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-config"></div><a class="'.($active_config ? 'bf-toolbar-active' : '').'" href="admin.php?page=breezingforms&act=configuration">'.BFText::_('COM_BREEZINGFORMS_WP_CONFIGURATION').'</a></li>
-        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-docs"></div><a href="http://crosstec.de">Docs &amp; Support</a></li>
+        <li><div class="bf-toolbar-link-bg" id="bf-toolbar-link-docs"></div><a href="https://crosstec.org">Docs &amp; Support</a></li>
         </ul>
     </div>
     <div style="clear:both;"></div>

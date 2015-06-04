@@ -1,42 +1,42 @@
 === Breezing Forms ===
 Contributors: crosstec
-Donate link: http://crosstec.de/en/wordpress-forms-download.html
+Donate link: https://crosstec.org/en/wordpress-forms-download.html
 Tags:  builder, captcha form, contact form, contact form builder, contact form plugin, contact form with auto reply, contact forms, contact us form, contacts form plugin, custom contact form, custom forms, email form, feedback, feedback form, feedback forms, form, form builder, form creation, form creator, form manager, form plugin, form to email, form widget, form with recaptcha, forms, forms plugin, Formular, formulario, multiple forms, paypal form, recaptcha contact form, secure form, survey form, web form, widget contact form, wordpress contact form
 Requires at least: 3.0
 Tested up to: 5.0
-Stable tag: 1.2.7.31
+Stable tag: 1.2.7.32
 License: GPL 2
 
 Form builder for beginners and experts. Create contact forms or any kind of form you can think of. Powerful and flexible, yet easy to use.
 
 == Description ==
 
-[Pro Version](http://crosstec.de/en/wordpress-forms-download.html) |
-[Demo Forms](http://crosstec.de/en/wordpress-forms-demos.html) |
-[Form Themes](http://crosstec.de/en/markets/breezingforms-themes.html) | 
-[Pre-Made Forms](http://crosstec.de/en/markets/breezingforms-form-apps.html) | 
-[Documentation](http://crosstec.de/en/support/breezingforms-documentation.html "View Documentation") |
-[Support Forum](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html) 
+[Pro Version](https://crosstec.org/en/wordpress-forms-download.html) |
+[Demo Forms](https://crosstec.org/en/wordpress-forms-demos.html) |
+[Form Themes](https://crosstec.org/en/markets/breezingforms-themes.html) | 
+[Pre-Made Forms](https://crosstec.org/en/markets/breezingforms-form-apps.html) | 
+[Documentation](https://crosstec.org/en/support/breezingforms-documentation.html "View Documentation") |
+[Support Forum](https://crosstec.org/en/forums/51-breezingforms-for-wordpress.html) 
 
-[Breezing Forms](http://crosstec.de/en/wordpress-forms-download.html) is a professional form builder to create contact forms and any kind of custom forms for WordPress you can think of. Breezing Forms is suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
+[Breezing Forms](https://crosstec.org/en/wordpress-forms-download.html) is a professional form builder to create contact forms and any kind of custom forms for WordPress you can think of. Breezing Forms is suited for both, beginners and experts. You may create from simple to very sophisticated and complex multi step forms as it provides a clever interface to add and manage form elements quickly -- while quick means easy.
 
 Breezing Forms supports responsiveness and theme support but it also gives you the ability to display your form optimized for mobile devices.
 
 As example, open this form with your desktop and mobile browser:
-[Mobile Form Demo](http://crosstec.de/.sub-breezingformswpdemo/)
+[Mobile Form Demo](https://crosstec.org/.sub-breezingformswpdemo/)
 
 The admin ui feels like home in WordPress and helps you to keep track of your form structure. No matter if simple or complex forms, you never get lost in the process and this makes it a huge advantage over classic drag-from-left-to-right form builders.
 
-See the [demo forms](http://crosstec.de/en/wordpress-forms-demos.html) for a some examples and you will get an idea of what is possible.
+See the [demo forms](https://crosstec.org/en/wordpress-forms-demos.html) for a some examples and you will get an idea of what is possible.
 
-All kinds of forms are possible: [contact forms](http://crosstec.de/en/wordpress-forms-download.html), job application forms, feedback forms, order forms, questionnaires, payments, pay to download files and anything else you can think of that requires to collect data from your visitors.
+All kinds of forms are possible: [contact forms](https://crosstec.org/en/wordpress-forms-download.html), job application forms, feedback forms, order forms, questionnaires, payments, pay to download files and anything else you can think of that requires to collect data from your visitors.
 
 BreezingForms is well supported, frequently updated and one of the most popular form builders. We also add new features if demanded. Don't hesitate to contact us if you find something is missing.
 
 = Key Features =
 
 * Unlimited Fields in Pro Version (up to 5 fields in free version)
-* [Mobile Forms](http://crosstec.de/en/mobile-wordpress-forms.html) ***(Pro Version)***
+* [Mobile Forms](https://crosstec.org/en/mobile-wordpress-forms.html) ***(Pro Version)***
 * Business/CRM: Salesforce® integration ***(Pro Version)***
 * Sharing: Dropbox® integration ***(Pro Version)***
 * Upload image preview ***(Pro Version)***
@@ -153,9 +153,12 @@ A. All themes go into the folder /wp-content/breezingforms/themes/. After that, 
 
 A. You find the templates for the PDFs in /wp-content/breezingforms/pdftpl/. One template is for record exports, the other for attachments.
 
-[Ask more questions in our forums](http://crosstec.de/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
+[Ask more questions in our forums](https://crosstec.org/en/forums/51-breezingforms-for-wordpress.html "BreezingForms Forums")
 
 == Changelog ==
+
+= 1.2.7.32 =
+ * edited all necessary links and assets to match the new domain
 
 = 1.2.7.31 =
  * fixed an important security issue!
