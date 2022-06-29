@@ -90,7 +90,7 @@ class QuickModeHtml{
                    var _xe = 'e';
                    var _xr = 'r';
                    var _xy = 'y';
-                   if( JQuery(this).attr('href').bfendsWith(_xj+_xq+_xu+_xe+_xr+_xy+'-ui.css') ){
+                   if( typeof JQuery(this).attr('href') !== 'undefined' && JQuery(this).attr('href').bfendsWith(_xj+_xq+_xu+_xe+_xr+_xy+'-ui.css') ){
                        JQuery(this).attr('disabled', 'disabled');
                        JQuery(this).remove();
                    }
